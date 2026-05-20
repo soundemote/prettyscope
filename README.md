@@ -24,8 +24,7 @@
 5. code cleanup and clarity
 ```
 
-* dependency hell, will solve as i have time:
-
+dependency hell, will solve as i have time:
 ```markdown
 # Required Software #
 
