@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PrettyScope PatchFormat="1" ParameterSmoothing="0.0236946" DotColorMode="Color: H S L"
+             LineColorMode="Color: H S L" DecaySpeed="0" PointsPerFrame="5143.1"
+             DotBrightness="0.00223274" DotSize="0.444186" DotBlur="0.80814"
+             DotProfile="Pointy" drawOrder="0" LineBrightness="0.0153478"
+             LineSize="0.0532732" LineBlur="0.190625" DotColorR="0.22" DotColorG="0"
+             DotColorB="0" DotColorH="234.353" LineColorR="0.4" LineColorG="0.5"
+             LineColorH="221.365" LineColorS="0.989706" DotColorR2="0.22"
+             DotColorG2="0" DotColorB2="0" DotColorH2="218" LineColorR2="0.4"
+             LineColorG2="0.5" lenColorIntensity="18.6047" Zoom="0.799999"
+             ScanFrequency="0.784929" SyncMode="Sync Mode: Right" SyncNumCycles="4">
+  <MetaMapping>
+    <FXMode MetaIndex="0"/>
+    <ParameterSmoothing MetaIndex="1"/>
+    <Pause MetaIndex="2"/>
+    <AutoPauseMode MetaIndex="3"/>
+    <FreezePoints MetaIndex="4"/>
+    <ShowFPS MetaIndex="5"/>
+    <Heatmap MetaIndex="6"/>
+    <BlendMode MetaIndex="7"/>
+    <DotColorMode MetaIndex="8"/>
+    <LineColorMode MetaIndex="9"/>
+    <Framerate MetaIndex="10"/>
+    <DecaySpeed MetaIndex="11"/>
+    <PointsPerFrame MetaIndex="12"/>
+    <TailFade MetaIndex="13"/>
+    <Dots MetaIndex="14"/>
+    <DotBrightness MetaIndex="15"/>
+    <DotSize MetaIndex="16"/>
+    <DotBlur MetaIndex="17"/>
+    <DotProfile MetaIndex="18"/>
+    <drawOrder MetaIndex="19"/>
+    <Lines MetaIndex="20"/>
+    <LineBrightness MetaIndex="21"/>
+    <LineSize MetaIndex="22"/>
+    <LineBlur MetaIndex="23"/>
+    <LenFactor MetaIndex="24"/>
+    <LineProfile MetaIndex="25"/>
+    <DotColorR MetaIndex="26"/>
+    <DotColorG MetaIndex="27"/>
+    <DotColorB MetaIndex="28"/>
+    <DotColorH MetaIndex="29"/>
+    <DotColorS MetaIndex="30"/>
+    <DotColorL MetaIndex="31"/>
+    <LineColorR MetaIndex="32"/>
+    <LineColorG MetaIndex="33"/>
+    <LineColorB MetaIndex="34"/>
+    <LineColorH MetaIndex="35"/>
+    <LineColorS MetaIndex="36"/>
+    <LineColorL MetaIndex="37"/>
+    <DotColorR2 MetaIndex="38"/>
+    <DotColorG2 MetaIndex="39"/>
+    <DotColorB2 MetaIndex="40"/>
+    <DotColorH2 MetaIndex="41"/>
+    <DotColorS2 MetaIndex="42"/>
+    <DotColorL2 MetaIndex="43"/>
+    <LineColorR2 MetaIndex="44"/>
+    <LineColorG2 MetaIndex="45"/>
+    <LineColorB2 MetaIndex="46"/>
+    <LineColorH2 MetaIndex="47"/>
+    <LineColorS2 MetaIndex="48"/>
+    <LineColorL2 MetaIndex="49"/>
+    <lenColorIntensity MetaIndex="50"/>
+    <Zoom MetaIndex="51"/>
+    <ScaleX MetaIndex="52"/>
+    <ScaleY MetaIndex="53"/>
+    <ShearX MetaIndex="54"/>
+    <ShearY MetaIndex="55"/>
+    <Rotation MetaIndex="56"/>
+    <ShiftX MetaIndex="57"/>
+    <ShiftY MetaIndex="58"/>
+    <OneDimZoom MetaIndex="59"/>
+  </MetaMapping>
+  <MetaParameterValues M0="0" M1="0.72910839319229125977" M2="0" M3="0" M4="0" M5="0"
+                       M6="0" M7="0" M8="1" M9="0.3333333432674407959" M10="1" M11="0"
+                       M12="0.95885425806045532227" M13="0" M14="1" M15="0.33720931410789489746"
+                       M16="0.44418600201606750488" M17="0.80813956260681152344" M19="0"
+                       M20="1" M21="0.54651165008544921875" M22="0.052325572818517684937"
+                       M23="0.19062502682209014893" M24="1" M25="0" M26="0.21999999880790710449"
+                       M27="0" M28="0" M29="0.65098041296005249023" M30="1" M31="1"
+                       M32="0.40000000596046447754" M34="1" M35="0.61490261554718017578"
+                       M36="0.98970586061477661133" M37="1" M38="0.21999999880790710449"
+                       M39="0" M40="0" M41="0.60555553436279296875" M42="1" M43="1"
+                       M44="0.40000000596046447754" M46="1" M47="0" M48="1" M49="1"
+                       M50="0.18603901565074920654" M51="0.85513728857040405273" M52="0.5625"
+                       M53="0.5625" M59="0.125"/>
+  <ColorMap ff000230="0" ff6500ad="0.3" ffff00fe="0.5" ffffc7e5="1"/>
+</PrettyScope>

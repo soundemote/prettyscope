@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PrettyScope PatchFormat="1" DotColorMode="Color: H S L" LineColorMode="Color: RdGnBl"
+             DecaySpeed="0.9" PointsPerFrame="3467.1" TailFade="1" DotBrightness="0.0361526"
+             DotSize="0.313953" DotBlur="0.267442" drawOrder="0" LineBrightness="0.0617586"
+             LineSize="0.494692" LineBlur="0" DotColorR="0.607235" DotColorG="0.294118"
+             DotColorB="0.988235" DotColorS="0" LineColorR="0.823529" LineColorG="0.888235"
+             LineColorH="0.529412" DotColorR2="0.219" DotColorG2="0" DotColorB2="0"
+             LineColorG2="0.5" LineColorH2="0.870588" lenColorIntensity="19.186"
+             ScanFrequency="0.0107608" SyncMode="1">
+  <MetaMapping>
+    <Pause MetaIndex="0"/>
+    <AutoPause MetaIndex="1"/>
+    <FreezePoints MetaIndex="2"/>
+    <ShowFPS MetaIndex="3"/>
+    <Heatmap MetaIndex="4"/>
+    <BlendMode MetaIndex="5"/>
+    <Framerate MetaIndex="7"/>
+    <DecaySpeed MetaIndex="8"/>
+    <PointsPerFrame MetaIndex="9"/>
+    <TailFade MetaIndex="10"/>
+    <Dots MetaIndex="11"/>
+    <DotBrightness MetaIndex="12"/>
+    <DotSize MetaIndex="13"/>
+    <DotBlur MetaIndex="14"/>
+    <DotProfile MetaIndex="15"/>
+    <drawOrder MetaIndex="16"/>
+    <Lines MetaIndex="17"/>
+    <LineBrightness MetaIndex="18"/>
+    <LineSize MetaIndex="19"/>
+    <LineBlur MetaIndex="20"/>
+    <LenFactor MetaIndex="21"/>
+    <LineProfile MetaIndex="22"/>
+    <DotColorR MetaIndex="23"/>
+    <DotColorG MetaIndex="24"/>
+    <DotColorB MetaIndex="25"/>
+    <DotColorH MetaIndex="26"/>
+    <DotColorS MetaIndex="27"/>
+    <DotColorL MetaIndex="28"/>
+    <LineColorR MetaIndex="29"/>
+    <LineColorG MetaIndex="30"/>
+    <LineColorB MetaIndex="31"/>
+    <LineColorH MetaIndex="32"/>
+    <LineColorS MetaIndex="33"/>
+    <LineColorL MetaIndex="34"/>
+    <DotColorR2 MetaIndex="35"/>
+    <DotColorG2 MetaIndex="36"/>
+    <DotColorB2 MetaIndex="37"/>
+    <DotColorH2 MetaIndex="38"/>
+    <DotColorS2 MetaIndex="39"/>
+    <DotColorL2 MetaIndex="40"/>
+    <LineColorR2 MetaIndex="41"/>
+    <LineColorG2 MetaIndex="42"/>
+    <LineColorB2 MetaIndex="43"/>
+    <LineColorH2 MetaIndex="44"/>
+    <LineColorS2 MetaIndex="45"/>
+    <LineColorL2 MetaIndex="46"/>
+    <ScaleX MetaIndex="47"/>
+    <ScaleY MetaIndex="48"/>
+    <ShearX MetaIndex="49"/>
+    <ShearY MetaIndex="50"/>
+    <Rotation MetaIndex="51"/>
+    <ShiftX MetaIndex="52"/>
+    <ShiftY MetaIndex="53"/>
+    <OneDimensional MetaIndex="54"/>
+    <ScanFrequency MetaIndex="55"/>
+    <SyncMode MetaIndex="56"/>
+  </MetaMapping>
+  <MetaParameterValues M0="0" M1="0" M2="0" M3="0" M4="0" M5="0" M6="0.6666666865348815918"
+                       M7="1" M8="0.89999997615814208984" M9="0.92399877309799194336"
+                       M10="0.10000000149011611938" M11="1" M12="0.63953489065170288086"
+                       M13="0.31395348906517028809" M14="0.26744186878204345703" M15="0"
+                       M16="0" M17="1" M18="0.6976744532585144043" M19="0.49418607354164123535"
+                       M20="0" M21="1" M22="0" M23="0.60723531246185302734" M24="0.29411765933036804199"
+                       M25="0.98823529481887817383" M26="0" M27="0" M28="1" M29="0.82352942228317260742"
+                       M30="0.88823527097702026367" M31="1" M32="0.52941179275512695313"
+                       M33="1" M34="1" M35="0.21899999678134918213" M36="0" M37="0"
+                       M38="0" M39="1" M40="1" M41="1" M43="1" M44="0.87058824300765991211"
+                       M45="1" M46="1" M47="0.5625" M48="0.5625" M54="0" M55="0.0058141052722930908203"
+                       M56="1"/>
+  <ColorMap ff000230="0" ff6500ad="0.3" ffff00fe="0.5" ffffc7e5="1"/>
+</PrettyScope>

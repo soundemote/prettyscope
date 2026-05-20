@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PrettyScope PatchFormat="1" BlendMode="Blend Mode: Solid" DecaySpeed="0"
+             PointsPerFrame="2048" Dots="0" DotBrightness="0.0644153" DotSize="0.168539"
+             DotBlur="0.904494" DotProfile="Pointy" drawOrder="0" LineBrightness="0.661035"
+             LineSize="0.28723" LineBlur="0.202247" LineProfile="Flat" DotColorR="0.219"
+             DotColorG="0.511236" DotColorB="0.157303" LineColorG="0.47191"
+             LineColorB="0.960674" LineColorA="0" ScanFrequency="25">
+  <MetaMapping>
+    <Pause MetaIndex="0"/>
+    <AutoPause MetaIndex="1"/>
+    <FreezePoints MetaIndex="2"/>
+    <ShowFPS MetaIndex="3"/>
+    <Heatmap MetaIndex="4"/>
+    <BlendMode MetaIndex="5"/>
+    <Framerate MetaIndex="6"/>
+    <DecaySpeed MetaIndex="7"/>
+    <PointsPerFrame MetaIndex="8"/>
+    <TailFade MetaIndex="9"/>
+    <Dots MetaIndex="10"/>
+    <DotBrightness MetaIndex="11"/>
+    <DotSize MetaIndex="12"/>
+    <DotBlur MetaIndex="13"/>
+    <DotProfile MetaIndex="14"/>
+    <drawOrder MetaIndex="15"/>
+    <Lines MetaIndex="16"/>
+    <LineBrightness MetaIndex="17"/>
+    <LineSize MetaIndex="18"/>
+    <LineBlur MetaIndex="19"/>
+    <LenFactor MetaIndex="20"/>
+    <LineProfile MetaIndex="21"/>
+    <DotColorR MetaIndex="22"/>
+    <DotColorG MetaIndex="23"/>
+    <DotColorB MetaIndex="24"/>
+    <DotColorA MetaIndex="25"/>
+    <LineColorR MetaIndex="26"/>
+    <LineColorG MetaIndex="27"/>
+    <LineColorB MetaIndex="28"/>
+    <LineColorA MetaIndex="29"/>
+    <ScaleX MetaIndex="30"/>
+    <ScaleY MetaIndex="31"/>
+    <ShearX MetaIndex="32"/>
+    <ShearY MetaIndex="33"/>
+    <Rotation MetaIndex="34"/>
+    <ShiftX MetaIndex="35"/>
+    <ShiftY MetaIndex="36"/>
+    <OneDimensional MetaIndex="37"/>
+    <ScanFrequency MetaIndex="38"/>
+  </MetaMapping>
+  <MetaParameterValues M0="0" M1="0" M2="0" M3="0" M4="0" M5="1" M6="1" M7="0" M8="0.84615385532379150391"
+                       M9="0" M10="0" M11="0.70224720239639282227" M12="0.16853933036327362061"
+                       M13="0.90449440479278564453" M15="0" M16="1" M17="0.95505619049072265625"
+                       M18="0.2865168452262878418" M19="0.20224718749523162842" M20="1"
+                       M21="1" M22="0.21899999678134918213" M23="0.51123595237731933594"
+                       M24="0.15730337798595428467" M25="1" M26="1" M27="0.47191011905670166016"
+                       M28="0.96067416667938232422" M29="0" M30="0.5625" M31="0.5625"
+                       M37="0" M38="0.62038797140121459961"/>
+  <ColorMap ff000000="0" ffffffff="1"/>
+</PrettyScope>

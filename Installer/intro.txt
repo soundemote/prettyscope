@@ -1,0 +1,11 @@
+Hello, Pilot! Sonic explorer and scientist! 
+
+You are about to install PrettyScope.
+
+Visit www.soundemote.com for more information.
+
+WARNING: CAREFUL! YOUR PRESETS MAY BE OVERWRITTEN! If you've edited factory presets, move the presets into a user folder. We may have added or updated factory presets, so it is good to reinstall factory presets. Once we integrate a preset browser, this should not be an issue, as we will be able to ensure user error is not possible.
+
+Factory presets are installed here:
+
+C:\Program Files\Soundemote\PrettyScope\Presets

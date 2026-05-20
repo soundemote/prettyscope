@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ColorMap 
+FF000000="0"
+FFFFFF00="0.167"
+FFFF0000="0.333"
+FF000000="0.5"
+FF00FFFF="0.667"
+FF0000FF="0.833"
+FF000000="1.0"
+/>
