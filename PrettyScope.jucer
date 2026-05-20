@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="lBxgXj" name="PrettyScope" projectType="audioplug" version="2.0.0"
+              bundleIdentifier="com.Soundemote.PrettyScope" includeBinaryInAppConfig="1"
+              buildVST="0" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" pluginName="PrettyScope200" pluginDesc="PrettyScope v2.0.0"
+              pluginManufacturer="Soundemote" pluginManufacturerCode="Soem"
+              pluginCode="P200" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="1"
+              pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="1"
+              pluginAUExportPrefix="PrettyScopeAU" pluginRTASCategory="" aaxIdentifier="com.Soundemote.PrettyScope"
+              pluginAAXCategory="2" displaySplashScreen="1" reportAppUsage="1"
+              splashScreenColour="Dark" buildStandalone="1" enableIAA="0" companyCopyright="Soundemote"
+              defines="" companyName="Soundemote" companyWebsite="www.soundemote.com"
+              companyEmail="soundemote@gmail.com" pluginFormats="buildAU,buildStandalone,buildVST3"
+              pluginCharacteristicsValue="pluginWantsMidiIn,pluginEditorRequiresKeys"
+              jucerFormatVersion="1">
+  <MAINGROUP id="kSVABR" name="PrettyScope">
+    <FILE id="KJvrWX" name="glad.c" compile="1" resource="0" file="Shared/glad/3.2/src/glad.c"/>
+    <GROUP id="{58DC590E-E2EC-D813-51CE-4617671A9083}" name="Source">
+      <FILE id="b6h4nl" name="PrettyScope.cpp" compile="1" resource="0" file="Source/PrettyScope.cpp"/>
+      <FILE id="Yk5NxY" name="TemplateInstantiations.cpp" compile="1" resource="0"
+            file="Source/TemplateInstantiations.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2015 targetFolder="Builds/VisualStudio2015" vstFolder="" windowsTargetPlatformVersion="8.1"
+            vstLegacyFolder="..\..\..\VST3 SDK (3.6.5)">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="3" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="PrettyScope200 ($(PlatformTarget))"
+                       headerPath="../../../../Shared/glad/3.2/include" defines="" libraryPath=""
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"/>
+        <CONFIGURATION name="Release" winWarningLevel="3" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="PrettyScope200 ($(PlatformTarget))"
+                       headerPath="../../../../Shared/glad/3.2/include" defines="" libraryPath=""
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1"/>
+        <CONFIGURATION name="Debug" winWarningLevel="3" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="PrettyScope200 ($(PlatformTarget))"
+                       headerPath="../../../../Shared/glad/3.2/include" defines="" libraryPath=""
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"/>
+        <CONFIGURATION name="Release" winWarningLevel="3" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="PrettyScope200 ($(PlatformTarget))"
+                       headerPath="../../../../Shared/glad/3.2/include" defines="" libraryPath=""
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_events" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_graphics" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_data_structures" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_gui_basics" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_gui_extra" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_cryptography" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_video" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_opengl" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_devices" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_formats" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_processors" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_utils" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="jura_framework" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="rapt" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="jura_processors" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="rosic" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="romos" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="elan_juce_helpers" path="../ElanJuceHelpers"/>
+        <MODULEPATH id="se_framework" path="../SoundemoteFramework"/>
+        <MODULEPATH id="juce_audio_basics" path="..\RS-MET\Libraries\JUCE"/>
+      </MODULEPATHS>
+    </VS2015>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="PrettyScope130"
+                       headerPath="../../Source/&#10;../../../../../Shared&#10;../../../../Shared/glad/3.2/include"
+                       libraryPath="" osxCompatibility="10.9 SDK" osxArchitecture="64BitUniversal"
+                       cppLanguageStandard="c++11" cppLibType="libc++" enablePluginBinaryCopyStep="1"
+                       macOSDeploymentTarget="10.9"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="PrettyScope130"
+                       headerPath="../../Source/&#10;../../../../../Shared&#10;../../../../Shared/glad/3.2/include"
+                       libraryPath="" osxCompatibility="10.9 SDK" cppLanguageStandard="c++11"
+                       cppLibType="libc++" osxArchitecture="64BitUniversal" enablePluginBinaryCopyStep="1"
+                       macOSDeploymentTarget="10.9"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../../RS-MET/Libraries/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../RS-MET/Libraries/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../RS-MET/Libraries/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../RS-MET/Libraries/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE6/modules"/>
+        <MODULEPATH id="jura_framework" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="rapt" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="jura_processors" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="rosic" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="romos" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="elan_juce_helpers" path="../ElanJuceHelpers"/>
+        <MODULEPATH id="se_framework" path="../SoundemoteFramework"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE6/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2019 targetFolder="Builds/VisualStudio2019" vstLegacyFolder="..\..\..\VST3 SDK (3.6.5)"
+            extraCompilerFlags="/std:c++17">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="Shared/glad/3.2/include&#10;../Shared/glad/3.2/include&#10;../../Shared/glad/3.2/include&#10;../../../Shared/glad/3.2/include&#10;../../../../Shared/glad/3.2/include"
+                       targetName="PrettyScope200 ($(PlatformTarget))"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="Shared/glad/3.2/include&#10;../Shared/glad/3.2/include&#10;../../Shared/glad/3.2/include&#10;../../../Shared/glad/3.2/include&#10;../../../../Shared/glad/3.2/include"
+                       targetName="PrettyScope200 ($(PlatformTarget))"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="rosic" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="romos" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="rapt" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="jura_processors" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="jura_framework" path="../RS-MET/Libraries/RobsJuceModules"/>
+        <MODULEPATH id="juce_video" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_opengl" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_gui_extra" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_gui_basics" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_graphics" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_events" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_data_structures" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_cryptography" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_core" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_utils" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_processors" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_formats" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="juce_audio_devices" path="..\RS-MET\Libraries\JUCE"/>
+        <MODULEPATH id="elan_juce_helpers" path="../ElanJuceHelpers"/>
+        <MODULEPATH id="se_framework" path="../SoundemoteFramework"/>
+        <MODULEPATH id="juce_audio_basics" path="..\RS-MET\Libraries\JUCE"/>
+      </MODULEPATHS>
+    </VS2019>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="elan_juce_helpers" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="jura_framework" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="jura_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="rapt" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="romos" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="rosic" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="se_framework" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+  <LIVE_SETTINGS>
+    <WINDOWS buildEnabled="1"/>
+    <OSX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>

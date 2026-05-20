@@ -1,0 +1,6 @@
+/fp:fast
+/O2
+/Ob2
+/Oi
+/Ot
+/GF

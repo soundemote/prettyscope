@@ -1,0 +1,43 @@
+	//if (recording)
+	//{
+	//	SaveScreenShot(String("Frames/") + recordingStartTime.formatted("%m-%d-%Y-%H_%M_%S"), String(recordingFrameCount++).paddedLeft('0', 5) + ".png");
+	//	// allows for ~27 minutes of recording
+	//	if (recordingFrameCount > 99999)
+	//		recording = false;
+	//}
+
+
+	//double desiredFrameTime = 1.0 / openglOscilloscope.framerate;
+	//if (!(Time::highResolutionTicksToSeconds(Time::getHighResolutionTicks() - prevFrameTicks) < desiredFrameTime))
+	//{
+	//	openGLContext.triggerRepaint();
+	//}
+
+
+bool ScopeDisplayOpenGL::keyPressed(const KeyPress &key, Component* /*originatingComponent*/)
+{
+	// hotkeys are currently disbled (re-enable by setting this to false)
+	bool disable = true;
+
+	if (disable)
+	{
+		return true;
+	}
+	else if ((key.getModifiers() == ModifierKeys::ctrlModifier) && (key.getKeyCode() == 'S'))
+	{
+		// Ctrl+S - save a screenshot
+
+		isSavingScreenshot = true;
+	}
+	else if (key.getModifiers() == ModifierKeys::ctrlModifier && key.getKeyCode() == 'R')
+	{
+		// Ctrl+R - start or stop recording
+		recording = !recording;
+		if (recording)
+		{
+			recordingFrameCount = 0;
+			recordingStartTime = Time::getCurrentTime();
+		}
+	}
+	return true; // do not pass this key press on to other components (irrelevant at the time of writing)
+}

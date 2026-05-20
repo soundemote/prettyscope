@@ -1,0 +1,9 @@
+if you get glad.h not found error:
+
+god damn m*** f*** glad includes must be f*** so you might as well put every possible location for this piece of s*** because it hasn't decided what folder it wants
+
+Shared/glad/3.2/include
+../Shared/glad/3.2/include
+../../Shared/glad/3.2/include
+../../../Shared/glad/3.2/include
+../../../../Shared/glad/3.2/include
