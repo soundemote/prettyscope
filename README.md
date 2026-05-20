@@ -3,6 +3,7 @@
 `OLD home of the pretty oscilloscope (not yet ready for serious use)`
 
 ⚱ instead of trying to salvage this project, let this be a gravestone ⚱
+
 🦴 we will collect the bones for a new body
 * I WILL MAKE IT FROM SCRATCH IN A NEW REPOSITORY
 
