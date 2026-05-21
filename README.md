@@ -11,7 +11,7 @@
 ### `# GOALS`
 
 ```adoc
-* i want this prettyscope to be the standard for all digital synths
+* i want  prettyscope to be the standard for digital synths
 * i want all digital synths around the world to use prettyscope to show their waveforms
 * i want prettyscope to be free for humanity forever
 * i want it to be developed as a library for building your own aesthetic oscilloscope
