@@ -1,5 +1,7 @@
 #include "visual/scope_engine.hpp"
 
+#include "visual/visual_param_limits.hpp"
+
 namespace prettyscope
 {
 ScopeEngine::ScopeEngine(int sampleCount)
@@ -51,6 +53,19 @@ VisualParams& ScopeEngine::params()
 const VisualParams& ScopeEngine::params() const
 {
     return params_;
+}
+
+void ScopeEngine::setParams(const VisualParams& params)
+{
+    const int clearRevision = params_.clearRevision;
+    params_ = params;
+    params_.clearRevision = clearRevision;
+    clampVisualParams(params_);
+}
+
+void ScopeEngine::requestClear()
+{
+    ++params_.clearRevision;
 }
 
 SignalBuffer& ScopeEngine::signal()

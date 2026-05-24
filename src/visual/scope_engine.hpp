@@ -25,6 +25,8 @@ public:
 
     VisualParams& params();
     const VisualParams& params() const;
+    void setParams(const VisualParams& params);
+    void requestClear();
 
     SignalBuffer& signal();
     const SignalBuffer& signal() const;

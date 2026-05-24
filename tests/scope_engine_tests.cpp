@@ -30,5 +30,15 @@ int main()
     scope.setSampleCount(-8);
     passed = expectEqual("negative sample count clamps", scope.sampleCount(), 2) && passed;
 
+    prettyscope::VisualParams params;
+    params.traceGain = 99.0f;
+    params.clearRevision = 42;
+    scope.setParams(params);
+    passed = expectEqual("set params clamps gain", static_cast<int>(scope.params().traceGain), 4) && passed;
+    passed = expectEqual("set params preserves clear revision", scope.params().clearRevision, 0) && passed;
+
+    scope.requestClear();
+    passed = expectEqual("request clear increments revision", scope.params().clearRevision, 1) && passed;
+
     return passed ? 0 : 1;
 }
