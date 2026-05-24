@@ -26,6 +26,17 @@ public:
         right_.assign(count, 0.0f);
     }
 
+    void copyFrom(const SignalBuffer& other)
+    {
+        if (size() != other.size())
+        {
+            resize(other.size());
+        }
+
+        std::copy(other.left_.begin(), other.left_.end(), left_.begin());
+        std::copy(other.right_.begin(), other.right_.end(), right_.begin());
+    }
+
     float* data()
     {
         return left_.data();

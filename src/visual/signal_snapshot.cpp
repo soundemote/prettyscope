@@ -34,15 +34,6 @@ SignalSourceInfo SignalSnapshot::info() const
 
 void SignalSnapshot::advance(SignalBuffer& signal, float)
 {
-    if (signal.size() != buffer_.size())
-    {
-        signal.resize(buffer_.size());
-    }
-
-    for (int i = 0; i < buffer_.size(); ++i)
-    {
-        signal[i] = buffer_[i];
-        signal.right(i) = buffer_.right(i);
-    }
+    signal.copyFrom(buffer_);
 }
 }

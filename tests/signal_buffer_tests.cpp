@@ -44,6 +44,14 @@ int main()
     passed = expectEqual("resized left clears", signal[0], 0.0f) && passed;
     passed = expectEqual("resized right clears", signal.right(0), 0.0f) && passed;
 
+    prettyscope::SignalBuffer other(4);
+    other[1] = 0.5f;
+    other.right(1) = -0.5f;
+    signal.copyFrom(other);
+    passed = expectEqual("copy resizes", signal.size(), 4) && passed;
+    passed = expectEqual("copy left", signal[1], 0.5f) && passed;
+    passed = expectEqual("copy right", signal.right(1), -0.5f) && passed;
+
     signal.resize(-4);
     passed = expectEqual("negative resize minimum", signal.size(), 2) && passed;
 
