@@ -73,6 +73,8 @@ int main()
         passed = expectTrue("trace gain category", traceGain->category == prettyscope::VisualParameterCategory::Signal) && passed;
         passed = expectTrue("trace gain role", traceGain->role == prettyscope::VisualParameterRole::Visual) && passed;
         passed = expectTrue("trace gain precision", traceGain->precision == 2) && passed;
+        passed = expectEqual("trace gain step", traceGain->step, 0.08f) && passed;
+        passed = expectEqual("trace gain fine step", traceGain->fineStep, 0.01f) && passed;
     }
 
     prettyscope::VisualParams params;
@@ -83,6 +85,13 @@ int main()
         "trace gain clamps",
         prettyscope::getVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain),
         4.0f) && passed;
+    passed = expectTrue(
+        "offset trace gain",
+        prettyscope::offsetVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain, -0.5f)) && passed;
+    passed = expectEqual(
+        "offset trace gain value",
+        prettyscope::getVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain),
+        3.5f) && passed;
 
     passed = expectTrue(
         "set trace width",

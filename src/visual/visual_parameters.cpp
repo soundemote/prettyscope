@@ -28,6 +28,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         1.0f,
         kMaxTraceGain,
         kDefaults.traceGain,
+        0.08f,
+        0.01f,
         2,
     },
     {
@@ -47,6 +49,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         0.5f,
         kMaxGlowStrength,
         kDefaults.glowStrength,
+        0.06f,
+        0.01f,
         2,
     },
     {
@@ -66,6 +70,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         4.0f,
         kMaxTraceWidth,
         kDefaults.traceWidth,
+        0.5f,
+        0.1f,
         1,
     },
     {
@@ -85,6 +91,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         8.0f,
         kMaxGlowWidth,
         kDefaults.glowWidth,
+        1.0f,
+        0.25f,
         1,
     },
     {
@@ -104,6 +112,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         0.9f,
         kMaxPersistence,
         kDefaults.persistence,
+        0.03f,
+        0.005f,
         3,
     },
     {
@@ -123,6 +133,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         0.5f,
         kMaxDecayAmount,
         kDefaults.fastDecay,
+        0.05f,
+        0.01f,
         2,
     },
     {
@@ -142,6 +154,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         0.5f,
         kMaxDecayAmount,
         kDefaults.afterglow,
+        0.05f,
+        0.01f,
         2,
     },
     {
@@ -161,6 +175,8 @@ constexpr VisualFloatParameter kFloatParameters[] = {
         0.5f,
         1.0f,
         kDefaults.gridIntensity,
+        0.05f,
+        0.01f,
         2,
     },
 };
@@ -319,6 +335,11 @@ bool setVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, fl
 
     clampVisualParams(params);
     return true;
+}
+
+bool offsetVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float delta)
+{
+    return setVisualFloatParameter(params, id, getVisualFloatParameter(params, id) + delta);
 }
 
 float normalizeVisualFloatParameter(const VisualFloatParameter& parameter, float value)

@@ -83,6 +83,8 @@ struct VisualFloatParameter
     float midpoint;
     float maximum;
     float defaultValue;
+    float step;
+    float fineStep;
     int precision;
 };
 
@@ -129,6 +131,7 @@ const VisualFloatParameter* visualFloatParameters(size_t& count);
 const VisualFloatParameter* findVisualFloatParameter(VisualFloatParameterId id);
 float getVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id);
 bool setVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float value);
+bool offsetVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float delta);
 float normalizeVisualFloatParameter(const VisualFloatParameter& parameter, float value);
 float denormalizeVisualFloatParameter(const VisualFloatParameter& parameter, float normalizedValue);
 float getNormalizedVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id);

@@ -12,80 +12,88 @@ namespace prettyscope
 {
 void StandaloneControls::update(Win32GlWindow& window, VisualParams& params, TestSignalGenerator& generator)
 {
+    const VisualFloatParameter* traceGain = findVisualFloatParameter(VisualFloatParameterId::TraceGain);
+    const VisualFloatParameter* glowStrength = findVisualFloatParameter(VisualFloatParameterId::GlowStrength);
+    const VisualFloatParameter* traceWidth = findVisualFloatParameter(VisualFloatParameterId::TraceWidth);
+    const VisualFloatParameter* glowWidth = findVisualFloatParameter(VisualFloatParameterId::GlowWidth);
+    const VisualFloatParameter* persistence = findVisualFloatParameter(VisualFloatParameterId::Persistence);
+    const VisualFloatParameter* fastDecay = findVisualFloatParameter(VisualFloatParameterId::FastDecay);
+    const VisualFloatParameter* afterglow = findVisualFloatParameter(VisualFloatParameterId::Afterglow);
+
     const int wheelDelta = window.consumeMouseWheelDelta();
-    if (wheelDelta != 0)
+    if (wheelDelta != 0 && traceGain != nullptr)
     {
         const float wheelSteps = static_cast<float>(wheelDelta) / static_cast<float>(WHEEL_DELTA);
-        params.traceGain = clampValue(params.traceGain + wheelSteps * 0.08f, kMinTraceGain, kMaxTraceGain);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::TraceGain, wheelSteps * traceGain->step);
     }
 
-    if (pressed(window, '1'))
+    if (pressed(window, '1') && traceGain != nullptr)
     {
-        params.traceGain = clampValue(params.traceGain - 0.08f, kMinTraceGain, kMaxTraceGain);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::TraceGain, -traceGain->step);
     }
-    if (pressed(window, '2'))
+    if (pressed(window, '2') && traceGain != nullptr)
     {
-        params.traceGain = clampValue(params.traceGain + 0.08f, kMinTraceGain, kMaxTraceGain);
-    }
-
-    if (pressed(window, '3'))
-    {
-        params.glowStrength = clampValue(params.glowStrength - 0.06f, kMinGlowStrength, kMaxGlowStrength);
-    }
-    if (pressed(window, '4'))
-    {
-        params.glowStrength = clampValue(params.glowStrength + 0.06f, kMinGlowStrength, kMaxGlowStrength);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::TraceGain, traceGain->step);
     }
 
-    if (pressed(window, '5'))
+    if (pressed(window, '3') && glowStrength != nullptr)
     {
-        params.traceWidth = clampValue(params.traceWidth - 0.5f, kMinTraceWidth, kMaxTraceWidth);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::GlowStrength, -glowStrength->step);
     }
-    if (pressed(window, '6'))
+    if (pressed(window, '4') && glowStrength != nullptr)
     {
-        params.traceWidth = clampValue(params.traceWidth + 0.5f, kMinTraceWidth, kMaxTraceWidth);
-    }
-
-    if (pressed(window, '7'))
-    {
-        params.glowWidth = clampValue(params.glowWidth - 1.0f, params.traceWidth, kMaxGlowWidth);
-    }
-    if (pressed(window, '8'))
-    {
-        params.glowWidth = clampValue(params.glowWidth + 1.0f, params.traceWidth, kMaxGlowWidth);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::GlowStrength, glowStrength->step);
     }
 
-    if (pressed(window, '9'))
+    if (pressed(window, '5') && traceWidth != nullptr)
     {
-        params.persistence = clampValue(params.persistence - 0.03f, kMinPersistence, kMaxPersistence);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::TraceWidth, -traceWidth->step);
     }
-    if (pressed(window, '0'))
+    if (pressed(window, '6') && traceWidth != nullptr)
     {
-        params.persistence = clampValue(params.persistence + 0.03f, kMinPersistence, kMaxPersistence);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::TraceWidth, traceWidth->step);
     }
-    if (pressed(window, VK_OEM_4))
+
+    if (pressed(window, '7') && glowWidth != nullptr)
     {
-        params.persistence = clampValue(params.persistence - 0.005f, kMinPersistence, kMaxPersistence);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::GlowWidth, -glowWidth->step);
     }
-    if (pressed(window, VK_OEM_6))
+    if (pressed(window, '8') && glowWidth != nullptr)
     {
-        params.persistence = clampValue(params.persistence + 0.005f, kMinPersistence, kMaxPersistence);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::GlowWidth, glowWidth->step);
     }
-    if (pressed(window, 'T'))
+
+    if (pressed(window, '9') && persistence != nullptr)
     {
-        params.fastDecay = clampValue(params.fastDecay - 0.05f, kMinDecayAmount, kMaxDecayAmount);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Persistence, -persistence->step);
     }
-    if (pressed(window, 'Y'))
+    if (pressed(window, '0') && persistence != nullptr)
     {
-        params.fastDecay = clampValue(params.fastDecay + 0.05f, kMinDecayAmount, kMaxDecayAmount);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Persistence, persistence->step);
     }
-    if (pressed(window, VK_OEM_MINUS))
+    if (pressed(window, VK_OEM_4) && persistence != nullptr)
     {
-        params.afterglow = clampValue(params.afterglow - 0.05f, kMinDecayAmount, kMaxDecayAmount);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Persistence, -persistence->fineStep);
     }
-    if (pressed(window, VK_OEM_PLUS))
+    if (pressed(window, VK_OEM_6) && persistence != nullptr)
     {
-        params.afterglow = clampValue(params.afterglow + 0.05f, kMinDecayAmount, kMaxDecayAmount);
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Persistence, persistence->fineStep);
+    }
+    if (pressed(window, 'T') && fastDecay != nullptr)
+    {
+        offsetVisualFloatParameter(params, VisualFloatParameterId::FastDecay, -fastDecay->step);
+    }
+    if (pressed(window, 'Y') && fastDecay != nullptr)
+    {
+        offsetVisualFloatParameter(params, VisualFloatParameterId::FastDecay, fastDecay->step);
+    }
+    if (pressed(window, VK_OEM_MINUS) && afterglow != nullptr)
+    {
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Afterglow, -afterglow->step);
+    }
+    if (pressed(window, VK_OEM_PLUS) && afterglow != nullptr)
+    {
+        offsetVisualFloatParameter(params, VisualFloatParameterId::Afterglow, afterglow->step);
     }
     if (pressed(window, 'P'))
     {
