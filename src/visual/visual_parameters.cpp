@@ -2,6 +2,8 @@
 
 #include "visual/visual_param_limits.hpp"
 
+#include <cstdio>
+
 namespace prettyscope
 {
 namespace
@@ -114,5 +116,32 @@ bool setNormalizedVisualFloatParameter(VisualParams& params, VisualFloatParamete
     }
 
     return setVisualFloatParameter(params, id, denormalizeVisualFloatParameter(*parameter, normalizedValue));
+}
+
+std::string formatVisualFloatParameterValue(VisualFloatParameterId id, float value)
+{
+    char text[32] = {};
+
+    switch (id)
+    {
+    case VisualFloatParameterId::TraceGain:
+    case VisualFloatParameterId::GlowStrength:
+    case VisualFloatParameterId::FastDecay:
+    case VisualFloatParameterId::Afterglow:
+    case VisualFloatParameterId::GridIntensity:
+        std::snprintf(text, sizeof(text), "%.2f", value);
+        break;
+
+    case VisualFloatParameterId::TraceWidth:
+    case VisualFloatParameterId::GlowWidth:
+        std::snprintf(text, sizeof(text), "%.1f", value);
+        break;
+
+    case VisualFloatParameterId::Persistence:
+        std::snprintf(text, sizeof(text), "%.3f", value);
+        break;
+    }
+
+    return text;
 }
 }

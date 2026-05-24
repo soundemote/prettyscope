@@ -3,6 +3,7 @@
 #include "app/preset_store.hpp"
 
 #include "visual/visual_param_limits.hpp"
+#include "visual/visual_parameters.hpp"
 
 #include <cstdio>
 
@@ -142,16 +143,16 @@ std::string StandaloneControls::titleText(const VisualParams& params, const Test
     std::snprintf(
         text,
         sizeof(text),
-        "Prettyscope | %s | signal %s Space | color C | gain 1/2 %.2f | glow 3/4 %.2f | trace 5/6 %.1f | bloom 7/8 %.1f | decay 9/0 [/] %.3f | fast T/Y %.2f | tail -/= %.2f | %s P | style D %s | F fps | G grid | X mode | S save | L load | R reset",
+        "Prettyscope | %s | signal %s Space | color C | gain 1/2 %s | glow 3/4 %s | trace 5/6 %s | bloom 7/8 %s | decay 9/0 [/] %s | fast T/Y %s | tail -/= %s | %s P | style D %s | F fps | G grid | X mode | S save | L load | R reset",
         params.traceMode == TraceMode::Time ? "1D" : "XY",
         generator.modeName(),
-        params.traceGain,
-        params.glowStrength,
-        params.traceWidth,
-        params.glowWidth,
-        params.persistence,
-        params.fastDecay,
-        params.afterglow,
+        formatVisualFloatParameterValue(VisualFloatParameterId::TraceGain, params.traceGain).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::GlowStrength, params.glowStrength).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::TraceWidth, params.traceWidth).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::GlowWidth, params.glowWidth).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::Persistence, params.persistence).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::FastDecay, params.fastDecay).c_str(),
+        formatVisualFloatParameterValue(VisualFloatParameterId::Afterglow, params.afterglow).c_str(),
         params.persistenceEnabled ? "on" : "off",
         params.decayStyle == DecayStyle::Classic ? "classic" : "phosphor");
     return text;

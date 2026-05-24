@@ -1,6 +1,7 @@
 #include "visual/visual_parameters.hpp"
 
 #include <iostream>
+#include <string>
 
 namespace
 {
@@ -16,6 +17,17 @@ bool expectTrue(const char* name, bool value)
 }
 
 bool expectEqual(const char* name, float actual, float expected)
+{
+    if (actual == expected)
+    {
+        return true;
+    }
+
+    std::cerr << name << " expected " << expected << " but got " << actual << '\n';
+    return false;
+}
+
+bool expectEqual(const char* name, const std::string& actual, const char* expected)
 {
     if (actual == expected)
     {
@@ -88,6 +100,18 @@ int main()
         "get normalized trace gain",
         prettyscope::getNormalizedVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain),
         0.0f) && passed;
+    passed = expectEqual(
+        "format trace gain",
+        prettyscope::formatVisualFloatParameterValue(prettyscope::VisualFloatParameterId::TraceGain, 0.1f),
+        "0.10") && passed;
+    passed = expectEqual(
+        "format trace width",
+        prettyscope::formatVisualFloatParameterValue(prettyscope::VisualFloatParameterId::TraceWidth, 2.0f),
+        "2.0") && passed;
+    passed = expectEqual(
+        "format persistence",
+        prettyscope::formatVisualFloatParameterValue(prettyscope::VisualFloatParameterId::Persistence, 0.98f),
+        "0.980") && passed;
 
     return passed ? 0 : 1;
 }

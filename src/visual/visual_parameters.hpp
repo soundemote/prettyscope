@@ -3,6 +3,7 @@
 #include "visual/visual_params.hpp"
 
 #include <cstddef>
+#include <string>
 
 namespace prettyscope
 {
@@ -36,4 +37,5 @@ float normalizeVisualFloatParameter(const VisualFloatParameter& parameter, float
 float denormalizeVisualFloatParameter(const VisualFloatParameter& parameter, float normalizedValue);
 float getNormalizedVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id);
 bool setNormalizedVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float normalizedValue);
+std::string formatVisualFloatParameterValue(VisualFloatParameterId id, float value);
 }
