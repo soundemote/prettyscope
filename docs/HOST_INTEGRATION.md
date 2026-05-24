@@ -78,6 +78,7 @@ Descriptors are host-ready, not host-owned. Core descriptors carry:
 - float minimum, midpoint, maximum, and default values
 
 The current visual state version is `kVisualParameterStateVersion`.
+See `docs/VISUAL_STATE.md` for the current preset/state keys.
 
 State compatibility rules:
 
