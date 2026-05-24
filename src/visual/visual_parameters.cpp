@@ -76,4 +76,43 @@ bool setVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, fl
     clampVisualParams(params);
     return true;
 }
+
+float normalizeVisualFloatParameter(const VisualFloatParameter& parameter, float value)
+{
+    if (parameter.maximum <= parameter.minimum)
+    {
+        return 0.0f;
+    }
+
+    const float clamped = clampValue(value, parameter.minimum, parameter.maximum);
+    return (clamped - parameter.minimum) / (parameter.maximum - parameter.minimum);
+}
+
+float denormalizeVisualFloatParameter(const VisualFloatParameter& parameter, float normalizedValue)
+{
+    const float clamped = clampValue(normalizedValue, 0.0f, 1.0f);
+    return parameter.minimum + clamped * (parameter.maximum - parameter.minimum);
+}
+
+float getNormalizedVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id)
+{
+    const VisualFloatParameter* parameter = findVisualFloatParameter(id);
+    if (parameter == nullptr)
+    {
+        return 0.0f;
+    }
+
+    return normalizeVisualFloatParameter(*parameter, getVisualFloatParameter(params, id));
+}
+
+bool setNormalizedVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float normalizedValue)
+{
+    const VisualFloatParameter* parameter = findVisualFloatParameter(id);
+    if (parameter == nullptr)
+    {
+        return false;
+    }
+
+    return setVisualFloatParameter(params, id, denormalizeVisualFloatParameter(*parameter, normalizedValue));
+}
 }

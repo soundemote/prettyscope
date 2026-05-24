@@ -64,5 +64,30 @@ int main()
         prettyscope::getVisualFloatParameter(params, prettyscope::VisualFloatParameterId::GlowWidth),
         12.0f) && passed;
 
+    passed = expectEqual(
+        "normalize minimum",
+        prettyscope::normalizeVisualFloatParameter(*traceGain, traceGain->minimum),
+        0.0f) && passed;
+    passed = expectEqual(
+        "normalize maximum",
+        prettyscope::normalizeVisualFloatParameter(*traceGain, traceGain->maximum),
+        1.0f) && passed;
+    passed = expectEqual(
+        "denormalize maximum",
+        prettyscope::denormalizeVisualFloatParameter(*traceGain, 2.0f),
+        traceGain->maximum) && passed;
+
+    passed = expectTrue(
+        "set normalized trace gain",
+        prettyscope::setNormalizedVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain, 0.0f)) && passed;
+    passed = expectEqual(
+        "normalized trace gain value",
+        prettyscope::getVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain),
+        traceGain->minimum) && passed;
+    passed = expectEqual(
+        "get normalized trace gain",
+        prettyscope::getNormalizedVisualFloatParameter(params, prettyscope::VisualFloatParameterId::TraceGain),
+        0.0f) && passed;
+
     return passed ? 0 : 1;
 }

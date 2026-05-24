@@ -34,6 +34,8 @@ direction.
 - Float controls should bind through `VisualFloatParameterId` and
   `VisualFloatParameter` descriptors so standalone controls, presets, and plugin
   automation share one range model.
+- Plugin automation should use the normalized visual parameter helpers rather
+  than duplicating 0..1 conversion in the plugin wrapper.
 
 ## First Plugin Milestone
 
