@@ -15,11 +15,7 @@ add_library(prettyscope_glad STATIC
 target_include_directories(prettyscope_glad PUBLIC
     Shared/glad/3.2/include)
 
-add_executable(prettyscope
-    src/main.cpp
-    src/app/preset_store.cpp
-    src/app/standalone_controls.cpp
-    src/platform/win32_gl_window.cpp
+add_library(prettyscope_core STATIC
     src/visual/beam_renderer.cpp
     src/visual/external_signal_source.cpp
     src/visual/gl_utils.cpp
@@ -30,21 +26,35 @@ add_executable(prettyscope
     src/visual/shaders.cpp
     src/visual/test_signal.cpp)
 
+target_include_directories(prettyscope_core PUBLIC
+    src)
+
+target_link_libraries(prettyscope_core PUBLIC
+    prettyscope_glad
+    opengl32)
+
+target_compile_definitions(prettyscope_core PUBLIC
+    WIN32_LEAN_AND_MEAN
+    NOMINMAX)
+
+add_executable(prettyscope
+    src/main.cpp
+    src/app/preset_store.cpp
+    src/app/standalone_controls.cpp
+    src/platform/win32_gl_window.cpp)
+
 target_include_directories(prettyscope PRIVATE
     src)
 
 target_link_libraries(prettyscope PRIVATE
-    prettyscope_glad
-    opengl32
+    prettyscope_core
     gdi32
     user32)
 
-target_compile_definitions(prettyscope PRIVATE
-    WIN32_LEAN_AND_MEAN
-    NOMINMAX)
-
 if(MSVC)
+    target_compile_options(prettyscope_core PRIVATE /W4 /permissive-)
     target_compile_options(prettyscope PRIVATE /W4 /permissive-)
 else()
+    target_compile_options(prettyscope_core PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(prettyscope PRIVATE -Wall -Wextra -Wpedantic)
 endif()
