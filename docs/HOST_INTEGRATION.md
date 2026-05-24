@@ -5,6 +5,9 @@ This is the current integration shape for a future JUCE/CLAP shell.
 `examples/host_bridge_example.cpp` is a small compiled example of the public
 core API without creating an OpenGL window.
 
+`examples/host_parameter_list_example.cpp` shows how a host adapter can enumerate
+the automatable visual controls from descriptor metadata.
+
 `FrameStats` provides the shared FPS smoothing used by the standalone title bar.
 Plugin editors may use host/editor timing directly, or use `FrameStats` if they
 want matching overlay/readout behavior.

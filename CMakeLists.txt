@@ -65,17 +65,31 @@ add_executable(prettyscope_host_bridge_example
 target_link_libraries(prettyscope_host_bridge_example PRIVATE
     prettyscope_core)
 
+add_executable(prettyscope_host_parameter_list_example
+    examples/host_parameter_list_example.cpp)
+
+target_link_libraries(prettyscope_host_parameter_list_example PRIVATE
+    prettyscope_core)
+
 if(MSVC)
     target_compile_options(prettyscope_core PRIVATE /W4 /permissive-)
     target_compile_options(prettyscope PRIVATE /W4 /permissive-)
     target_compile_options(prettyscope_host_bridge_example PRIVATE /W4 /permissive-)
+    target_compile_options(prettyscope_host_parameter_list_example PRIVATE /W4 /permissive-)
 else()
     target_compile_options(prettyscope_core PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(prettyscope PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(prettyscope_host_bridge_example PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(prettyscope_host_parameter_list_example PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 if(BUILD_TESTING)
+    add_test(NAME host_bridge_example
+        COMMAND prettyscope_host_bridge_example)
+
+    add_test(NAME host_parameter_list_example
+        COMMAND prettyscope_host_parameter_list_example)
+
     function(add_prettyscope_core_test test_name source_path)
         set(target_name "prettyscope_${test_name}_tests")
         add_executable(${target_name}
