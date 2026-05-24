@@ -21,6 +21,7 @@ work lives in `src/` and should stay small, direct, and runnable.
 - Animated Gaussian beam waveform trace
 - Small `SignalBuffer`, `TestSignalGenerator`, and `VisualParams` abstraction
 - `SignalSource` interface for test signals now, and future audio/plugin input
+- `ExternalSignalSource` bridge for future host/audio buffers
 - Keyboard controls for fast visual testing
 
 ## Roadmap

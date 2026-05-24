@@ -21,6 +21,7 @@ add_executable(prettyscope
     src/app/standalone_controls.cpp
     src/platform/win32_gl_window.cpp
     src/visual/beam_renderer.cpp
+    src/visual/external_signal_source.cpp
     src/visual/gl_utils.cpp
     src/visual/overlay_renderer.cpp
     src/visual/persistence_buffer.cpp
