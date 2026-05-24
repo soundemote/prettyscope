@@ -17,6 +17,7 @@ public:
 
     void initialize();
     void shutdown();
+    bool initialized() const;
     void advance(SignalSource& source, float dt);
     void render(SignalSource& source, float dt, int width, int height);
     void renderCurrentSignal(int width, int height);
@@ -36,5 +37,6 @@ private:
     VisualParams params_;
     SignalBuffer signal_;
     ScopeRenderer renderer_;
+    bool initialized_ = false;
 };
 }

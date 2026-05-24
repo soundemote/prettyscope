@@ -11,12 +11,29 @@ ScopeEngine::ScopeEngine(int sampleCount)
 
 void ScopeEngine::initialize()
 {
+    if (initialized_)
+    {
+        return;
+    }
+
     renderer_.initialize();
+    initialized_ = true;
 }
 
 void ScopeEngine::shutdown()
 {
+    if (!initialized_)
+    {
+        return;
+    }
+
     renderer_.destroy();
+    initialized_ = false;
+}
+
+bool ScopeEngine::initialized() const
+{
+    return initialized_;
 }
 
 void ScopeEngine::advance(SignalSource& source, float dt)
@@ -32,6 +49,11 @@ void ScopeEngine::render(SignalSource& source, float dt, int width, int height)
 
 void ScopeEngine::renderCurrentSignal(int width, int height)
 {
+    if (!initialized_)
+    {
+        return;
+    }
+
     renderer_.render(signal_, params_, width, height);
 }
 

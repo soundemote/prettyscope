@@ -14,6 +14,17 @@ bool expectEqual(const char* name, int actual, int expected)
     std::cerr << name << " expected " << expected << " but got " << actual << '\n';
     return false;
 }
+
+bool expectTrue(const char* name, bool value)
+{
+    if (value)
+    {
+        return true;
+    }
+
+    std::cerr << name << " expected true\n";
+    return false;
+}
 }
 
 int main()
@@ -22,6 +33,7 @@ int main()
 
     bool passed = true;
     passed = expectEqual("minimum sample count", scope.sampleCount(), 2) && passed;
+    passed = expectTrue("starts uninitialized", !scope.initialized()) && passed;
 
     scope.setSampleCount(2048);
     passed = expectEqual("expanded sample count", scope.sampleCount(), 2048) && passed;
