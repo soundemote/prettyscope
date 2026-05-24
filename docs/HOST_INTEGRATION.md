@@ -90,8 +90,10 @@ prettyscope::setNormalizedVisualFloatParameter(
 ```
 
 Bind toggles through `VisualBoolParameterId`, and menu/choice controls through
-`VisualChoiceParameterId`. Choice setters update `clearRevision` where the
-persistence buffer needs a visual reset.
+`VisualChoiceParameterId`. Normalized helpers exist for floats, bools, and
+choices so host automation can move through a consistent 0..1 transport layer.
+Choice setters update `clearRevision` where the persistence buffer needs a
+visual reset.
 
 Descriptors are host-ready, not host-owned. Core descriptors carry:
 
@@ -121,7 +123,9 @@ State compatibility rules:
 - Renamed parameters require an explicit migration table later.
 
 Normalized value means transport/automation value. Raw value means visual/render
-value. The descriptor is the source of mapping rules; mapping is linear for now.
+value. The descriptor is the source of mapping rules; float mapping is linear for
+now, bool mapping uses a 0.5 threshold, and choice mapping moves across option
+indices.
 
 ## Palettes
 

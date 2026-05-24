@@ -505,6 +505,16 @@ bool setVisualBoolParameter(VisualParams& params, VisualBoolParameterId id, bool
     return false;
 }
 
+float getNormalizedVisualBoolParameter(const VisualParams& params, VisualBoolParameterId id)
+{
+    return getVisualBoolParameter(params, id) ? 1.0f : 0.0f;
+}
+
+bool setNormalizedVisualBoolParameter(VisualParams& params, VisualBoolParameterId id, float normalizedValue)
+{
+    return setVisualBoolParameter(params, id, normalizedValue >= 0.5f);
+}
+
 const VisualChoiceParameter* visualChoiceParameters(size_t& count)
 {
     count = sizeof(kChoiceParameters) / sizeof(kChoiceParameters[0]);
@@ -588,5 +598,62 @@ bool setVisualChoiceParameter(VisualParams& params, VisualChoiceParameterId id, 
     }
 
     return false;
+}
+
+float normalizeVisualChoiceParameter(const VisualChoiceParameter& parameter, int value)
+{
+    if (parameter.optionCount <= 1)
+    {
+        return 0.0f;
+    }
+
+    for (size_t i = 0; i < parameter.optionCount; ++i)
+    {
+        if (parameter.options[i].value == value)
+        {
+            return static_cast<float>(i) / static_cast<float>(parameter.optionCount - 1);
+        }
+    }
+
+    return 0.0f;
+}
+
+int denormalizeVisualChoiceParameter(const VisualChoiceParameter& parameter, float normalizedValue)
+{
+    if (parameter.optionCount == 0)
+    {
+        return parameter.defaultValue;
+    }
+
+    if (parameter.optionCount == 1)
+    {
+        return parameter.options[0].value;
+    }
+
+    const float clamped = clampValue(normalizedValue, 0.0f, 1.0f);
+    const size_t index = static_cast<size_t>(clamped * static_cast<float>(parameter.optionCount - 1) + 0.5f);
+    return parameter.options[index].value;
+}
+
+float getNormalizedVisualChoiceParameter(const VisualParams& params, VisualChoiceParameterId id)
+{
+    const VisualChoiceParameter* parameter = findVisualChoiceParameter(id);
+    if (parameter == nullptr)
+    {
+        return 0.0f;
+    }
+
+    return normalizeVisualChoiceParameter(*parameter, getVisualChoiceParameter(params, id));
+}
+
+bool setNormalizedVisualChoiceParameter(VisualParams& params, VisualChoiceParameterId id, float normalizedValue)
+{
+    const VisualChoiceParameter* parameter = findVisualChoiceParameter(id);
+    if (parameter == nullptr)
+    {
+        return false;
+    }
+
+    return setVisualChoiceParameter(params, id, denormalizeVisualChoiceParameter(*parameter, normalizedValue));
 }
 }

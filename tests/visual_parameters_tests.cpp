@@ -221,6 +221,16 @@ int main()
     passed = expectTrue(
         "get show grid",
         prettyscope::getVisualBoolParameter(params, prettyscope::VisualBoolParameterId::ShowGrid)) && passed;
+    passed = expectEqual(
+        "get normalized show grid",
+        prettyscope::getNormalizedVisualBoolParameter(params, prettyscope::VisualBoolParameterId::ShowGrid),
+        1.0f) && passed;
+    passed = expectTrue(
+        "set normalized show grid",
+        prettyscope::setNormalizedVisualBoolParameter(params, prettyscope::VisualBoolParameterId::ShowGrid, 0.25f)) && passed;
+    passed = expectTrue(
+        "normalized show grid value",
+        !prettyscope::getVisualBoolParameter(params, prettyscope::VisualBoolParameterId::ShowGrid)) && passed;
 
     size_t choiceCount = 0;
     const prettyscope::VisualChoiceParameter* choices = prettyscope::visualChoiceParameters(choiceCount);
@@ -243,6 +253,22 @@ int main()
         passed = expectEqual("trace mode stable string", std::string(traceMode->stableId), "scope.trace_mode") && passed;
         passed = expectEqual("trace mode stable numeric", traceMode->numericId.value, 0x01030001u) && passed;
         passed = expectTrue("trace mode options", traceMode->optionCount == 2) && passed;
+        passed = expectEqual(
+            "normalize trace mode first option",
+            prettyscope::normalizeVisualChoiceParameter(*traceMode, static_cast<int>(prettyscope::TraceMode::Time)),
+            0.0f) && passed;
+        passed = expectEqual(
+            "normalize trace mode last option",
+            prettyscope::normalizeVisualChoiceParameter(*traceMode, static_cast<int>(prettyscope::TraceMode::Xy)),
+            1.0f) && passed;
+        passed = expectTrue(
+            "denormalize trace mode first option",
+            prettyscope::denormalizeVisualChoiceParameter(*traceMode, 0.0f) ==
+                static_cast<int>(prettyscope::TraceMode::Time)) && passed;
+        passed = expectTrue(
+            "denormalize trace mode last option",
+            prettyscope::denormalizeVisualChoiceParameter(*traceMode, 1.0f) ==
+                static_cast<int>(prettyscope::TraceMode::Xy)) && passed;
     }
     passed = expectTrue(
         "find trace mode by stable id",
@@ -259,6 +285,20 @@ int main()
             prettyscope::VisualChoiceParameterId::TraceMode,
             static_cast<int>(prettyscope::TraceMode::Time))) && passed;
     passed = expectTrue("trace mode clear", params.clearRevision == clearRevision + 1) && passed;
+    passed = expectEqual(
+        "get normalized trace mode",
+        prettyscope::getNormalizedVisualChoiceParameter(params, prettyscope::VisualChoiceParameterId::TraceMode),
+        0.0f) && passed;
+    passed = expectTrue(
+        "set normalized trace mode choice",
+        prettyscope::setNormalizedVisualChoiceParameter(
+            params,
+            prettyscope::VisualChoiceParameterId::TraceMode,
+            1.0f)) && passed;
+    passed = expectTrue(
+        "normalized trace mode value",
+        params.traceMode == prettyscope::TraceMode::Xy) && passed;
+    passed = expectTrue("normalized trace mode clear", params.clearRevision == clearRevision + 2) && passed;
     passed = expectTrue(
         "invalid choice rejected",
         !prettyscope::setVisualChoiceParameter(params, prettyscope::VisualChoiceParameterId::TraceMode, 99)) && passed;

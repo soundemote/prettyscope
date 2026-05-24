@@ -146,6 +146,8 @@ const VisualBoolParameter* findVisualBoolParameterByStableId(const char* stableI
 const VisualBoolParameter* findVisualBoolParameterByNumericId(VisualParameterStableId numericId);
 bool getVisualBoolParameter(const VisualParams& params, VisualBoolParameterId id);
 bool setVisualBoolParameter(VisualParams& params, VisualBoolParameterId id, bool value);
+float getNormalizedVisualBoolParameter(const VisualParams& params, VisualBoolParameterId id);
+bool setNormalizedVisualBoolParameter(VisualParams& params, VisualBoolParameterId id, float normalizedValue);
 
 const VisualChoiceParameter* visualChoiceParameters(size_t& count);
 const VisualChoiceParameter* findVisualChoiceParameter(VisualChoiceParameterId id);
@@ -153,4 +155,8 @@ const VisualChoiceParameter* findVisualChoiceParameterByStableId(const char* sta
 const VisualChoiceParameter* findVisualChoiceParameterByNumericId(VisualParameterStableId numericId);
 int getVisualChoiceParameter(const VisualParams& params, VisualChoiceParameterId id);
 bool setVisualChoiceParameter(VisualParams& params, VisualChoiceParameterId id, int value);
+float normalizeVisualChoiceParameter(const VisualChoiceParameter& parameter, int value);
+int denormalizeVisualChoiceParameter(const VisualChoiceParameter& parameter, float normalizedValue);
+float getNormalizedVisualChoiceParameter(const VisualParams& params, VisualChoiceParameterId id);
+bool setNormalizedVisualChoiceParameter(VisualParams& params, VisualChoiceParameterId id, float normalizedValue);
 }
