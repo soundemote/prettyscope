@@ -129,6 +129,8 @@ struct VisualChoiceParameter
 
 const VisualFloatParameter* visualFloatParameters(size_t& count);
 const VisualFloatParameter* findVisualFloatParameter(VisualFloatParameterId id);
+const VisualFloatParameter* findVisualFloatParameterByStableId(const char* stableId);
+const VisualFloatParameter* findVisualFloatParameterByNumericId(VisualParameterStableId numericId);
 float getVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id);
 bool setVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float value);
 bool offsetVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float delta);
@@ -140,11 +142,15 @@ std::string formatVisualFloatParameterValue(VisualFloatParameterId id, float val
 
 const VisualBoolParameter* visualBoolParameters(size_t& count);
 const VisualBoolParameter* findVisualBoolParameter(VisualBoolParameterId id);
+const VisualBoolParameter* findVisualBoolParameterByStableId(const char* stableId);
+const VisualBoolParameter* findVisualBoolParameterByNumericId(VisualParameterStableId numericId);
 bool getVisualBoolParameter(const VisualParams& params, VisualBoolParameterId id);
 bool setVisualBoolParameter(VisualParams& params, VisualBoolParameterId id, bool value);
 
 const VisualChoiceParameter* visualChoiceParameters(size_t& count);
 const VisualChoiceParameter* findVisualChoiceParameter(VisualChoiceParameterId id);
+const VisualChoiceParameter* findVisualChoiceParameterByStableId(const char* stableId);
+const VisualChoiceParameter* findVisualChoiceParameterByNumericId(VisualParameterStableId numericId);
 int getVisualChoiceParameter(const VisualParams& params, VisualChoiceParameterId id);
 bool setVisualChoiceParameter(VisualParams& params, VisualChoiceParameterId id, int value);
 }

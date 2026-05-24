@@ -3,6 +3,7 @@
 #include "visual/visual_param_limits.hpp"
 
 #include <cstdio>
+#include <cstring>
 
 namespace prettyscope
 {
@@ -278,6 +279,11 @@ bool choiceContainsValue(const VisualChoiceParameter& parameter, int value)
 
     return false;
 }
+
+bool stableIdMatches(const char* left, const char* right)
+{
+    return left != nullptr && right != nullptr && std::strcmp(left, right) == 0;
+}
 }
 
 const VisualFloatParameter* visualFloatParameters(size_t& count)
@@ -293,6 +299,36 @@ const VisualFloatParameter* findVisualFloatParameter(VisualFloatParameterId id)
     for (size_t i = 0; i < count; ++i)
     {
         if (parameters[i].id == id)
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+const VisualFloatParameter* findVisualFloatParameterByStableId(const char* stableId)
+{
+    size_t count = 0;
+    const VisualFloatParameter* parameters = visualFloatParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (stableIdMatches(parameters[i].stableId, stableId))
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+const VisualFloatParameter* findVisualFloatParameterByNumericId(VisualParameterStableId numericId)
+{
+    size_t count = 0;
+    const VisualFloatParameter* parameters = visualFloatParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (parameters[i].numericId.value == numericId.value)
         {
             return &parameters[i];
         }
@@ -415,6 +451,36 @@ const VisualBoolParameter* findVisualBoolParameter(VisualBoolParameterId id)
     return nullptr;
 }
 
+const VisualBoolParameter* findVisualBoolParameterByStableId(const char* stableId)
+{
+    size_t count = 0;
+    const VisualBoolParameter* parameters = visualBoolParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (stableIdMatches(parameters[i].stableId, stableId))
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+const VisualBoolParameter* findVisualBoolParameterByNumericId(VisualParameterStableId numericId)
+{
+    size_t count = 0;
+    const VisualBoolParameter* parameters = visualBoolParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (parameters[i].numericId.value == numericId.value)
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
 bool getVisualBoolParameter(const VisualParams& params, VisualBoolParameterId id)
 {
     switch (id)
@@ -452,6 +518,36 @@ const VisualChoiceParameter* findVisualChoiceParameter(VisualChoiceParameterId i
     for (size_t i = 0; i < count; ++i)
     {
         if (parameters[i].id == id)
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+const VisualChoiceParameter* findVisualChoiceParameterByStableId(const char* stableId)
+{
+    size_t count = 0;
+    const VisualChoiceParameter* parameters = visualChoiceParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (stableIdMatches(parameters[i].stableId, stableId))
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+const VisualChoiceParameter* findVisualChoiceParameterByNumericId(VisualParameterStableId numericId)
+{
+    size_t count = 0;
+    const VisualChoiceParameter* parameters = visualChoiceParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (parameters[i].numericId.value == numericId.value)
         {
             return &parameters[i];
         }

@@ -102,6 +102,11 @@ Descriptors are host-ready, not host-owned. Core descriptors carry:
 - display names, short names, descriptions, units, and precision
 - float minimum, midpoint, maximum, and default values
 
+Adapters can enumerate descriptor arrays with `visualFloatParameters()`,
+`visualBoolParameters()`, and `visualChoiceParameters()`. They can resolve saved
+or host-facing identities with the `findVisual*ParameterByStableId()` and
+`findVisual*ParameterByNumericId()` helpers.
+
 The current visual state version is `kVisualParameterStateVersion`.
 See `docs/VISUAL_STATE.md` for the current preset/state keys.
 

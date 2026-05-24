@@ -76,6 +76,18 @@ int main()
         passed = expectEqual("trace gain step", traceGain->step, 0.08f) && passed;
         passed = expectEqual("trace gain fine step", traceGain->fineStep, 0.01f) && passed;
     }
+    passed = expectTrue(
+        "find trace gain by stable id",
+        prettyscope::findVisualFloatParameterByStableId("signal.gain") == traceGain) && passed;
+    passed = expectTrue(
+        "find trace gain by numeric id",
+        prettyscope::findVisualFloatParameterByNumericId({0x01010001u}) == traceGain) && passed;
+    passed = expectTrue(
+        "missing float stable id",
+        prettyscope::findVisualFloatParameterByStableId("missing.parameter") == nullptr) && passed;
+    passed = expectTrue(
+        "null float stable id",
+        prettyscope::findVisualFloatParameterByStableId(nullptr) == nullptr) && passed;
 
     prettyscope::VisualParams params;
     passed = expectTrue(
@@ -156,6 +168,12 @@ int main()
         passed = expectTrue("fps debug role", fps->role == prettyscope::VisualParameterRole::Debug) && passed;
     }
     passed = expectTrue(
+        "find fps by stable id",
+        prettyscope::findVisualBoolParameterByStableId("overlay.fps_enabled") == fps) && passed;
+    passed = expectTrue(
+        "find fps by numeric id",
+        prettyscope::findVisualBoolParameterByNumericId({0x01020002u}) == fps) && passed;
+    passed = expectTrue(
         "set show grid",
         prettyscope::setVisualBoolParameter(params, prettyscope::VisualBoolParameterId::ShowGrid, true)) && passed;
     passed = expectTrue(
@@ -175,6 +193,12 @@ int main()
         passed = expectEqual("trace mode stable numeric", traceMode->numericId.value, 0x01030001u) && passed;
         passed = expectTrue("trace mode options", traceMode->optionCount == 2) && passed;
     }
+    passed = expectTrue(
+        "find trace mode by stable id",
+        prettyscope::findVisualChoiceParameterByStableId("scope.trace_mode") == traceMode) && passed;
+    passed = expectTrue(
+        "find trace mode by numeric id",
+        prettyscope::findVisualChoiceParameterByNumericId({0x01030001u}) == traceMode) && passed;
 
     const int clearRevision = params.clearRevision;
     passed = expectTrue(
