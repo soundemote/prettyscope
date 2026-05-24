@@ -25,3 +25,9 @@ application path.
 - `https://madebyevan.com/shaders/fast-rounded-rectangle-shadows/`: cited by
   the woscope article as the source of the GLSL `erf` / Gaussian approximation
   family. Prettyscope uses an `erfApprox` helper for the beam integral.
+
+## Phosphor Decay
+
+- `src/visual/shaders.cpp`: current Prettyscope phosphor decay shader and beam
+  shader. This is new Prettyscope code, not copied from PrettyScope Graveyard.
+  See `docs/PHOSPHOR_DECAY.md` for the current math and WebGL port notes.
