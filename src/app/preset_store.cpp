@@ -1,5 +1,7 @@
 #include "app/preset_store.hpp"
 
+#include "visual/visual_param_limits.hpp"
+
 #include <filesystem>
 #include <fstream>
 #include <regex>
@@ -182,6 +184,7 @@ bool PresetStore::loadDefault(VisualParams& params, TestSignalGenerator& generat
     findColor(text, "glowColor", params.glowColor);
     findColor(text, "backgroundColor", params.backgroundColor);
 
+    clampVisualParams(params);
     ++params.clearRevision;
     return true;
 }

@@ -2,98 +2,88 @@
 
 #include "app/preset_store.hpp"
 
-#include <algorithm>
+#include "visual/visual_param_limits.hpp"
+
 #include <cstdio>
 
 namespace prettyscope
 {
-namespace
-{
-constexpr float kMinTraceGain = 0.10f;
-constexpr float kMaxTraceGain = 4.00f;
-
-float clamp(float value, float minValue, float maxValue)
-{
-    return std::max(minValue, std::min(maxValue, value));
-}
-}
-
 void StandaloneControls::update(Win32GlWindow& window, VisualParams& params, TestSignalGenerator& generator)
 {
     const int wheelDelta = window.consumeMouseWheelDelta();
     if (wheelDelta != 0)
     {
         const float wheelSteps = static_cast<float>(wheelDelta) / static_cast<float>(WHEEL_DELTA);
-        params.traceGain = clamp(params.traceGain + wheelSteps * 0.08f, kMinTraceGain, kMaxTraceGain);
+        params.traceGain = clampValue(params.traceGain + wheelSteps * 0.08f, kMinTraceGain, kMaxTraceGain);
     }
 
     if (pressed(window, '1'))
     {
-        params.traceGain = clamp(params.traceGain - 0.08f, kMinTraceGain, kMaxTraceGain);
+        params.traceGain = clampValue(params.traceGain - 0.08f, kMinTraceGain, kMaxTraceGain);
     }
     if (pressed(window, '2'))
     {
-        params.traceGain = clamp(params.traceGain + 0.08f, kMinTraceGain, kMaxTraceGain);
+        params.traceGain = clampValue(params.traceGain + 0.08f, kMinTraceGain, kMaxTraceGain);
     }
 
     if (pressed(window, '3'))
     {
-        params.glowStrength = clamp(params.glowStrength - 0.06f, 0.0f, 1.0f);
+        params.glowStrength = clampValue(params.glowStrength - 0.06f, kMinGlowStrength, kMaxGlowStrength);
     }
     if (pressed(window, '4'))
     {
-        params.glowStrength = clamp(params.glowStrength + 0.06f, 0.0f, 1.0f);
+        params.glowStrength = clampValue(params.glowStrength + 0.06f, kMinGlowStrength, kMaxGlowStrength);
     }
 
     if (pressed(window, '5'))
     {
-        params.traceWidth = clamp(params.traceWidth - 0.5f, 1.0f, 12.0f);
+        params.traceWidth = clampValue(params.traceWidth - 0.5f, kMinTraceWidth, kMaxTraceWidth);
     }
     if (pressed(window, '6'))
     {
-        params.traceWidth = clamp(params.traceWidth + 0.5f, 1.0f, 12.0f);
+        params.traceWidth = clampValue(params.traceWidth + 0.5f, kMinTraceWidth, kMaxTraceWidth);
     }
 
     if (pressed(window, '7'))
     {
-        params.glowWidth = clamp(params.glowWidth - 1.0f, params.traceWidth, 24.0f);
+        params.glowWidth = clampValue(params.glowWidth - 1.0f, params.traceWidth, kMaxGlowWidth);
     }
     if (pressed(window, '8'))
     {
-        params.glowWidth = clamp(params.glowWidth + 1.0f, params.traceWidth, 24.0f);
+        params.glowWidth = clampValue(params.glowWidth + 1.0f, params.traceWidth, kMaxGlowWidth);
     }
 
     if (pressed(window, '9'))
     {
-        params.persistence = clamp(params.persistence - 0.03f, 0.0f, 0.98f);
+        params.persistence = clampValue(params.persistence - 0.03f, kMinPersistence, kMaxPersistence);
     }
     if (pressed(window, '0'))
     {
-        params.persistence = clamp(params.persistence + 0.03f, 0.0f, 0.98f);
+        params.persistence = clampValue(params.persistence + 0.03f, kMinPersistence, kMaxPersistence);
     }
     if (pressed(window, VK_OEM_4))
     {
-        params.persistence = clamp(params.persistence - 0.005f, 0.0f, 0.98f);
+        params.persistence = clampValue(params.persistence - 0.005f, kMinPersistence, kMaxPersistence);
     }
     if (pressed(window, VK_OEM_6))
     {
-        params.persistence = clamp(params.persistence + 0.005f, 0.0f, 0.98f);
+        params.persistence = clampValue(params.persistence + 0.005f, kMinPersistence, kMaxPersistence);
     }
     if (pressed(window, 'T'))
     {
-        params.fastDecay = clamp(params.fastDecay - 0.05f, 0.0f, 1.0f);
+        params.fastDecay = clampValue(params.fastDecay - 0.05f, kMinDecayAmount, kMaxDecayAmount);
     }
     if (pressed(window, 'Y'))
     {
-        params.fastDecay = clamp(params.fastDecay + 0.05f, 0.0f, 1.0f);
+        params.fastDecay = clampValue(params.fastDecay + 0.05f, kMinDecayAmount, kMaxDecayAmount);
     }
     if (pressed(window, VK_OEM_MINUS))
     {
-        params.afterglow = clamp(params.afterglow - 0.05f, 0.0f, 1.0f);
+        params.afterglow = clampValue(params.afterglow - 0.05f, kMinDecayAmount, kMaxDecayAmount);
     }
     if (pressed(window, VK_OEM_PLUS))
     {
-        params.afterglow = clamp(params.afterglow + 0.05f, 0.0f, 1.0f);
+        params.afterglow = clampValue(params.afterglow + 0.05f, kMinDecayAmount, kMaxDecayAmount);
     }
     if (pressed(window, 'P'))
     {
@@ -119,6 +109,7 @@ void StandaloneControls::update(Win32GlWindow& window, VisualParams& params, Tes
     if (pressed(window, 'L'))
     {
         PresetStore::loadDefault(params, generator);
+        clampVisualParams(params);
     }
 
     if (pressed(window, VK_SPACE))

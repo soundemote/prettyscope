@@ -78,4 +78,19 @@ if(BUILD_TESTING)
 
     add_test(NAME external_signal_source
         COMMAND prettyscope_external_signal_source_tests)
+
+    add_executable(prettyscope_visual_param_limits_tests
+        tests/visual_param_limits_tests.cpp)
+
+    target_link_libraries(prettyscope_visual_param_limits_tests PRIVATE
+        prettyscope_core)
+
+    if(MSVC)
+        target_compile_options(prettyscope_visual_param_limits_tests PRIVATE /W4 /permissive-)
+    else()
+        target_compile_options(prettyscope_visual_param_limits_tests PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+
+    add_test(NAME visual_param_limits
+        COMMAND prettyscope_visual_param_limits_tests)
 endif()
