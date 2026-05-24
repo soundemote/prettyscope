@@ -52,3 +52,18 @@ and Syphon/Spout output can follow after that rendering path exists.
 
 See `docs/HOST_INTEGRATION.md` for the current core API shape the plugin shell
 should call.
+
+## When Sidequest Is Needed
+
+Further standalone/core work can continue without the plugin foundation, but
+actual CLAP development should wait until `baconpaul/sidequest-startingpoint` is
+available locally.
+
+Tracer needs the sidequest project to:
+
+- inspect its existing audio/UI handoff pattern
+- choose between `ExternalSignalSource`, `SignalSnapshot`, or a dedicated
+  sidequest adapter
+- identify the expected JUCE OpenGL component lifecycle
+- map Prettyscope descriptors to the foundation's parameter model
+- add the first plugin/editor target without guessing at repository structure
