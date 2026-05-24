@@ -51,6 +51,11 @@ void TestSignalGenerator::advance(SignalBuffer& signal, float dt)
     }
 }
 
+SignalSourceInfo TestSignalGenerator::info() const
+{
+    return {modeName(), SignalLayout::Stereo, TraceMode::Xy};
+}
+
 void TestSignalGenerator::nextMode()
 {
     switch (mode_)

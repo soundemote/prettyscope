@@ -3,6 +3,7 @@
 #include "platform/win32_gl_window.hpp"
 #include "visual/scope_renderer.hpp"
 #include "visual/signal_buffer.hpp"
+#include "visual/signal_source.hpp"
 #include "visual/test_signal.hpp"
 #include "visual/visual_params.hpp"
 
@@ -19,6 +20,7 @@ int main()
         prettyscope::ScopeRenderer renderer;
         prettyscope::SignalBuffer signal(1024);
         prettyscope::TestSignalGenerator generator;
+        prettyscope::SignalSource& signalSource = generator;
         prettyscope::StandaloneControls controls;
 
         prettyscope::VisualParams params;
@@ -44,7 +46,7 @@ int main()
             controls.update(window, params, generator);
             window.setTitle(controls.titleText(params, generator));
 
-            generator.advance(signal, dt);
+            signalSource.advance(signal, dt);
 
             const auto size = window.framebufferSize();
             renderer.render(signal, params, size.width, size.height);

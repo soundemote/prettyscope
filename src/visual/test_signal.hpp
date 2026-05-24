@@ -1,10 +1,10 @@
 #pragma once
 
-#include "visual/signal_buffer.hpp"
+#include "visual/signal_source.hpp"
 
 namespace prettyscope
 {
-class TestSignalGenerator
+class TestSignalGenerator : public SignalSource
 {
 public:
     enum class Mode
@@ -14,7 +14,8 @@ public:
         BassPulse,
     };
 
-    void advance(SignalBuffer& signal, float dt);
+    SignalSourceInfo info() const override;
+    void advance(SignalBuffer& signal, float dt) override;
     void nextMode();
     void setMode(Mode mode);
     Mode mode() const;

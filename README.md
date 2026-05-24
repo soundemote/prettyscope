@@ -20,6 +20,7 @@ work lives in `src/` and should stay small, direct, and runnable.
 - OpenGL rendering through the vendored GLAD 3.2 loader
 - Animated Gaussian beam waveform trace
 - Small `SignalBuffer`, `TestSignalGenerator`, and `VisualParams` abstraction
+- `SignalSource` interface for test signals now, and future audio/plugin input
 - Keyboard controls for fast visual testing
 
 ## Roadmap
