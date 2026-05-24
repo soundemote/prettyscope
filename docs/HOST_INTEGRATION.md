@@ -29,6 +29,8 @@ scope.shutdown();
 ```
 
 Call `initialize()` and `shutdown()` while the OpenGL context is current.
+Both calls are idempotent. `renderCurrentSignal()` returns without drawing until
+the engine is initialized.
 
 ## Audio Handoff
 
