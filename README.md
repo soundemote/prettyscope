@@ -5,6 +5,12 @@ beautiful, musical scope that can grow from a standalone visual demo into a
 reusable visualization layer for generated signals, audio buffers, and eventual
 `soemdsp-sandbox` runtime output.
 
+Longer-term, Prettyscope should also be able to publish its rendered GPU output
+to visual-performance and projection workflows. The desired targets are
+[Syphon](https://syphon.info/) on macOS, for realtime frame sharing between
+creative applications, and [Spout](https://spout.zeal.co/) on Windows, for
+low-latency realtime video routing between graphics tools.
+
 This repository still contains PrettyScope Graveyard material at the root. New
 work lives in `src/` and should stay small, direct, and runnable.
 
@@ -15,6 +21,17 @@ work lives in `src/` and should stay small, direct, and runnable.
 - Animated Gaussian beam waveform trace
 - Small `SignalBuffer`, `TestSignalGenerator`, and `VisualParams` abstraction
 - Keyboard controls for fast visual testing
+
+## Roadmap
+
+- Keep the standalone OpenGL renderer as the visual reference and development
+  lab.
+- Preserve the current phosphor XY look as the first golden preset.
+- Build a clean input path for mono, stereo, and eventual external audio buffers.
+- Prepare for future plugin/runtime integration, including `soemdsp-sandbox`.
+- Add optional GPU frame-sharing outputs:
+  - Syphon sender support on macOS.
+  - Spout sender support on Windows.
 
 ## Build
 
