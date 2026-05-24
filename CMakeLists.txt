@@ -40,6 +40,7 @@ target_compile_definitions(prettyscope_core PUBLIC
 add_executable(prettyscope
     src/main.cpp
     src/app/preset_store.cpp
+    src/app/standalone_app.cpp
     src/app/standalone_controls.cpp
     src/platform/win32_gl_window.cpp)
 
