@@ -31,6 +31,9 @@ work lives in `src/` and should stay small, direct, and runnable.
 - Preserve the current phosphor XY look as the first golden preset.
 - Build a clean input path for mono, stereo, and eventual external audio buffers.
 - Prepare for future plugin/runtime integration, including `soemdsp-sandbox`.
+- Prepare a future CLAP plugin path using the Architect-selected
+  `baconpaul/sidequest-startingpoint` JUCE foundation. See
+  `docs/PLUGIN_ROADMAP.md`.
 - Add optional GPU frame-sharing outputs:
   - Syphon sender support on macOS.
   - Spout sender support on Windows.
