@@ -1,6 +1,7 @@
 #pragma once
 
 #include "visual/external_signal_source.hpp"
+#include "visual/frame_stats.hpp"
 #include "visual/scope_engine.hpp"
 #include "visual/signal_buffer.hpp"
 #include "visual/signal_snapshot.hpp"

@@ -20,6 +20,7 @@ target_include_directories(prettyscope_glad PUBLIC
 add_library(prettyscope_core STATIC
     src/visual/beam_renderer.cpp
     src/visual/external_signal_source.cpp
+    src/visual/frame_stats.cpp
     src/visual/gl_utils.cpp
     src/visual/overlay_renderer.cpp
     src/visual/persistence_buffer.cpp
@@ -94,6 +95,7 @@ if(BUILD_TESTING)
     endfunction()
 
     add_prettyscope_core_test(external_signal_source tests/external_signal_source_tests.cpp)
+    add_prettyscope_core_test(frame_stats tests/frame_stats_tests.cpp)
     add_prettyscope_core_test(visual_param_limits tests/visual_param_limits_tests.cpp)
     add_prettyscope_core_test(signal_buffer tests/signal_buffer_tests.cpp)
     add_prettyscope_core_test(signal_snapshot tests/signal_snapshot_tests.cpp)

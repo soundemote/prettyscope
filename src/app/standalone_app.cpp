@@ -3,6 +3,7 @@
 #include "app/preset_store.hpp"
 #include "app/standalone_controls.hpp"
 #include "platform/win32_gl_window.hpp"
+#include "visual/frame_stats.hpp"
 #include "visual/scope_engine.hpp"
 #include "visual/signal_source.hpp"
 #include "visual/test_signal.hpp"
@@ -26,19 +27,15 @@ int StandaloneApp::run()
     scope.initialize();
 
     auto previous = std::chrono::steady_clock::now();
-    float smoothedFps = 60.0f;
+    FrameStats frameStats;
     while (window.processMessages())
     {
         const auto now = std::chrono::steady_clock::now();
         const float dt = std::chrono::duration<float>(now - previous).count();
         previous = now;
 
-        if (dt > 0.0f)
-        {
-            const float instantFps = 1.0f / dt;
-            smoothedFps = smoothedFps * 0.92f + instantFps * 0.08f;
-            params.fps = smoothedFps;
-        }
+        frameStats.advance(dt);
+        params.fps = frameStats.fps();
 
         controls.update(window, params, generator);
         window.setTitle(controls.titleText(params, generator));
