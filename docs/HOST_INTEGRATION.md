@@ -8,6 +8,10 @@ core API without creating an OpenGL window.
 `examples/host_parameter_list_example.cpp` shows how a host adapter can enumerate
 the automatable visual controls from descriptor metadata.
 
+`examples/host_parameter_roundtrip_example.cpp` verifies the descriptor-owned
+mapping path from stable IDs to normalized host transport values to raw
+`VisualParams` state and back.
+
 `FrameStats` provides the shared FPS smoothing used by the standalone title bar.
 Plugin editors may use host/editor timing directly, or use `FrameStats` if they
 want matching overlay/readout behavior.
