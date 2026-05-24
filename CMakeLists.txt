@@ -93,4 +93,19 @@ if(BUILD_TESTING)
 
     add_test(NAME visual_param_limits
         COMMAND prettyscope_visual_param_limits_tests)
+
+    add_executable(prettyscope_signal_buffer_tests
+        tests/signal_buffer_tests.cpp)
+
+    target_link_libraries(prettyscope_signal_buffer_tests PRIVATE
+        prettyscope_core)
+
+    if(MSVC)
+        target_compile_options(prettyscope_signal_buffer_tests PRIVATE /W4 /permissive-)
+    else()
+        target_compile_options(prettyscope_signal_buffer_tests PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+
+    add_test(NAME signal_buffer
+        COMMAND prettyscope_signal_buffer_tests)
 endif()

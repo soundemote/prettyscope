@@ -19,6 +19,13 @@ public:
         return static_cast<int>(left_.size());
     }
 
+    void resize(int sampleCount)
+    {
+        const size_t count = static_cast<size_t>(std::max(2, sampleCount));
+        left_.assign(count, 0.0f);
+        right_.assign(count, 0.0f);
+    }
+
     float* data()
     {
         return left_.data();
@@ -27,6 +34,16 @@ public:
     const float* data() const
     {
         return left_.data();
+    }
+
+    float* rightData()
+    {
+        return right_.data();
+    }
+
+    const float* rightData() const
+    {
+        return right_.data();
     }
 
     float& operator[](int index)
