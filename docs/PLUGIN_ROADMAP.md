@@ -31,6 +31,9 @@ direction.
   a host or runtime.
 - Plugin shells should include `prettyscope.hpp` and avoid depending on internal
   renderer headers unless they are actively extending the renderer.
+- Float controls should bind through `VisualFloatParameterId` and
+  `VisualFloatParameter` descriptors so standalone controls, presets, and plugin
+  automation share one range model.
 
 ## First Plugin Milestone
 

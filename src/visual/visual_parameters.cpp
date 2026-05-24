@@ -1,0 +1,79 @@
+#include "visual/visual_parameters.hpp"
+
+#include "visual/visual_param_limits.hpp"
+
+namespace prettyscope
+{
+namespace
+{
+constexpr VisualParams kDefaults;
+
+constexpr VisualFloatParameter kFloatParameters[] = {
+    {VisualFloatParameterId::TraceGain, "traceGain", "Signal Gain", kMinTraceGain, kMaxTraceGain, kDefaults.traceGain},
+    {VisualFloatParameterId::GlowStrength, "glowStrength", "Glow Strength", kMinGlowStrength, kMaxGlowStrength, kDefaults.glowStrength},
+    {VisualFloatParameterId::TraceWidth, "traceWidth", "Trace Width", kMinTraceWidth, kMaxTraceWidth, kDefaults.traceWidth},
+    {VisualFloatParameterId::GlowWidth, "glowWidth", "Glow Width", kMinTraceWidth, kMaxGlowWidth, kDefaults.glowWidth},
+    {VisualFloatParameterId::Persistence, "persistence", "Decay", kMinPersistence, kMaxPersistence, kDefaults.persistence},
+    {VisualFloatParameterId::FastDecay, "fastDecay", "Fast Decay", kMinDecayAmount, kMaxDecayAmount, kDefaults.fastDecay},
+    {VisualFloatParameterId::Afterglow, "afterglow", "Tail Burn", kMinDecayAmount, kMaxDecayAmount, kDefaults.afterglow},
+    {VisualFloatParameterId::GridIntensity, "gridIntensity", "Grid Intensity", 0.0f, 1.0f, kDefaults.gridIntensity},
+};
+}
+
+const VisualFloatParameter* visualFloatParameters(size_t& count)
+{
+    count = sizeof(kFloatParameters) / sizeof(kFloatParameters[0]);
+    return kFloatParameters;
+}
+
+const VisualFloatParameter* findVisualFloatParameter(VisualFloatParameterId id)
+{
+    size_t count = 0;
+    const VisualFloatParameter* parameters = visualFloatParameters(count);
+    for (size_t i = 0; i < count; ++i)
+    {
+        if (parameters[i].id == id)
+        {
+            return &parameters[i];
+        }
+    }
+
+    return nullptr;
+}
+
+float getVisualFloatParameter(const VisualParams& params, VisualFloatParameterId id)
+{
+    switch (id)
+    {
+    case VisualFloatParameterId::TraceGain: return params.traceGain;
+    case VisualFloatParameterId::GlowStrength: return params.glowStrength;
+    case VisualFloatParameterId::TraceWidth: return params.traceWidth;
+    case VisualFloatParameterId::GlowWidth: return params.glowWidth;
+    case VisualFloatParameterId::Persistence: return params.persistence;
+    case VisualFloatParameterId::FastDecay: return params.fastDecay;
+    case VisualFloatParameterId::Afterglow: return params.afterglow;
+    case VisualFloatParameterId::GridIntensity: return params.gridIntensity;
+    }
+
+    return 0.0f;
+}
+
+bool setVisualFloatParameter(VisualParams& params, VisualFloatParameterId id, float value)
+{
+    switch (id)
+    {
+    case VisualFloatParameterId::TraceGain: params.traceGain = value; break;
+    case VisualFloatParameterId::GlowStrength: params.glowStrength = value; break;
+    case VisualFloatParameterId::TraceWidth: params.traceWidth = value; break;
+    case VisualFloatParameterId::GlowWidth: params.glowWidth = value; break;
+    case VisualFloatParameterId::Persistence: params.persistence = value; break;
+    case VisualFloatParameterId::FastDecay: params.fastDecay = value; break;
+    case VisualFloatParameterId::Afterglow: params.afterglow = value; break;
+    case VisualFloatParameterId::GridIntensity: params.gridIntensity = value; break;
+    default: return false;
+    }
+
+    clampVisualParams(params);
+    return true;
+}
+}
