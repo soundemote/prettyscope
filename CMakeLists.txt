@@ -20,7 +20,13 @@ add_executable(prettyscope
     src/app/preset_store.cpp
     src/app/standalone_controls.cpp
     src/platform/win32_gl_window.cpp
+    src/visual/beam_renderer.cpp
+    src/visual/gl_utils.cpp
+    src/visual/overlay_renderer.cpp
+    src/visual/persistence_buffer.cpp
+    src/visual/screen_quad.cpp
     src/visual/scope_renderer.cpp
+    src/visual/shaders.cpp
     src/visual/test_signal.cpp)
 
 target_include_directories(prettyscope PRIVATE
