@@ -5,6 +5,8 @@ project(prettyscope
     DESCRIPTION "Modern OpenGL oscilloscope and signal visualizer"
     LANGUAGES C CXX)
 
+include(CTest)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -58,4 +60,21 @@ if(MSVC)
 else()
     target_compile_options(prettyscope_core PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(prettyscope PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+if(BUILD_TESTING)
+    add_executable(prettyscope_external_signal_source_tests
+        tests/external_signal_source_tests.cpp)
+
+    target_link_libraries(prettyscope_external_signal_source_tests PRIVATE
+        prettyscope_core)
+
+    if(MSVC)
+        target_compile_options(prettyscope_external_signal_source_tests PRIVATE /W4 /permissive-)
+    else()
+        target_compile_options(prettyscope_external_signal_source_tests PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+
+    add_test(NAME external_signal_source
+        COMMAND prettyscope_external_signal_source_tests)
 endif()

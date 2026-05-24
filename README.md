@@ -51,6 +51,12 @@ Command Prompt so MSVC is on `PATH`.
 
 Press `Esc` or close the window to quit.
 
+Run tests with:
+
+```powershell
+ctest --test-dir build-ninja --output-on-failure
+```
+
 ## Controls
 
 - `1` / `2`: decrease / increase waveform gain
