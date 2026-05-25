@@ -255,14 +255,15 @@ Recent proven demos include:
 * synced Circuit frequency/amplitude parameters can drive a caller-owned DSP object that renders an audible WAV artifact
 * bound DSP object WAV resync demo
 * changed Circuit frequency/amplitude parameters can resync into external DSP memory between two halves of an audible WAV artifact
+* bound DSP object WAV resync demo now reports each render half through DspBlockPhaseReport
 
 Recent completion:
 
 ```
-f5ca1c3 Add bound DSP object WAV resync demo
+e974b23 Report bound DSP WAV resync phases
 ```
 
-`runtime_dsp_object_bound_wav_resync_demo` renders the first half of a WAV from initially synced Circuit frequency/amplitude parameters, changes those parameters through Circuit setters, reapplies the binding, and renders the second half from updated external DSP memory.
+`runtime_dsp_object_bound_wav_resync_demo` renders the first half of a WAV from initially synced Circuit frequency/amplitude parameters, changes those parameters through Circuit setters, reapplies the binding, and renders the second half from updated external DSP memory. Each half now reports preflight/apply/process counts through `DspBlockPhaseReport`.
 
 The WAV writer, sample loop, and DSP object are demo-local. This does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
 

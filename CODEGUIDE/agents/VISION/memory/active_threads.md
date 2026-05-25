@@ -115,6 +115,7 @@ Recent completed work:
 * synced Circuit frequency/amplitude parameters can drive a caller-owned DSP object that renders an audible WAV artifact
 * bound DSP object WAV resync demo
 * changed Circuit frequency/amplitude parameters can resync into external DSP memory between two halves of an audible WAV artifact
+* bound DSP object WAV resync demo now reports each render half through DspBlockPhaseReport
 
 Important recent repo event:
 
@@ -127,25 +128,25 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add bound DSP object WAV resync demo.
+Report bound DSP WAV resync phases.
 ```
 
 Task goal:
 
 ```
-Prove an audible caller-owned DSP render can respond to Circuit parameter
-changes by reapplying binding between two render phases, without introducing a
-scheduler, audio engine, production batch API, or plugin/UI layer.
+Expose each half of the audible resync render through the existing compact
+DspBlockPhaseReport shape, keeping future sandbox status surfaces explicit
+without introducing execution ownership.
 ```
 
 Added:
 
-* `runtime_dsp_object_bound_wav_resync_demo`
-* demo-local mono 16-bit WAV writer
-* first half renders from `220Hz / 0.2`
-* second half renders after resync to `440Hz / 0.35`
-* `docs/STATUS.md` records the bound DSP object WAV resync proof
-* `docs/DSP_BINDING_MILESTONE_PLAN.md` records the audible binding resync milestone
+* first render half phase report
+* second render half phase report
+* each phase reports preflight/apply/process counts
+* each phase writes a demo-local report text file
+* `docs/STATUS.md` records phase reporting on the audible resync proof
+* `docs/DSP_BINDING_MILESTONE_PLAN.md` records the future sandbox status-surface implication
 
 Boundary preserved:
 
@@ -160,13 +161,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-f5ca1c3 Add bound DSP object WAV resync demo
+e974b23 Report bound DSP WAV resync phases
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 24 commits
+* ahead of origin by 25 commits
 * behind origin by 0 commits
 * conflicts: none
 
