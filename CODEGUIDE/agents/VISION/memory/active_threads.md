@@ -82,6 +82,12 @@ Architect will copy/paste Codex context if useful.
 
 Vision should ask for Codex only when it would materially reduce uncertainty.
 
+Architect hands-on testing threshold:
+
+* do not ask Architect to test CLI-only demos
+* Vision handles command-line build/run/proof verification
+* ask Architect for hands-on testing when there is mouse interaction, audible output, or visual inspection value
+
 Recent completed work:
 
 * DSP binding apply batch aggregate demo
@@ -103,6 +109,8 @@ Recent completed work:
 * DSP execution questions doc clarified around reusable report helpers versus blocked execution machinery
 * DSP execution questions doc records independent phase reports for resync block passes
 * DSP execution questions doc
+* runtime audio sine WAV demo
+* runtime Circuit audio path can render a short mono WAV artifact through SineOscillator -> AudioOutput
 
 Important recent repo event:
 
@@ -115,38 +123,43 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document DSP binding validation demo cleanup.
+Add runtime audio sine WAV demo.
 ```
 
 Task goal:
 
 ```
-Keep the validation demo report precise after null-memory validation became
-stricter.
+Create the first small audible artifact path without asking Architect to test
+CLI output and without introducing a scheduler, audio engine, or production
+file API.
 ```
 
 Added:
 
-* `runtime_dsp_binding_validation_demo`
-* `docs/STATUS.md` records the cleanup
+* `runtime_audio_sine_wav_demo`
+* demo-local mono 16-bit WAV writer
+* `docs/STATUS.md` records the runtime audio artifact proof
 
 Boundary preserved:
 
-* reporting/export only
+* demo-local only
+* no audio engine
 * no executor
 * no scheduler
 * no production batch API
+* no plugin/UI layer
+* no graph-owned DSP object state
 
 Completion commit:
 
 ```
-7c7da00 Document DSP binding validation demo cleanup
+03ea6d5 Add runtime audio sine WAV demo
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 5 commits
+* ahead of origin by 22 commits
 * behind origin by 0 commits
 * conflicts: none
 

@@ -12,6 +12,7 @@ Current push context:
 * Architect is actively coordinating multiple agents
 * Codex is the main big-ticket technical focus
 * Console, Tracer, DIRECTOR, and Void are active but should not overload Vision routing
+* Architect should not be asked for hands-on testing of CLI demos; save hands-on testing requests for mouse interaction, audible output, or visual inspection
 
 ## Soundemote Short Description
 
@@ -248,18 +249,20 @@ Recent proven demos include:
 * DSP execution questions doc clarified around reusable report helpers versus blocked execution machinery
 * DSP execution questions doc records independent phase reports for resync block passes
 * DSP execution questions doc
+* runtime audio sine WAV demo
+* runtime Circuit audio path can render a short mono WAV artifact through SineOscillator -> AudioOutput
 
 Recent completion:
 
 ```
-7c7da00 Document DSP binding validation demo cleanup
+03ea6d5 Add runtime audio sine WAV demo
 ```
 
-`runtime_dsp_binding_validation_demo` now uses explicit non-null memory slots and separately reports unsupported target-kind validation, avoiding accidental null-memory noise in the inspection report.
+`runtime_audio_sine_wav_demo` renders a short mono WAV artifact from the existing runtime Circuit path through SineOscillator -> AudioOutput.
 
-It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
+The WAV writer is demo-local. It does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
 
-No scheduler, production batch API, graph-owned DSP state, plugin/UI code, or Circuit-owned DSP objects were added.
+This is a bridge toward the future `soemdsp-sandbox` hands-on threshold, where Architect should test by hearing, seeing, or manipulating something rather than reading CLI proof output.
 
 ## Vision Takeover / Codex Context
 
