@@ -662,15 +662,17 @@ Stamps are a distributed working-memory checksum.
 
 ## Attention Convention
 
-Report/reply prefix used when an agent needs Architect to notice something explicitly.
+Report/reply wrapper used when an agent needs Architect to notice something explicitly.
 
-Exact first line:
+Exact first and final line:
 
 ```
 Attention: Architecth
 ```
 
-One blank line follows before additional text.
+At the top, one blank line follows before additional text.
+
+At the bottom, one blank line comes before the final repeated attention line.
 
 Use for blockers, ambiguity, stale state, missing files, unsafe repo state, boundary conflicts, or other items requiring Architect's explicit attention.
 

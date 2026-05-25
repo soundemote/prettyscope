@@ -44,13 +44,15 @@ Ask Architect.
 
 ## Attention Convention
 
-When Vision needs to get Architect's attention, put this exact line at the very top of the next report or reply:
+When Vision needs to get Architect's attention, put this exact line at the very top and very bottom of the next report or reply:
 
 ```text
 Attention: Architecth
 ```
 
-Then leave one blank line before any additional text.
+At the top, leave one blank line before any additional text.
+
+At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
 
 Use this for blockers, ambiguous repo state, unsafe changes, missing files, boundary conflicts, stale instructions, or any issue requiring Architect's explicit attention.
 

@@ -29,13 +29,15 @@ They do not replace clear communication.
 
 ## Attention Convention
 
-When an agent needs to get Architect's attention, put this exact line at the very top of the next report or reply:
+When an agent needs to get Architect's attention, put this exact line at the very top and very bottom of the next report or reply:
 
 ```text
 Attention: Architecth
 ```
 
-Then leave one blank line before any additional text.
+At the top, leave one blank line before any additional text.
+
+At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
 
 ## Why Stamps Exist
 
@@ -138,7 +140,9 @@ The `sent` line is the new stamp for the current message.
 
 It must be fresh.
 
-It must be the final line of the message.
+It must be the final stamp line of the message.
+
+If the Attention Convention is used, the final `Attention: Architecth` line goes after the stamps.
 
 Example:
 
@@ -181,7 +185,9 @@ q5r7!
 
 Both stamp lines go at the very end of a formal message.
 
-The `sent` stamp must be the final line.
+The `sent` stamp must be the final stamp line.
+
+If the Attention Convention is used, the final `Attention: Architecth` line goes after the stamps.
 
 Do not place commentary after the `sent` stamp.
 

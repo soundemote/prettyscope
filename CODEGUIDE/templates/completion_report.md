@@ -2,12 +2,16 @@
 
 Use this template when an agent finishes a bounded task, milestone, inspection, or committed change.
 
-If the report needs Architect's attention, put this exact line before the report title:
+If the report needs Architect's attention, put this exact line before the report title and repeat it as the final line of the report:
 
 ```text
 Attention: Architecth
 
 # Completed: `<task title>`
+
+...
+
+Attention: Architecth
 ```
 
 Use that attention line only when the report includes a blocker, ambiguity, conflict, stale state, missing file, unsafe repo state, cross-boundary decision, or other item that needs explicit attention.

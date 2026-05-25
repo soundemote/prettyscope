@@ -456,13 +456,15 @@ Mention push only when Architect asks or when a task explicitly requires remote 
 
 ## Attention Convention State
 
-When any agent needs to get Architect's attention, the next report or reply should begin with:
+When any agent needs to get Architect's attention, the next report or reply should begin and end with:
 
 ```
 Attention: Architecth
 ```
 
-Then leave one blank line before additional text.
+At the top, leave one blank line before additional text.
+
+At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
 
 This convention is now recorded in the main agent document, the individual agent documents, Vision reboot, and the completion report template.
 
