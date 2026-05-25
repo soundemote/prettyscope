@@ -93,6 +93,7 @@ Recent completed work:
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
+* DSP block preflight failure demo now reports failed preflight and skipped processing through DspBlockPhaseReport
 * DSP execution questions doc
 
 Important recent repo event:
@@ -106,28 +107,28 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add DSP block phase report text export.
+Use DSP block phase report in preflight failure demo.
 ```
 
 Task goal:
 
 ```
-Add a text export helper for the DSP block phase report so demos and future
-sandbox status surfaces can persist inspection output.
+Make the preflight failure block demo emit the same phase report shape as the
+successful block phase demo.
 ```
 
 Added:
 
-* `include/soemdsp/runtime/dsp/DspBlockPhaseReport.hpp`
-* `include/soemdsp/runtime/dsp/PrintDspBlockPhaseReport.hpp`
-* `include/soemdsp/runtime/dsp/WriteDspBlockPhaseReport.hpp`
-* `runtime_dsp_object_block_phase_report_demo` now uses the shared report type
-* `runtime_dsp_object_block_phase_report_demo` writes a generated text report when run
+* `runtime_dsp_object_block_preflight_failure_demo` uses `DspBlockPhaseReport`
+* failed preflight reports `preflight ok: false`
+* skipped processing reports `process ok: false` and `samples processed: 0`
+* generated failure report text can be written when the demo runs
 
 Boundary preserved:
 
 * report type only
 * text export only
+* failure status only
 * no executor
 * no scheduler
 * no production batch API
@@ -135,7 +136,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-de5e26e Add DSP block phase report text export
+0ac7a82 Use DSP block phase report in preflight failure demo
 ```
 
 Reported repo status:

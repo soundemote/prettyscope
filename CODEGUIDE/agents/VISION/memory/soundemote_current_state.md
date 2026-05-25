@@ -238,15 +238,16 @@ Recent proven demos include:
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
+* DSP block preflight failure demo now reports failed preflight and skipped processing through DspBlockPhaseReport
 * DSP execution questions doc
 
 Recent completion:
 
 ```
-de5e26e Add DSP block phase report text export
+0ac7a82 Use DSP block phase report in preflight failure demo
 ```
 
-`DspBlockPhaseReport` now captures caller-owned preflight/apply/process counts for demos and future sandbox status surfaces, and it can be written as a text file for inspection.
+`runtime_dsp_object_block_preflight_failure_demo` now uses `DspBlockPhaseReport` to show failed preflight, zero applied parameters, skipped processing, and unchanged external memory.
 
 It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 
