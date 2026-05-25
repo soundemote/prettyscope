@@ -251,16 +251,18 @@ Recent proven demos include:
 * DSP execution questions doc
 * runtime audio sine WAV demo
 * runtime Circuit audio path can render a short mono WAV artifact through SineOscillator -> AudioOutput
+* bound DSP object WAV demo
+* synced Circuit frequency/amplitude parameters can drive a caller-owned DSP object that renders an audible WAV artifact
 
 Recent completion:
 
 ```
-03ea6d5 Add runtime audio sine WAV demo
+166b8a9 Add bound DSP object WAV demo
 ```
 
-`runtime_audio_sine_wav_demo` renders a short mono WAV artifact from the existing runtime Circuit path through SineOscillator -> AudioOutput.
+`runtime_dsp_object_bound_wav_demo` syncs Circuit frequency and amplitude parameters into caller-owned external memory through DSP binding, then a caller-owned `TinySineDsp` renders a short mono WAV artifact from that memory.
 
-The WAV writer is demo-local. It does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
+The WAV writer, sample loop, and DSP object are demo-local. This does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
 
 This is a bridge toward the future `soemdsp-sandbox` hands-on threshold, where Architect should test by hearing, seeing, or manipulating something rather than reading CLI proof output.
 

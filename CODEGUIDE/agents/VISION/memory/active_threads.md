@@ -111,6 +111,8 @@ Recent completed work:
 * DSP execution questions doc
 * runtime audio sine WAV demo
 * runtime Circuit audio path can render a short mono WAV artifact through SineOscillator -> AudioOutput
+* bound DSP object WAV demo
+* synced Circuit frequency/amplitude parameters can drive a caller-owned DSP object that renders an audible WAV artifact
 
 Important recent repo event:
 
@@ -123,22 +125,23 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add runtime audio sine WAV demo.
+Add bound DSP object WAV demo.
 ```
 
 Task goal:
 
 ```
-Create the first small audible artifact path without asking Architect to test
-CLI output and without introducing a scheduler, audio engine, or production
-file API.
+Create the first audible DSP binding artifact by syncing Circuit parameters
+into external memory consumed by a caller-owned DSP object, without introducing
+a scheduler, audio engine, production batch API, or plugin/UI layer.
 ```
 
 Added:
 
-* `runtime_audio_sine_wav_demo`
+* `runtime_dsp_object_bound_wav_demo`
 * demo-local mono 16-bit WAV writer
-* `docs/STATUS.md` records the runtime audio artifact proof
+* `docs/STATUS.md` records the bound DSP object WAV proof
+* `docs/DSP_BINDING_MILESTONE_PLAN.md` records the audible binding milestone
 
 Boundary preserved:
 
@@ -153,13 +156,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-03ea6d5 Add runtime audio sine WAV demo
+166b8a9 Add bound DSP object WAV demo
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 22 commits
+* ahead of origin by 23 commits
 * behind origin by 0 commits
 * conflicts: none
 
