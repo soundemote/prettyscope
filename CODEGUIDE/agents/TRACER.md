@@ -1,5 +1,3 @@
-Next file: `agents/TRACER.md`
-
 # Tracer
 
 Prettyscope / OpenGL / phosphor / GPU visualizer execution agent for Soundemote.

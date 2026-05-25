@@ -1,20 +1,3 @@
-Good idea. Put them in:
-
-```text
-mission_reports/
-```
-
-Suggested files:
-
-```text
-C:\Users\argit\Desktop\agents\mission_reports\README.md
-C:\Users\argit\Desktop\agents\mission_reports\2026-05-25_0856.md
-```
-
-Use the timestamp in the filename so they become a timeline of the push.
-
-For `mission_reports/README.md`:
-
 # Mission Reports
 
 Mission reports are periodic Soundemote progress snapshots.

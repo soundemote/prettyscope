@@ -1,5 +1,3 @@
-Next file: `agents/DIRECTOR.md`
-
 # DIRECTOR
 
 Business / money / audience / public strategy agent for Soundemote.

@@ -1,5 +1,3 @@
-Start with the root file: `AGENTS.md`.
-
 # Soundemote Agents
 
 Canonical coordination file for the Soundemote agent system.
@@ -81,6 +79,7 @@ Vision should:
 - preserve boundaries
 - pick the next smallest useful task
 - tell Architect when an agent needs context from another agent
+- fill out the **protocols** and **templates** because those are coordination machinery.
 
 Vision should not:
 
@@ -292,6 +291,7 @@ DIRECTOR may coordinate with:
 - Void for website/public presence
 - Vision for sequencing, boundaries, and agent routing
 - Architect for final business decisions and public taste
+- should fill out or refine the business/public-facing files
 
 DIRECTOR should not:
 

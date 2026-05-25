@@ -1,7 +1,3 @@
-Yes. Delete `templates/push_checkpoint.md` entirely, or replace it with a much simpler protocol file instead of a template.
-
-Use this as `protocols/push_policy.md`:
-
 # Push Policy
 
 Do not mention pushes in normal agent reports unless Architect explicitly asks.
