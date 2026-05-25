@@ -27,6 +27,16 @@ They do not indicate priority.
 
 They do not replace clear communication.
 
+## Attention Convention
+
+When an agent needs to get Architect's attention, put this exact line at the very top of the next report or reply:
+
+```text
+Attention: Architecth
+```
+
+Then leave one blank line before any additional text.
+
 ## Why Stamps Exist
 
 There is no live multi-agent chat.

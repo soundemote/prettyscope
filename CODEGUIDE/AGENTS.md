@@ -357,6 +357,18 @@ Agents should not assume another agent has seen anything unless Architect explic
 
 Agents should not ask another agent direct questions unless Architect routes the message.
 
+## Attention Convention
+
+When an agent needs to get Architect's attention, put this exact line at the very top of the next report or reply:
+
+```text
+Attention: Architecth
+```
+
+Then leave one blank line before any additional text.
+
+Do not use this casually. Use it when Architect should notice a blocker, ambiguity, conflict, stale state, missing file, unsafe repo state, cross-boundary decision, or other item that needs explicit attention.
+
 ## Stamp Protocol
 
 Use stamps only on:

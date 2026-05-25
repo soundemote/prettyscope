@@ -660,6 +660,20 @@ The sent line points forward.
 
 Stamps are a distributed working-memory checksum.
 
+## Attention Convention
+
+Report/reply prefix used when an agent needs Architect to notice something explicitly.
+
+Exact first line:
+
+```
+Attention: Architecth
+```
+
+One blank line follows before additional text.
+
+Use for blockers, ambiguity, stale state, missing files, unsafe repo state, boundary conflicts, or other items requiring Architect's explicit attention.
+
 ## Active Thread
 
 Currently active task/report chain for an agent.

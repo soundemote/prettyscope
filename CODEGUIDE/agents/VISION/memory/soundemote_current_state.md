@@ -452,6 +452,18 @@ Agents report repo status only:
 
 Mention push only when Architect asks or when a task explicitly requires remote state.
 
+## Attention Convention State
+
+When any agent needs to get Architect's attention, the next report or reply should begin with:
+
+```
+Attention: Architecth
+```
+
+Then leave one blank line before additional text.
+
+This convention is now recorded in the main agent document, the individual agent documents, Vision reboot, and the completion report template.
+
 ## Current Risk Focus
 
 Highest coding risks:

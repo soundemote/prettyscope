@@ -521,6 +521,18 @@ Casual conversation does not require stamps.
 
 Stamps are a distributed working-memory checksum.
 
+## Attention Convention Invariant
+
+When an agent needs to get Architect's attention, the next report or reply starts with:
+
+```
+Attention: Architecth
+```
+
+Then one blank line appears before any additional text.
+
+Use this only for blockers, ambiguity, conflict, stale state, missing files, unsafe repo state, cross-boundary decisions, or other items requiring explicit Architect attention.
+
 ## Push Policy Invariant
 
 Push bandwidth is limited.

@@ -6,6 +6,18 @@ Codex is the primary engineering agent for the big-ticket runtime spine.
 
 Codex owns `soemdsp` and `soemdsp-sandbox`.
 
+## Attention Convention
+
+When Codex needs to get Architect's attention, put this exact line at the very top of the next report or reply:
+
+```text
+Attention: Architecth
+```
+
+Then leave one blank line before any additional text.
+
+Use this for blockers, ambiguous repo state, unsafe changes, missing files, boundary conflicts, or any issue requiring Architect's explicit attention.
+
 ## Primary Role
 
 Codex executes bounded technical tasks in the `soemdsp` / `soemdsp-sandbox` lane.
