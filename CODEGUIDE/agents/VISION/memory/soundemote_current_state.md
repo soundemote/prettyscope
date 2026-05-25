@@ -236,15 +236,18 @@ Recent proven demos include:
 * manual DSP object block resync demo
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
+* reusable DSP block phase report value type and print helper
 * DSP execution questions doc
 
 Recent completion:
 
 ```
-fe267bb Document DSP execution questions
+b22cb3b Add DSP block phase report value type
 ```
 
-The execution questions doc records scheduler, batch API, and sandbox questions that must be answered before demo-local proofs become production execution machinery.
+`DspBlockPhaseReport` now captures caller-owned preflight/apply/process counts for demos and future sandbox status surfaces.
+
+It is reporting only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 
 No scheduler, production batch API, graph-owned DSP state, plugin/UI code, or Circuit-owned DSP objects were added.
 

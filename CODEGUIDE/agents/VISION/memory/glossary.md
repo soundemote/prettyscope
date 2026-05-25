@@ -478,6 +478,31 @@ Current sequential apply/aggregation demos are caller-owned proofs only.
 
 Do not introduce production batch API without explicit approval.
 
+## DSP Block Phase Report
+
+Small runtime DSP report value for caller-owned block proofs.
+
+Captures:
+
+* preflight ok
+* apply ok
+* process ok
+* bindings checked
+* preflight messages
+* parameters applied
+* apply messages
+* samples processed
+
+It is reporting/status only.
+
+It should not:
+
+* own DSP objects
+* own DSP memory
+* process audio
+* become a scheduler
+* become a production batch API
+
 ## SignalFrame
 
 Asciiscope signal frame concept.

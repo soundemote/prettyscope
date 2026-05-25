@@ -91,6 +91,7 @@ Recent completed work:
 * manual DSP object block resync demo
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
+* reusable DSP block phase report value type and print helper
 * DSP execution questions doc
 
 Important recent repo event:
@@ -104,28 +105,33 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document DSP execution questions.
+Add DSP block phase report value type.
 ```
 
 Task goal:
 
 ```
-Record the scheduler, batch API, and sandbox questions that must be answered
-before the demo-local proofs become production execution machinery.
+Promote the demo-local block phase status shape into a tiny reusable DSP-side
+report value and print helper, while keeping phase execution caller-owned.
 ```
 
-Expected doc:
+Added:
 
-* `docs/DSP_EXECUTION_QUESTIONS.md`
-* names scheduler questions
-* names batch API questions
-* names sandbox questions
-* preserves the current no-scheduler/no-production-batch boundary
+* `include/soemdsp/runtime/dsp/DspBlockPhaseReport.hpp`
+* `include/soemdsp/runtime/dsp/PrintDspBlockPhaseReport.hpp`
+* `runtime_dsp_object_block_phase_report_demo` now uses the shared report type
+
+Boundary preserved:
+
+* report type only
+* no executor
+* no scheduler
+* no production batch API
 
 Completion commit:
 
 ```
-fe267bb Document DSP execution questions
+b22cb3b Add DSP block phase report value type
 ```
 
 Reported repo status:
