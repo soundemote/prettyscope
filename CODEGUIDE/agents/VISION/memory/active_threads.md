@@ -91,6 +91,7 @@ Recent completed work:
 * manual DSP object block resync demo
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
+* DSP execution questions doc
 
 Important recent repo event:
 
@@ -103,53 +104,34 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add DSP block phase report demo.
+Document DSP execution questions.
 ```
 
 Task goal:
 
 ```
-Prove that a demo-local phase report can summarize caller-owned preflight,
-apply, and process counts around a block pass without adding a scheduler.
+Record the scheduler, batch API, and sandbox questions that must be answered
+before the demo-local proofs become production execution machinery.
 ```
 
-Expected demo:
+Expected doc:
 
-* TinyGainDsp
-* TinyBiasDsp
-* gain = 4.0
-* bias = 0.5
-* input block:
-
-  * 0.0
-  * 0.25
-  * 0.5
-  * 1.0
-* phase report:
-
-  * preflight ok: true
-  * apply ok: true
-  * process ok: true
-  * bindings checked: 2
-  * parameters applied: 2
-  * samples processed: 4
-* output block:
-
-  * 0.5
-  * 1.5
-  * 2.5
-  * 4.5
+* `docs/DSP_EXECUTION_QUESTIONS.md`
+* names scheduler questions
+* names batch API questions
+* names sandbox questions
+* preserves the current no-scheduler/no-production-batch boundary
 
 Completion commit:
 
 ```
-6d9a5b8 Add DSP block phase report demo
+fe267bb Document DSP execution questions
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 4 commits
+* ahead of origin by 5 commits
 * behind origin by 0 commits
 * conflicts: none
 

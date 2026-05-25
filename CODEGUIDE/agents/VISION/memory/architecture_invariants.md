@@ -484,7 +484,7 @@ aaf4d9b Add manual DSP object block resync demo
 Latest direct `soemdsp` proof:
 
 ```
-6d9a5b8 Add DSP block phase report demo
+fe267bb Document DSP execution questions
 ```
 
 Console and Tracer report by milestone/boundary.

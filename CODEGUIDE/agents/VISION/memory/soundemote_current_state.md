@@ -236,23 +236,15 @@ Recent proven demos include:
 * manual DSP object block resync demo
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
+* DSP execution questions doc
 
 Recent completion:
 
 ```
-6d9a5b8 Add DSP block phase report demo
+fe267bb Document DSP execution questions
 ```
 
-The block phase report demo proves a caller-owned block pass can summarize preflight, apply, and process phases without introducing a scheduler or reusable executor:
-
-```
-preflight ok: true
-apply ok: true
-process ok: true
-bindings checked: 2
-parameters applied: 2
-samples processed: 4
-```
+The execution questions doc records scheduler, batch API, and sandbox questions that must be answered before demo-local proofs become production execution machinery.
 
 No scheduler, production batch API, graph-owned DSP state, plugin/UI code, or Circuit-owned DSP objects were added.
 
