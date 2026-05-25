@@ -93,6 +93,7 @@ Recent completed work:
 * manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
 * manual DSP object block preflight recovery demo
+* manual DSP object block null-memory recovery demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
@@ -112,21 +113,19 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document null DSP memory preflight guard.
+Document DSP block null memory recovery.
 ```
 
 Task goal:
 
 ```
-Record the target-validation guard that rejects null DSP memory slots before
-apply writes any external memory.
+Record the block-level recovery proof for a failed null-memory preflight.
 ```
 
 Added:
 
-* `ValidateDspBindingTargets.hpp` rejects null memory slots
-* `runtime_dsp_binding_apply_null_memory_all_or_nothing_demo`
-* `docs/DSP_EXECUTION_QUESTIONS.md` records the null-memory preflight guard
+* `runtime_dsp_object_block_null_memory_recovery_demo`
+* `docs/DSP_EXECUTION_QUESTIONS.md` records block null-memory recovery
 
 Boundary preserved:
 
@@ -138,7 +137,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-a7d6f95 Document null DSP memory preflight guard
+2273f3e Document DSP block null memory recovery
 ```
 
 Reported repo status:

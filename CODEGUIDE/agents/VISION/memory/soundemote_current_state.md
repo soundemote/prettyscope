@@ -238,6 +238,7 @@ Recent proven demos include:
 * manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
 * manual DSP object block preflight recovery demo
+* manual DSP object block null-memory recovery demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
@@ -249,10 +250,10 @@ Recent proven demos include:
 Recent completion:
 
 ```
-a7d6f95 Document null DSP memory preflight guard
+2273f3e Document DSP block null memory recovery
 ```
 
-DSP binding target validation now rejects null memory slots before apply writes any external memory. `runtime_dsp_binding_apply_null_memory_all_or_nothing_demo` proves an earlier valid memory slot remains unchanged when a later binding has null memory.
+`runtime_dsp_object_block_null_memory_recovery_demo` proves caller-owned block processing can fail preflight on a null memory slot without writing memory or processing samples, then recover after the memory slot is corrected.
 
 It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 
