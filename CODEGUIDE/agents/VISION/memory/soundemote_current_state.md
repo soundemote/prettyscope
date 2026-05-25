@@ -222,6 +222,7 @@ Recent proven demos include:
 * null memory slot failure
 * null DSP memory target validation before apply writes
 * unsupported DSP target kind validation before apply writes
+* DSP binding validation demo now distinguishes unsupported target-kind validation from null-memory validation
 * apply result text export
 * contract-style DSP object sync
 * repeated resync after Circuit parameter change
@@ -251,10 +252,10 @@ Recent proven demos include:
 Recent completion:
 
 ```
-1fbb94f Document unsupported DSP target boundary
+7c7da00 Document DSP binding validation demo cleanup
 ```
 
-Unsupported DSP target kinds remain metadata-only and now fail validation before apply writes any external memory. `runtime_dsp_binding_apply_unsupported_target_all_or_nothing_demo` proves earlier valid memory remains unchanged.
+`runtime_dsp_binding_validation_demo` now uses explicit non-null memory slots and separately reports unsupported target-kind validation, avoiding accidental null-memory noise in the inspection report.
 
 It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 

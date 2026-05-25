@@ -87,6 +87,7 @@ Recent completed work:
 * DSP binding apply batch aggregate demo
 * DSP binding null memory all-or-nothing apply demo
 * DSP binding unsupported target all-or-nothing apply demo
+* DSP binding validation demo now distinguishes unsupported target-kind validation from null-memory validation
 * manual DSP object processing chain demo
 * manual DSP object processing chain resync demo
 * manual DSP object block processing demo
@@ -114,20 +115,20 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document unsupported DSP target boundary.
+Document DSP binding validation demo cleanup.
 ```
 
 Task goal:
 
 ```
-Record that unsupported DSP target kinds are metadata-only and fail validation
-before apply writes external memory.
+Keep the validation demo report precise after null-memory validation became
+stricter.
 ```
 
 Added:
 
-* `runtime_dsp_binding_apply_unsupported_target_all_or_nothing_demo`
-* `docs/DSP_EXECUTION_QUESTIONS.md` records unsupported target boundary
+* `runtime_dsp_binding_validation_demo`
+* `docs/STATUS.md` records the cleanup
 
 Boundary preserved:
 
@@ -139,7 +140,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-1fbb94f Document unsupported DSP target boundary
+7c7da00 Document DSP binding validation demo cleanup
 ```
 
 Reported repo status:
