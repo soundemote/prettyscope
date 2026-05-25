@@ -481,6 +481,12 @@ Vision's first direct `soemdsp` proof after takeover was:
 aaf4d9b Add manual DSP object block resync demo
 ```
 
+Latest direct `soemdsp` proof:
+
+```
+b1a548d Add DSP block preflight failure demo
+```
+
 Console and Tracer report by milestone/boundary.
 
 DIRECTOR mostly speaks directly with Architect.

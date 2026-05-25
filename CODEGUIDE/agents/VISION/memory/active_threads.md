@@ -89,6 +89,7 @@ Recent completed work:
 * manual DSP object processing chain resync demo
 * manual DSP object block processing demo
 * manual DSP object block resync demo
+* manual DSP object block preflight failure demo
 
 Important recent repo event:
 
@@ -107,18 +108,19 @@ Add manual DSP object block resync demo.
 Task goal:
 
 ```
-Prove that changed Circuit parameters can be resynced through DSP binding into
-external memory before another caller-owned DSP object block-processing pass.
+Prove that demo-local preflight validation can catch an invalid block resync
+target before external memory is written or a second block is processed.
 ```
 
 Expected demo:
 
 * TinyGainDsp
 * TinyBiasDsp
-* first gain = 2.0
-* first bias = 0.25
-* second gain = 4.0
-* second bias = 0.5
+* first synced gain = 2.0
+* first synced bias = 0.25
+* changed Circuit gain = 4.0
+* changed Circuit bias = 0.5
+* invalid second bias binding target
 * input block:
 
   * 0.0
@@ -131,23 +133,24 @@ Expected demo:
   * 0.75
   * 1.25
   * 2.25
-* second output block:
+* preflight result:
 
-  * 0.5
-  * 1.5
-  * 2.5
-  * 4.5
+  * gain preflight ok: true
+  * bias preflight ok: false
+  * combined preflight ok: false
+  * second block skipped: true
+  * memory remains gain 2.0 / bias 0.25
 
 Completion commit:
 
 ```
-aaf4d9b Add manual DSP object block resync demo
+b1a548d Add DSP block preflight failure demo
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 2 commits
+* ahead of origin by 3 commits
 * behind origin by 0 commits
 * conflicts: none
 

@@ -234,18 +234,20 @@ Recent proven demos include:
 * manual DSP object processing chain resync demo
 * manual DSP object block processing demo
 * manual DSP object block resync demo
+* manual DSP object block preflight failure demo
 
 Recent completion:
 
 ```
-aaf4d9b Add manual DSP object block resync demo
+b1a548d Add DSP block preflight failure demo
 ```
 
-The block resync demo proves changed Circuit parameters can be reapplied through DSP binding into external memory before another caller-owned sample block loop:
+The block preflight failure demo proves caller-owned validation can catch an invalid block resync target before writing external memory or running the second block pass:
 
 ```
-first output:  0.25 0.75 1.25 2.25
-second output: 0.5 1.5 2.5 4.5
+combined preflight ok: false
+second block skipped: true
+memory after preflight: gain 2, bias 0.25
 ```
 
 No scheduler, production batch API, graph-owned DSP state, plugin/UI code, or Circuit-owned DSP objects were added.
