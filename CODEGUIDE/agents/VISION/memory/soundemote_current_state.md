@@ -236,6 +236,7 @@ Recent proven demos include:
 * manual DSP object block resync demo
 * manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
+* manual DSP object block preflight recovery demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
@@ -247,10 +248,10 @@ Recent proven demos include:
 Recent completion:
 
 ```
-7b252a9 Document DSP block resync phase reporting
+a9ebc72 Document DSP block preflight recovery proof
 ```
 
-`docs/DSP_EXECUTION_QUESTIONS.md` now records that caller-owned resync demos can report each block pass independently before and after parameter changes.
+`runtime_dsp_object_block_preflight_recovery_demo` proves a caller can fail preflight safely, keep external memory unchanged, correct the binding, and run a later successful block pass.
 
 It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 

@@ -91,6 +91,7 @@ Recent completed work:
 * manual DSP object block resync demo
 * manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
+* manual DSP object block preflight recovery demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
 * DSP block phase report text export helper
@@ -110,19 +111,20 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document DSP block resync phase reporting.
+Document DSP block preflight recovery proof.
 ```
 
 Task goal:
 
 ```
-Update the execution gate doc after the resync demo learned to emit separate
-phase reports for first and resynced block passes.
+Record the recovery proof after a failed block preflight: the caller can fix
+the binding and run a later successful pass.
 ```
 
 Added:
 
-* `docs/DSP_EXECUTION_QUESTIONS.md` records independent resync block pass reporting
+* `runtime_dsp_object_block_preflight_recovery_demo`
+* `docs/DSP_EXECUTION_QUESTIONS.md` records recovery after failed preflight
 
 Boundary preserved:
 
@@ -134,7 +136,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-7b252a9 Document DSP block resync phase reporting
+a9ebc72 Document DSP block preflight recovery proof
 ```
 
 Reported repo status:
