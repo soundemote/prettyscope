@@ -89,6 +89,7 @@ Recent completed work:
 * manual DSP object processing chain resync demo
 * manual DSP object block processing demo
 * manual DSP object block resync demo
+* manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
@@ -108,25 +109,25 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Clarify DSP block phase report boundaries.
+Report DSP block resync phases.
 ```
 
 Task goal:
 
 ```
-Update the DSP execution gate doc so reusable reporting/export helpers are
-allowed while scheduler/executor/batch extraction remains blocked.
+Make the block resync demo emit separate phase reports for the first block
+pass and the resynced block pass.
 ```
 
 Added:
 
-* `docs/DSP_EXECUTION_QUESTIONS.md` now names printable/writable block phase reports
-* skipped processing is documented as visible status
-* reporting/export helpers are allowed only when they do not own or execute DSP phases
+* `runtime_dsp_object_block_resync_demo` uses `DspBlockPhaseReport`
+* first block pass reports preflight/apply/process counts
+* resynced block pass reports preflight/apply/process counts
+* generated report text files are written when the demo runs
 
 Boundary preserved:
 
-* docs only
 * reporting/export only
 * no executor
 * no scheduler
@@ -135,7 +136,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-a4b62da Clarify DSP block phase report boundaries
+69afc44 Report DSP block resync phases
 ```
 
 Reported repo status:

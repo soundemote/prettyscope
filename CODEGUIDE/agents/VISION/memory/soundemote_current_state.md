@@ -234,6 +234,7 @@ Recent proven demos include:
 * manual DSP object processing chain resync demo
 * manual DSP object block processing demo
 * manual DSP object block resync demo
+* manual DSP object block resync demo now reports separate first/resynced block phases through DspBlockPhaseReport
 * manual DSP object block preflight failure demo
 * manual DSP object block phase report demo
 * reusable DSP block phase report value type and print helper
@@ -245,10 +246,10 @@ Recent proven demos include:
 Recent completion:
 
 ```
-a4b62da Clarify DSP block phase report boundaries
+69afc44 Report DSP block resync phases
 ```
 
-`docs/DSP_EXECUTION_QUESTIONS.md` now records that block phase reports can be printed/written and can show skipped processing, while scheduler/executor/batch extraction remains blocked.
+`runtime_dsp_object_block_resync_demo` now emits separate `DspBlockPhaseReport` status for the initial block pass and the resynced block pass.
 
 It remains reporting/export only. It does not run DSP, own DSP objects, own memory, introduce a scheduler, or introduce a production batch API.
 
