@@ -96,8 +96,16 @@ Vision time-awareness rule:
 * Vision is aware of time only when checking a clock or when Architect reports time
 * whenever Architect gives an important time/runway update, record it in durable memory
 * latest Architect time update: Day 2, 11:39 PM
+* Day 2 means 58 days left
 * local machine clock near that update: 2026-05-25 23:40:20 -07:00
 * Architect may continue having Vision work through part of the night because continuing can be driven by simple `continue` prompts
+
+Vision / business boundary:
+
+* the business pressure is real: Soundemote needs to become a functional business so Architect does not have to take another low-paying job and waste life potential
+* DIRECTOR and other business/money agents own business strategy, money path, offers, audience, and public strategy
+* Vision should not absorb the business lane
+* Vision should stay focused on `soemdsp`, `soemdsp-sandbox`, and the technical proof ladder unless Architect explicitly asks for cross-agent alignment
 
 Vision thought-processing stance:
 
@@ -436,6 +444,13 @@ Normal routing:
 
 ```
 DIRECTOR mostly speaks directly with Architect.
+```
+
+Vision boundary:
+
+```
+DIRECTOR owns business/money strategy.
+Vision stays focused on soemdsp / soemdsp-sandbox technical proof unless Architect explicitly asks for alignment.
 ```
 
 Current strategy:

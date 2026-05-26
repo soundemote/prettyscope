@@ -9,9 +9,13 @@ This file exists so Vision can reload the current Soundemote operating map witho
 Current push context:
 
 * 58 days left in the current runway/push
+* Day 2 means 58 days left
 * Architect is actively coordinating multiple agents
 * Codex is the main big-ticket technical focus
 * Console, Tracer, DIRECTOR, and Void are active but should not overload Vision routing
+* the business pressure is real: Soundemote needs to become a functional business so Architect does not have to take another low-paying job and waste life potential
+* Vision should remember that business/money is handled primarily by DIRECTOR and other business agents
+* Vision's job is to keep worrying about `soemdsp`, `soemdsp-sandbox`, and the technical proof ladder
 * Architect should not be asked for hands-on testing of CLI demos; save hands-on testing requests for mouse interaction, audible output, or visual inspection
 * Architect should keep being used for difficult-to-confirm widget interactions, browser-native media behavior, mouse behavior, and audible/visual matching
 * Vision is aware of time only when checking a clock or when Architect reports time; record important time/runway updates here
