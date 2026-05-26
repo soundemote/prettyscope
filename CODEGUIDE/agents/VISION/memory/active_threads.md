@@ -178,6 +178,7 @@ Recent completed work:
 * sandbox server sends no-store headers for local JSON and file responses
 * sandbox shell displays browser-side manifest response load time
 * sandbox shell displays manifest response cache headers in the Source panel
+* sandbox shell displays the artifact reachability method as `HEAD`
 
 Important recent repo event:
 
@@ -190,31 +191,28 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show manifest cache headers.
+Show artifact check method.
 ```
 
 Task goal:
 
 ```
-Make the current manifest response cache policy visible in the browser UI so
-no-store behavior is inspectable from the sandbox itself.
+Make the metadata-only artifact reachability check method visible in the browser
+UI so `HEAD` is explicit during hands-on inspection.
 ```
 
 Added:
 
-* Source panel `Cache Control`, `Pragma`, and `Expires` rows
-* browser reads cache headers from the `/api/manifest` response
-* Source status requires the expected no-store/no-cache/0 values
-* error path clears cache header rows to `Unavailable`
-* README note for manifest response cache headers
+* Artifact Coverage `reachability method` row
+* exact `HEAD` expectation for the row
+* README note for visible metadata-only artifact-packet reachability method
 
 Verification note:
 
 * `python -m py_compile server.py` passed
 * browser runtime parsed `public/app.js`
-* live browser Source panel displayed `Cache Control: no-store, max-age=0`, `Pragma: no-cache`, and `Expires: 0`
-* temporary missing-manifest server cleared cache header rows to `Unavailable`
-* live browser returned to `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`
+* live browser Artifact Coverage displayed `reachability method: HEAD`
+* live browser still reported `Artifact Coverage: Complete`, `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -233,7 +231,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-5a35258 Show manifest cache headers
+e106c27 Show artifact check method
 ```
 
 Reported repo status:

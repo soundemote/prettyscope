@@ -303,16 +303,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` server sends no-store headers for local JSON and file responses
 * first `soemdsp-sandbox` shell displays browser-side manifest response load time
 * first `soemdsp-sandbox` shell displays manifest response cache headers in the Source panel
+* first `soemdsp-sandbox` shell displays the artifact reachability method as `HEAD`
 
 Recent completion:
 
 ```
-5a35258 Show manifest cache headers
+e106c27 Show artifact check method
 ```
 
-The first local `soemdsp-sandbox` shell now displays the actual manifest response cache headers in the Source panel, so no-store behavior can be inspected from the browser UI.
+The first local `soemdsp-sandbox` shell now displays `reachability method: HEAD` in Artifact Coverage, making the metadata-only artifact check visible in the browser UI.
 
-Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM showed `Cache Control: no-store, max-age=0`, `Pragma: no-cache`, `Expires: 0`, a temporary missing-manifest server cleared these rows to `Unavailable`, returning to 8765 restored `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, and no browser console errors.
+Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM showed `reachability method: HEAD`, `Artifact Coverage: Complete`, `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, no warning rows, and no browser console errors.
 
 Generated preview screenshot:
 
