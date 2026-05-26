@@ -188,7 +188,7 @@ Recent completed work:
 * sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
-* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, report documents, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
+* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 
 Important recent repo event:
 
@@ -201,33 +201,30 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Expand sandbox smoke test for primary WAV metadata.
+Expand sandbox smoke test for handoff artifact references.
 ```
 
 Task goal:
 
 ```
-Make the primary audio artifact's WAV metadata repeatably checkable against
-the manifest rather than only proving the file is reachable.
+Make handoff artifact references repeatably checkable so the entry point,
+primary audio, artifact links, and WAV metadata path cannot drift silently.
 ```
 
 Added:
 
-* smoke test downloads the primary audio WAV
-* smoke test checks WAV file byte count matches manifest `wav.fileBytes`
-* smoke test parses the WAV with Python stdlib `wave`
-* smoke test checks WAV frames and sample rate match manifest metadata
-* smoke test checks nonzero channel count and 16-bit sample width
-* README smoke-test text now names WAV metadata
+* smoke test checks entry-point artifact link path equals handoff `entryPoint`
+* smoke test checks audio artifact link path equals handoff `primaryAudioArtifact`
+* smoke test checks manifest `wav.path` equals handoff `primaryAudioArtifact`
+* README smoke-test text now names handoff artifact references
 
 Verification note:
 
 * `python -m py_compile scripts/smoke_test.py` passed
 * `git diff --check` passed
 * `python scripts/smoke_test.py` passed
-* first smoke run caught that the current manifest has frames/sample-rate/file-bytes but not channel count; smoke test was aligned to the actual contract and checks parsed WAV channel count directly
 * smoke test did not leave a test server running; only the live 8765 sandbox server remained
-* browser remained healthy at 8765 with `Manifest: OK`, `Waveform: Drawn`, waveform sample rate `44100`, channels `1`, bit depth `16`, frames `44100`, and artifact packet `7/7 OK 92.88 KB`
+* browser remained healthy at 8765 with `Manifest: OK`, audio title `runtime_dsp_object_bound_wav_resync_demo.wav`, audio artifact row path `runtime_dsp_object_bound_wav_resync_demo.wav`, entry-point row path `runtime_dsp_object_bound_wav_resync_demo.html`, `Waveform: Drawn`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -246,7 +243,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-aa641ae Check primary WAV metadata in smoke test
+da49fc7 Check handoff artifact references in smoke test
 ```
 
 Reported repo status:
