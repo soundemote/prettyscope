@@ -154,7 +154,7 @@ Recent completed work:
 * bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 * docs/SANDBOX_HANDOFF_CONSUMER_CHECKLIST.md records accept/display/reject rules for a future read-only sandbox manifest consumer
 * first local `soemdsp-sandbox` repo exists as a read-only manifest shell
-* sandbox shell displays status, contract, boundary flags, phases, artifact links, artifact reachability, and a browser-native WAV player
+* sandbox shell displays status, contract, boundary flags, phases, artifact links, artifact reachability, artifact-packet status, and a browser-native WAV player
 * sandbox shell visibly applies the consumer checklist and shows warning states for unsafe/unsupported manifest values
 * sandbox shell draws a read-only waveform from the generated WAV
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase view controls
@@ -177,25 +177,27 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show artifact reachability status.
+Show artifact packet status.
 ```
 
 Task goal:
 
 ```
-Make the read-only sandbox prove that every manifest artifact link is actually
-reachable through the sandbox server, not merely named in the JSON manifest.
+Promote per-artifact reachability checks into one packet-level health signal
+so the sandbox can say whether the whole generated inspection packet resolved.
 ```
 
 Added:
 
-* per-artifact reachability status
-* artifact byte-size display from served Content-Length
-* warning status for missing/unreachable artifacts
-* README note for reachable artifact links
+* Artifacts heading status pill
+* aggregate OK count
+* aggregate served byte count
+* README note for artifact-packet reachability
 
 Verification note:
 
+* live browser reported artifact packet status `7/7 OK 92.88 KB`
+* packet status used `pill good`
 * live browser reported 7 artifact rows
 * all 7 artifact rows resolved to `OK` with byte counts
 * zero artifact rows remained in `Checking`
@@ -220,7 +222,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-3749269 Show artifact reachability status
+6ba3c1d Show artifact packet status
 ```
 
 Reported repo status:

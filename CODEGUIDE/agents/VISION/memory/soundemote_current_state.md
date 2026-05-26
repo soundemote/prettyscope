@@ -284,6 +284,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell is a Python-stdlib server plus static browser UI
 * first `soemdsp-sandbox` shell reads the generated `soemdsp` manifest and serves the WAV/artifact packet read-only
 * first `soemdsp-sandbox` shell checks artifact reachability and displays served byte counts for every manifest artifact link
+* first `soemdsp-sandbox` shell displays aggregate artifact-packet status with OK count and total served bytes
 * first `soemdsp-sandbox` shell visibly applies the read-only consumer checklist and surfaces unsafe/unsupported manifest states as warnings
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase view controls
@@ -298,12 +299,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-3749269 Show artifact reachability status
+6ba3c1d Show artifact packet status
 ```
 
-The first local `soemdsp-sandbox` shell now checks every manifest artifact link through the sandbox server and displays `OK` plus served byte counts for reachable artifacts.
+The first local `soemdsp-sandbox` shell now promotes artifact reachability into an aggregate packet health signal in the Artifacts heading.
 
-Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported 7 artifact rows, all 7 resolved to `OK` with byte counts, zero artifact rows remained in `Checking`, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, no horizontal overflow, and no console errors.
+Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported artifact packet status `7/7 OK 92.88 KB`, `pill good`, 7 artifact rows, all 7 rows resolved to `OK` with byte counts, zero rows remained in `Checking`, `Waveform: Drawn`, `Checklist: Accepted`, zero warnings, no horizontal overflow, and no console errors.
 
 Generated preview screenshot:
 

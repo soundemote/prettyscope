@@ -148,6 +148,7 @@ Current first shell:
 * consumes generated `soemdsp` bound WAV resync manifest
 * displays status, boundary flags, phases, artifact links, and source paths
 * checks artifact reachability and displays served byte counts for manifest artifact links
+* displays aggregate artifact-packet status with OK count and total served bytes
 * visibly applies the read-only consumer checklist
 * displays first/second frequency and amplitude from the generated summary artifact
 * displays frequency/amplitude resync deltas and ratios from the generated summary artifact
