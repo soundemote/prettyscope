@@ -132,6 +132,7 @@ Recent completed work:
 * root-level runtime demo reports and inspection artifacts are gitignored so hands-on demo runs do not dirty source status
 * bound DSP object WAV resync manifest includes a demo-local sandbox handoff contract naming the HTML entry point and WAV artifact for mouse-and-ears inspection
 * docs/SANDBOX_HANDOFF_CONTRACT.md documents the versioned read-only sandbox handoff contract and its non-meanings
+* bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 
 Important recent repo event:
 
@@ -144,24 +145,22 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Document sandbox handoff contract.
+Add display links to sandbox handoff manifest.
 ```
 
 Task goal:
 
 ```
-Make the demo-local sandbox handoff versioned and documented so a future
-sandbox can safely read the artifact packet without inferring execution,
-serialization, scheduler, or ownership behavior.
+Let a future sandbox shell render the local inspection packet from the
+manifest without hardcoding artifact filenames, while keeping the links
+read-only inspection metadata.
 ```
 
 Added:
 
-* `sandboxHandoff.contract = soemdsp-demo-local-sandbox-handoff`
-* `sandboxHandoff.contractVersion = 1`
-* `docs/SANDBOX_HANDOFF_CONTRACT.md`
-* safe consumer behavior notes
-* non-meaning notes for project serialization, scheduler, audio engine, plugin API, runtime ownership, and DSP execution
+* `artifactLinks` array in the generated manifest
+* display labels, kinds, and paths for HTML, WAV, manifest, summary, WAV report, and phase reports
+* `docs/SANDBOX_HANDOFF_CONTRACT.md` notes for display-ready links
 * status/plan/execution-question doc notes
 
 Verification note:
@@ -169,7 +168,7 @@ Verification note:
 * full Debug build passed
 * bound WAV resync demo ran successfully
 * generated manifest parsed as JSON
-* manifest reported `allOk: true`, contract name, contract version 1, HTML entry point, WAV artifact, mouse-and-ears inspection mode, and false scheduler/audio-engine/serialization flags
+* manifest reported `allOk: true`, 7 artifact links, HTML first link, WAV audio link, 2 phase links, and false scheduler ownership
 
 Boundary preserved:
 
@@ -184,13 +183,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-4213614 Document sandbox handoff contract
+bae3c41 Add display links to sandbox handoff manifest
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 5 commits
+* ahead of origin by 6 commits
 * behind origin by 0 commits
 * conflicts: none
 

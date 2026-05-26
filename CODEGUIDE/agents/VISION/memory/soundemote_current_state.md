@@ -268,16 +268,17 @@ Recent proven demos include:
 * root-level runtime demo reports and inspection artifacts are gitignored so hands-on demo runs do not dirty source status
 * bound DSP object WAV resync manifest includes a demo-local sandbox handoff contract naming the HTML entry point and WAV artifact for mouse-and-ears inspection
 * docs/SANDBOX_HANDOFF_CONTRACT.md documents the versioned read-only sandbox handoff contract and its non-meanings
+* bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 
 Recent completion:
 
 ```
-4213614 Document sandbox handoff contract
+bae3c41 Add display links to sandbox handoff manifest
 ```
 
-The bound WAV resync demo manifest now includes a versioned `sandboxHandoff` object with `contract = soemdsp-demo-local-sandbox-handoff` and `contractVersion = 1`. `docs/SANDBOX_HANDOFF_CONTRACT.md` documents what a future sandbox may read and what it must not infer from the manifest.
+The bound WAV resync demo manifest now includes an `artifactLinks` array with display labels, kinds, and paths for the generated HTML report, WAV, manifest, summary, WAV metadata report, and phase reports. This lets a future sandbox shell render the local inspection packet without hardcoding artifact filenames.
 
-Verification passed with a full Debug build, a bound WAV resync demo run, and JSON parsing of the generated manifest. The manifest reported `allOk: true`, the contract name, contract version 1, the HTML entry point, the WAV artifact, mouse-and-ears inspection mode, and false scheduler/audio-engine/serialization flags.
+Verification passed with a full Debug build, a bound WAV resync demo run, and JSON parsing of the generated manifest. The manifest reported `allOk: true`, 7 artifact links, the HTML first link, the WAV audio link, 2 phase links, and false scheduler ownership.
 
 Codex in-app browser blocks direct `file://` navigation, so verify generated HTML by content inspection unless Architect asks to open it manually or through another approved local serving path.
 
