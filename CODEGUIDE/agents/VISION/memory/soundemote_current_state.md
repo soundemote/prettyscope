@@ -313,17 +313,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
-* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, report documents, primary audio reachability, expected error/forbidden responses, and no-store headers
+* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, report documents, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 
 Recent completion:
 
 ```
-9e0cfd6 Check report documents in smoke test
+aa641ae Check primary WAV metadata in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now covers the report document artifacts used by the browser Documents panel.
+The first local `soemdsp-sandbox` repo smoke test now checks the primary audio WAV metadata against the manifest.
 
-Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks report document links with HTTP `GET`, requires no-store headers, nonempty text summary/WAV report/phase reports, and parseable artifact manifest JSON; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Reports: 5 Loaded`, five report buttons, nonempty report viewer, artifact packet `7/7 OK 92.88 KB`, `Waveform: Drawn`, and no console errors.
+Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now downloads the primary audio WAV, checks file byte count against manifest `wav.fileBytes`, parses the WAV with Python stdlib `wave`, checks frames and sample rate against manifest metadata, and checks nonzero channel count plus 16-bit sample width; the first smoke run caught that the current manifest does not carry channel count, so the smoke test was aligned to the actual contract and checks parsed WAV channel count directly; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Waveform: Drawn`, waveform sample rate `44100`, channels `1`, bit depth `16`, frames `44100`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
 
 Generated preview screenshot:
 
