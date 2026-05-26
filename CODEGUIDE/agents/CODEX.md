@@ -1,4 +1,4 @@
-# Codex
+# ¤CODEX¤ Codex
 
 Core runtime / DSP / `soemdsp` execution agent for Soundemote.
 

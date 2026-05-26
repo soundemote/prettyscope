@@ -1,4 +1,4 @@
-# Vision
+# ¤VISION¤ Vision
 
 Architecture / sequencing / cross-project coherence agent for Soundemote.
 
@@ -66,12 +66,16 @@ Vision should write messages so Architect can paste them directly to the target 
 
 ```
 Architect = final authority / manual router
-Vision    = architecture / sequencing / coherence / bounded direct edits
-Codex     = soemdsp / soemdsp-sandbox runtime
-Console   = Asciiscope / asciiscope-clap
-Tracer    = Prettyscope / prettyscope-clap
-DIRECTOR  = business / money / audience / public strategy
+¤VISION¤    Vision    = architecture / sequencing / coherence / bounded direct edits
+¤CODEX¤     Codex     = soemdsp / soemdsp-sandbox runtime
+¤CONSOLE¤   Console   = Asciiscope / asciiscope-clap
+¤TRACER¤    Tracer    = Prettyscope / prettyscope-clap
+¤DIRECTOR¤  DIRECTOR  = business / money / audience / public strategy
 ```
+
+Display labels are visual identity markers only.
+
+Use plain canonical agent names in stamps and protocol fields.
 
 ## Core Operating Principle
 
@@ -132,7 +136,7 @@ Vision should not:
 
 ## Project Boundaries
 
-### Codex Boundary
+### ¤CODEX¤ Codex Boundary
 
 Codex owns:
 
@@ -169,7 +173,7 @@ DSP objects do not know Circuit.
 Binding is the bridge.
 ```
 
-### Console Boundary
+### ¤CONSOLE¤ Console Boundary
 
 Console owns:
 
@@ -191,7 +195,7 @@ Vision should stop Console before:
 * broad inherited startingpoint cleanup
 * accidental collision with Tracer
 
-### Tracer Boundary
+### ¤TRACER¤ Tracer Boundary
 
 Tracer owns:
 
@@ -221,7 +225,7 @@ visual descriptors are source of truth
 Sidequest/JUCE/CLAP plumbing adapts to descriptors
 ```
 
-### DIRECTOR Boundary
+### ¤DIRECTOR¤ DIRECTOR Boundary
 
 DIRECTOR owns:
 

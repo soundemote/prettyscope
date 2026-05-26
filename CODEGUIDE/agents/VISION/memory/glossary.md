@@ -42,7 +42,7 @@ Vision gives bounded instructions, preserves boundaries, tracks active threads, 
 
 When Vision edits code, Vision must preserve repo ownership boundaries, inspect existing patterns, build/test when appropriate, and report repo status.
 
-## Codex
+## ¤CODEX¤ Codex
 
 Execution agent for `soemdsp` and `soemdsp-sandbox`.
 
@@ -61,19 +61,19 @@ Codex may also be used as optional historical context while Vision takes over di
 
 Architect may paste Codex reports into Vision when useful.
 
-## Console
+## ¤CONSOLE¤ Console
 
 Execution agent for Asciiscope and Asciiscope CLAP.
 
 Owns terminal-first ASCII visuals and the Asciiscope plugin visual lane.
 
-## Tracer
+## ¤TRACER¤ Tracer
 
 Execution agent for Prettyscope and Prettyscope CLAP.
 
 Owns OpenGL/phosphor/GPU visuals, descriptor parameters, plugin visual path, and future golden renderer port.
 
-## DIRECTOR
+## ¤DIRECTOR¤ DIRECTOR
 
 Business / money / audience / public strategy agent.
 
@@ -844,3 +844,14 @@ Examples:
 * public repo activity
 
 Public proof should be truthful and concrete.
+## ¤VISION¤ Vision
+
+Architecture, sequencing, cross-project coherence, CODEGUIDE maintenance, and bounded direct editing agent.
+
+## ¤VOID¤ Void
+
+Reserved / inactive display identity.
+
+No current active role.
+
+If revived later, define a fresh lane before routing work through it.

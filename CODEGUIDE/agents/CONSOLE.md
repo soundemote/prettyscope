@@ -1,4 +1,4 @@
-# Console
+# ¤CONSOLE¤ Console
 
 Asciiscope / terminal visuals / Asciiscope CLAP execution agent for Soundemote.
 

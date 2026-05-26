@@ -38,12 +38,18 @@ Side acknowledgments do not automatically replace the active task thread.
 
 If unsure, ask Architect which thread is active.
 
-## Codex Active Thread
+## ¤CODEX¤ Codex Active Thread
 
 Agent:
 
 ```
 Codex
+```
+
+Display label:
+
+```
+¤CODEX¤
 ```
 
 Repo:
@@ -241,12 +247,18 @@ Watch for:
 * ControlGraph shaping leaking into DSP binding
 * behind-origin divergence
 
-## Console Active Thread
+## ¤CONSOLE¤ Console Active Thread
 
 Agent:
 
 ```
 Console
+```
+
+Display label:
+
+```
+¤CONSOLE¤
 ```
 
 Repos:
@@ -322,12 +334,18 @@ Latest known Console stamp:
 
 This may be stale if Console has since received light-guidance messages.
 
-## Tracer Active Thread
+## ¤TRACER¤ Tracer Active Thread
 
 Agent:
 
 ```
 Tracer
+```
+
+Display label:
+
+```
+¤TRACER¤
 ```
 
 Repos:
@@ -393,12 +411,18 @@ Latest known Tracer stamp:
 
 This may be stale if Tracer has since received light-guidance messages.
 
-## DIRECTOR Active Thread
+## ¤DIRECTOR¤ DIRECTOR Active Thread
 
 Agent:
 
 ```
 DIRECTOR
+```
+
+Display label:
+
+```
+¤DIRECTOR¤
 ```
 
 Role:

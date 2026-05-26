@@ -82,6 +82,23 @@ Do not invent alternate names in stamps.
 
 Use `DIRECTOR` in all caps.
 
+## Display Labels
+
+Agent display labels use `¤NAME¤` in prose and dashboards:
+
+```text
+¤VISION¤
+¤CODEX¤
+¤CONSOLE¤
+¤TRACER¤
+¤DIRECTOR¤
+¤VOID¤ reserved / inactive
+```
+
+Do not use display labels in stamps.
+
+Stamps use plain canonical names only.
+
 ## Received Line
 
 The `received` line repeats the stamp from the message being answered.

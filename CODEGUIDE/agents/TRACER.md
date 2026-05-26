@@ -1,4 +1,4 @@
-# Tracer
+# ¤TRACER¤ Tracer
 
 Prettyscope / OpenGL / phosphor / GPU visualizer execution agent for Soundemote.
 

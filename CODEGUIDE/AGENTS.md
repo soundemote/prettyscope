@@ -30,12 +30,31 @@ Agents may coordinate, but they should not blur ownership unless Architect or Vi
 
 ```text
 Architect = final authority
-Vision    = architecture / sequencing / coherence / bounded direct edits
-Codex     = core runtime / DSP / soemdsp
-Console   = Asciiscope / terminal visuals / Asciiscope CLAP
-Tracer    = Prettyscope / OpenGL / Prettyscope CLAP
-DIRECTOR  = business / money / audience / public strategy
-````
+¤VISION¤    Vision    = architecture / sequencing / coherence / bounded direct edits
+¤CODEX¤     Codex     = core runtime / DSP / soemdsp
+¤CONSOLE¤   Console   = Asciiscope / terminal visuals / Asciiscope CLAP
+¤TRACER¤    Tracer    = Prettyscope / OpenGL / Prettyscope CLAP
+¤DIRECTOR¤  DIRECTOR  = business / money / audience / public strategy
+```
+
+## Agent Display Labels
+
+Display labels use `¤NAME¤` to make agent identity visually distinct from repo, product, and code names.
+
+Use display labels in prose, headings, dashboards, and reports when clarity helps.
+
+Use plain canonical names in stamps, filenames, paths, and machine-parsed protocol fields.
+
+Current display labels:
+
+```text
+¤VISION¤
+¤CODEX¤
+¤CONSOLE¤
+¤TRACER¤
+¤DIRECTOR¤
+¤VOID¤ reserved / inactive
+```
 
 ## Architect
 
@@ -54,7 +73,7 @@ Architect may override any agent.
 
 Architect manually copies messages between agents. There is no live shared agent room.
 
-## Vision
+## ¤VISION¤ Vision
 
 Vision owns architecture, sequencing, cross-project coherence, and bounded direct edits when Architect assigns Vision to make them.
 
@@ -91,7 +110,7 @@ Vision should not:
 - let one repo’s architecture leak into another accidentally
 - over-coordinate agents who can work independently inside their lane
 
-## Codex
+## ¤CODEX¤ Codex
 
 Codex owns `soemdsp` and `soemdsp-sandbox`.
 
@@ -138,7 +157,7 @@ next instruction
 
 Codex reports every completed bounded task because `soemdsp` / `soemdsp-sandbox` is the big-ticket runtime spine.
 
-## Console
+## ¤CONSOLE¤ Console
 
 Console owns Asciiscope and Asciiscope CLAP.
 
@@ -176,7 +195,7 @@ Console reports when:
 - Console is about to introduce a shared abstraction
 - Console needs another agent’s work or context
 
-## Tracer
+## ¤TRACER¤ Tracer
 
 Tracer owns Prettyscope and Prettyscope CLAP.
 
@@ -223,7 +242,7 @@ Tracer reports when:
 - Tracer is about to remove inherited synth/MIDI/voice structure
 - Tracer needs another agent’s work or context
 
-## DIRECTOR
+## ¤DIRECTOR¤ DIRECTOR
 
 DIRECTOR owns human relations, business direction, money strategy, audience growth, and public attention.
 
