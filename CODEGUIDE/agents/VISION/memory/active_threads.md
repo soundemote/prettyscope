@@ -176,6 +176,7 @@ Recent completed work:
 * sandbox shell checks artifact reachability with metadata-only HTTP HEAD requests
 * sandbox shell labels artifact table columns: Label, Kind, Path, Modified, Status
 * sandbox server sends no-store headers for local JSON and file responses
+* sandbox shell displays browser-side manifest response load time
 
 Important recent repo event:
 
@@ -188,33 +189,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Serve sandbox responses no-store.
+Show manifest load time.
 ```
 
 Task goal:
 
 ```
-Prevent browser cache from obscuring regenerated local manifests, static app files,
-or served artifacts during repeated sandbox inspection.
+Show when the browser last loaded the current manifest response so repeated
+refreshes have a visible freshness cue in the Source panel.
 ```
 
 Added:
 
-* `Cache-Control: no-store, max-age=0`
-* `Pragma: no-cache`
-* `Expires: 0`
-* no-store headers on JSON responses
-* no-store headers on static and artifact file responses
-* README note for no-store local responses
+* Source panel `Response Loaded` row
+* browser-side manifest load timestamp on successful render
+* error path clears the load timestamp to `Unavailable`
+* README note for browser-side manifest load time
 
 Verification note:
 
 * `python -m py_compile server.py` passed
-* sandbox server restarted on port 8765
-* `/api/manifest` returned status 200 and no-store headers
-* artifact `HEAD` returned status 200, no-store headers, length 88244, and Last-Modified
-* `/public/app.js` `HEAD` returned status 200 and no-store headers
-* live browser still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
+* browser runtime parsed `public/app.js`
+* live browser displayed a `Response Loaded` timestamp
+* pressing Refresh updated the `Response Loaded` timestamp
+* temporary missing-manifest server cleared `Response Loaded` to `Unavailable`
+* live browser returned to `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -233,7 +232,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-078ec95 Serve sandbox responses no-store
+b1ef3d1 Show manifest load time
 ```
 
 Reported repo status:

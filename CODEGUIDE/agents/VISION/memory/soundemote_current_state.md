@@ -301,16 +301,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell checks artifact reachability with metadata-only HTTP HEAD requests
 * first `soemdsp-sandbox` shell labels artifact table columns: Label, Kind, Path, Modified, Status
 * first `soemdsp-sandbox` server sends no-store headers for local JSON and file responses
+* first `soemdsp-sandbox` shell displays browser-side manifest response load time
 
 Recent completion:
 
 ```
-078ec95 Serve sandbox responses no-store
+b1ef3d1 Show manifest load time
 ```
 
-The first local `soemdsp-sandbox` server now sends no-store headers for manifest JSON, static files, and served artifacts so repeated local inspection is less likely to show stale cached data after artifact regeneration.
+The first local `soemdsp-sandbox` shell now displays the browser-side manifest response load time in the Source panel, giving repeated refreshes a visible freshness cue.
 
-Verification passed with `python -m py_compile server.py`, direct header checks, and the live browser at `http://127.0.0.1:8765`: `/api/manifest`, artifact `HEAD`, and `/public/app.js` `HEAD` all returned no-store headers; artifact `HEAD` still returned length 88244 and Last-Modified; browser DOM reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, `Phase Coverage: Complete`, no warning rows, and no browser console errors.
+Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM showed `Response Loaded`, pressing Refresh changed the timestamp, a temporary missing-manifest server cleared it to `Unavailable`, returning to 8765 restored `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, and no browser console errors.
 
 Generated preview screenshot:
 
