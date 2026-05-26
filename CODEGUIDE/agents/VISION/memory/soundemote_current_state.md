@@ -299,16 +299,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell clears stale dependent UI surfaces when manifest loading fails
 * first `soemdsp-sandbox` shell displays served artifact modified times from HTTP Last-Modified metadata
 * first `soemdsp-sandbox` shell checks artifact reachability with metadata-only HTTP HEAD requests
+* first `soemdsp-sandbox` shell labels artifact table columns: Label, Kind, Path, Modified, Status
 
 Recent completion:
 
 ```
-ad47450 Use HEAD for artifact checks
+d962eeb Label artifact table columns
 ```
 
-The first local `soemdsp-sandbox` shell now checks artifact reachability, byte counts, and modified times with HTTP `HEAD`, so packet status inspection no longer downloads each artifact body.
+The first local `soemdsp-sandbox` shell now labels the artifact table columns so served modified times and metadata-only reachability status are easier to read during hands-on inspection.
 
-Verification passed with `python -m py_compile server.py`, direct `HEAD` and `GET` requests for the WAV artifact, and the live browser at `http://127.0.0.1:8765`: `HEAD` returned status 200, content length 88244, and Last-Modified; `GET` still returned status 200 and 88244 bytes; browser DOM reported seven artifact statuses, seven artifact modified timestamps, `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, `Phase Coverage: Complete`, no warning rows, and no browser console errors.
+Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM reported artifact table headings Label, Kind, Path, Modified, Status, seven artifact rows, seven modified cells, seven status cells, `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, no warning rows, and no browser console errors.
 
 Generated preview screenshot:
 

@@ -174,6 +174,7 @@ Recent completed work:
 * sandbox shell clears stale dependent UI surfaces when manifest loading fails
 * sandbox shell displays served artifact modified times from HTTP Last-Modified metadata
 * sandbox shell checks artifact reachability with metadata-only HTTP HEAD requests
+* sandbox shell labels artifact table columns: Label, Kind, Path, Modified, Status
 
 Important recent repo event:
 
@@ -186,32 +187,30 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Use HEAD for artifact checks.
+Label artifact table columns.
 ```
 
 Task goal:
 
 ```
-Check artifact reachability, byte counts, and modified times from response headers
-without downloading whole artifact bodies during packet status inspection.
+Make the expanded artifact table readable during hands-on inspection by labeling
+the modified-time and status columns explicitly.
 ```
 
 Added:
 
-* server supports `HEAD` for `/`, `/public/*`, and `/artifact`
-* static/artifact serving can send headers without writing response bodies
-* artifact reachability checks use `HEAD`
-* GET artifact serving still returns bodies for audio, waveform, document viewing, and manual links
-* README note for metadata-only artifact-packet reachability
+* artifact table header row
+* labels for Label, Kind, Path, Modified, and Status columns
+* alignment styling for Modified and Status headings
+* README note for labeled reachable artifact links
 
 Verification note:
 
 * `python -m py_compile server.py` passed
 * browser runtime parsed `public/app.js`
-* sandbox server restarted on port 8765 with the updated `HEAD` behavior
-* direct `HEAD` request for the WAV artifact returned status 200, content length 88244, and Last-Modified
-* direct `GET` request for the WAV artifact still returned status 200 and 88244 bytes
-* live browser still reported seven artifact statuses, seven modified timestamps, `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
+* live browser reported artifact table headings Label, Kind, Path, Modified, and Status
+* live browser reported seven artifact rows, seven modified cells, and seven status cells
+* live browser still reported `Manifest: OK`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -230,7 +229,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-ad47450 Use HEAD for artifact checks
+d962eeb Label artifact table columns
 ```
 
 Reported repo status:
