@@ -173,6 +173,7 @@ Recent completed work:
 * sandbox shell displays the artifact manifest as pretty-printed read-only JSON in the same document viewer
 * sandbox shell clears stale dependent UI surfaces when manifest loading fails
 * sandbox shell displays served artifact modified times from HTTP Last-Modified metadata
+* sandbox shell checks artifact reachability with metadata-only HTTP HEAD requests
 
 Important recent repo event:
 
@@ -185,30 +186,32 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show artifact modified times.
+Use HEAD for artifact checks.
 ```
 
 Task goal:
 
 ```
-Show served artifact modified times beside reachability checks so stale artifact
-packets are easier to inspect without adding producer logic or runtime ownership.
+Check artifact reachability, byte counts, and modified times from response headers
+without downloading whole artifact bodies during packet status inspection.
 ```
 
 Added:
 
-* server sends `Last-Modified` for served files
-* artifact rows display formatted modified timestamps
-* artifact rows mark missing or invalid modified timestamps as warnings
-* README note for served artifact modified times
+* server supports `HEAD` for `/`, `/public/*`, and `/artifact`
+* static/artifact serving can send headers without writing response bodies
+* artifact reachability checks use `HEAD`
+* GET artifact serving still returns bodies for audio, waveform, document viewing, and manual links
+* README note for metadata-only artifact-packet reachability
 
 Verification note:
 
 * `python -m py_compile server.py` passed
 * browser runtime parsed `public/app.js`
-* sandbox server restarted on port 8765 with the updated header behavior
-* live browser reported seven artifact modified timestamps
-* live browser still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
+* sandbox server restarted on port 8765 with the updated `HEAD` behavior
+* direct `HEAD` request for the WAV artifact returned status 200, content length 88244, and Last-Modified
+* direct `GET` request for the WAV artifact still returned status 200 and 88244 bytes
+* live browser still reported seven artifact statuses, seven modified timestamps, `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
 * browser console error log was empty
 
 Boundary preserved:
@@ -227,7 +230,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-d44a87a Show artifact modified times
+ad47450 Use HEAD for artifact checks
 ```
 
 Reported repo status:
