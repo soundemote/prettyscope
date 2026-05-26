@@ -179,6 +179,7 @@ Recent completed work:
 * sandbox shell displays browser-side manifest response load time
 * sandbox shell displays manifest response cache headers in the Source panel
 * sandbox shell displays the artifact reachability method as `HEAD`
+* sandbox shell guards malformed-but-readable manifest JSON before rendering
 
 Important recent repo event:
 
@@ -191,28 +192,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show artifact check method.
+Guard malformed manifest shape.
 ```
 
 Task goal:
 
 ```
-Make the metadata-only artifact reachability check method visible in the browser
-UI so `HEAD` is explicit during hands-on inspection.
+Fail visibly and clear stale UI when `/api/manifest` returns valid JSON that is
+not the expected sandbox manifest shape, instead of throwing during render.
 ```
 
 Added:
 
-* Artifact Coverage `reachability method` row
-* exact `HEAD` expectation for the row
-* README note for visible metadata-only artifact-packet reachability method
+* minimal manifest shape guard before render
+* checks for manifest object, sandbox handoff, WAV metadata, WAV frame count, artifact links array, and phases array
+* malformed shape failures reuse the existing Check-state cleanup path
+* README note for malformed manifest shape checks
 
 Verification note:
 
 * `python -m py_compile server.py` passed
 * browser runtime parsed `public/app.js`
-* live browser Artifact Coverage displayed `reachability method: HEAD`
-* live browser still reported `Artifact Coverage: Complete`, `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`
+* normal live browser load still reported `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
+* temporary malformed-manifest server with valid JSON but missing sandbox handoff reported `Manifest: Check` and `sandbox handoff missing`
+* malformed shape path cleared artifact rows, checklist rows, phase rows, and waveform metadata rows
+* browser returned to 8765 with the normal green state restored
 * browser console error log was empty
 
 Boundary preserved:
@@ -231,7 +235,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-e106c27 Show artifact check method
+72a11ad Guard malformed manifest shape
 ```
 
 Reported repo status:

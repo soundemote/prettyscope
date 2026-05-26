@@ -304,16 +304,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays browser-side manifest response load time
 * first `soemdsp-sandbox` shell displays manifest response cache headers in the Source panel
 * first `soemdsp-sandbox` shell displays the artifact reachability method as `HEAD`
+* first `soemdsp-sandbox` shell guards malformed-but-readable manifest JSON before rendering
 
 Recent completion:
 
 ```
-e106c27 Show artifact check method
+72a11ad Guard malformed manifest shape
 ```
 
-The first local `soemdsp-sandbox` shell now displays `reachability method: HEAD` in Artifact Coverage, making the metadata-only artifact check visible in the browser UI.
+The first local `soemdsp-sandbox` shell now checks the minimal manifest shape before rendering, so valid JSON with missing sandbox fields fails visibly and clears stale UI instead of throwing.
 
-Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM showed `reachability method: HEAD`, `Artifact Coverage: Complete`, `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, no warning rows, and no browser console errors.
+Verification passed with `python -m py_compile server.py`, the live browser at `http://127.0.0.1:8765`, and a temporary malformed-manifest server: normal load stayed green with `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`; malformed valid JSON missing sandbox handoff reported `Manifest: Check`, `sandbox handoff missing`, cleared artifact/checklist/phase/waveform metadata rows, and produced no browser console errors; returning to 8765 restored the normal green state.
 
 Generated preview screenshot:
 
