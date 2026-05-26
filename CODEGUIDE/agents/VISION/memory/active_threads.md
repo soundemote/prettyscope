@@ -142,6 +142,7 @@ Recent completed work:
 * sandbox shell draws a read-only waveform from the generated WAV
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase seek controls
 * sandbox shell displays first/second frequency and amplitude from the generated summary artifact
+* sandbox shell displays frequency/amplitude resync deltas and ratios from the generated summary artifact
 
 Important recent repo event:
 
@@ -154,29 +155,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show parameter resync summary.
+Show parameter resync deltas.
 ```
 
 Task goal:
 
 ```
-Show the actual parameter values behind the audible/visual resync by reading
-the generated summary artifact, without adding DSP execution, scheduling,
-audio-engine ownership, or project state.
+Make the read-only sandbox state the actual parameter resync change by deriving
+frequency/amplitude deltas and ratios from the generated summary artifact,
+without adding DSP execution, scheduling, audio-engine ownership, or project state.
 ```
 
 Added:
 
-* Parameter Resync panel
-* fetch/parse of the generated combined text summary
-* first/second frequency cards
-* first/second amplitude cards
-* README note for parameter resync values
+* Frequency Change comparison card
+* Amplitude Change comparison card
+* compact signed delta formatting
+* compact ratio formatting
+* README note for parameter change ratios
 
 Verification note:
 
 * live browser reported `Parameter Resync: Loaded`
 * summary cards rendered first frequency 220, first amplitude 0.2, second frequency 440, second amplitude 0.35
+* summary comparison cards rendered `Frequency Change +220 / x2`
+* summary comparison cards rendered `Amplitude Change +0.15 / x1.75`
 * live browser reported `Waveform: Drawn`
 * live browser still reported `Checklist: Accepted`
 * zero warning rows rendered
@@ -200,7 +203,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-b298e0e Show parameter resync summary
+8e659a4 Show parameter resync deltas
 ```
 
 Reported repo status:

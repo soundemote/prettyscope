@@ -278,16 +278,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase seek controls
 * first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
+* first `soemdsp-sandbox` shell displays parameter resync deltas and ratios from the generated text summary
 
 Recent completion:
 
 ```
-b298e0e Show parameter resync summary
+8e659a4 Show parameter resync deltas
 ```
 
-The first local `soemdsp-sandbox` shell now fetches the generated combined text summary and displays the parameter values that caused the audible/visual resync: first frequency 220, first amplitude 0.2, second frequency 440, and second amplitude 0.35.
+The first local `soemdsp-sandbox` shell now fetches the generated combined text summary and displays both the parameter values and the computed changes that caused the audible/visual resync: first frequency 220, first amplitude 0.2, second frequency 440, second amplitude 0.35, frequency change +220 / x2, and amplitude change +0.15 / x1.75.
 
-Verification passed in the live browser at `http://127.0.0.1:8765`. Browser verification reported `Parameter Resync: Loaded`, the four expected parameter cards, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, 7 artifact links, 2 phase panels, no horizontal overflow, and no console errors.
+Verification passed in the live browser at `http://127.0.0.1:8765`. Browser verification reported `Parameter Resync: Loaded`, the six expected parameter cards, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, 7 artifact links, 2 phase panels, no horizontal overflow, and no console errors.
 
 Generated preview screenshot:
 
