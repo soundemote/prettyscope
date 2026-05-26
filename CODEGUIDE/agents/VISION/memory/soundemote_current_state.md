@@ -313,17 +313,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
-* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, primary audio reachability, expected error responses, and no-store headers
+* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Recent completion:
 
 ```
-3fc04eb Expand sandbox smoke test
+df8b36b Check forbidden paths in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now covers manifest failure diagnostics as well as the valid manifest path.
+The first local `soemdsp-sandbox` repo smoke test now covers forbidden path traversal attempts as part of the read-only boundary proof.
 
-Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, and `python scripts/smoke_test.py`: the smoke test starts and stops isolated local servers, checks valid manifest JSON, primary audio artifact reachability, expected artifact/API error responses, no-store headers, missing-manifest API payloads, and invalid-JSON parse-detail payloads; no test server was left running beyond the live 8765 sandbox server.
+Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks artifact traversal and encoded public traversal attempts return `403` with no-store headers; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Source: Loaded`, `Waveform: Drawn`, `Artifact Coverage: Complete`, `missing paths: 0`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
 
 Generated preview screenshot:
 

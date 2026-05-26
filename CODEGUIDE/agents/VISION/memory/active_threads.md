@@ -188,7 +188,7 @@ Recent completed work:
 * sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
-* sandbox repo includes a stdlib smoke test for manifest loading, primary audio reachability, expected error responses, and no-store headers
+* sandbox repo includes a stdlib smoke test for manifest loading, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Important recent repo event:
 
@@ -201,28 +201,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Expand sandbox smoke test for manifest failures.
+Expand sandbox smoke test for forbidden paths.
 ```
 
 Task goal:
 
 ```
-Make missing-manifest and invalid-JSON manifest API diagnostics repeatably
-checkable without manual browser fixtures.
+Make sandbox read-only path boundaries repeatably checkable without manual
+curl/browser fixtures.
 ```
 
 Added:
 
-* smoke test now has reusable start/stop server helpers
-* smoke test creates temporary missing-manifest and invalid-JSON fixtures
-* smoke test checks failure status, JSON payload shape, source path, artifact root, parse detail, and no-store headers
+* smoke test checks artifact traversal attempt `../server.py`
+* smoke test checks encoded public traversal attempt `/public/%2e%2e/server.py`
+* README smoke-test text now names forbidden path responses
 
 Verification note:
 
 * `python -m py_compile scripts/smoke_test.py` passed
 * `git diff --check` passed
 * `python scripts/smoke_test.py` passed
+* traversal attempts returned `403` with no-store headers inside the smoke test
 * smoke test did not leave a test server running; only the live 8765 sandbox server remained
+* browser remained healthy at 8765 with `Manifest: OK`, `Source: Loaded`, `Waveform: Drawn`, `Artifact Coverage: Complete`, `missing paths: 0`, and artifact packet `7/7 OK 92.88 KB`
+* browser console error log was empty
 
 Boundary preserved:
 
@@ -240,7 +243,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-3fc04eb Expand sandbox smoke test
+df8b36b Check forbidden paths in smoke test
 ```
 
 Reported repo status:
