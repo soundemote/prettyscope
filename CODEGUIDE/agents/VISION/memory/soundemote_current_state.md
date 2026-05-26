@@ -317,17 +317,18 @@ Recent proven demos include:
 * first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 * first `soemdsp-sandbox` smoke test uses automatic temporary ports by default and rejects occupied explicit ports so a live browser server cannot accidentally satisfy readiness checks
 * first `soemdsp-sandbox` smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
+* first `soemdsp-sandbox` smoke test rejects duplicate root shell DOM IDs before browser behavior can become ambiguous
 * first `soemdsp-sandbox` smoke test proves readable malformed manifest JSON is transported with source details for browser-side shape validation
 
 Recent completion:
 
 ```
-629735c Tidy resync manifest indentation
+49a7434 Check duplicate shell IDs in smoke test
 ```
 
-The bound WAV resync demo now writes its artifact manifest with consistently indented nested phase and artifact link objects. This improves direct inspection without changing the manifest contract or introducing serialization machinery.
+The first local `soemdsp-sandbox` repo smoke test now rejects duplicate DOM IDs in the root shell before browser UI behavior can become ambiguous silently.
 
-Verification passed with `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`, `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`, regenerated manifest inspection, `git -C C:\Users\argit\Desktop\soemdsp diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
+Verification passed with `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
 
 Generated preview screenshot:
 

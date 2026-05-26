@@ -192,6 +192,7 @@ Recent completed work:
 * sandbox repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 * sandbox smoke test uses automatic temporary ports by default and rejects occupied explicit ports so the live `8765` browser server cannot accidentally satisfy readiness checks
 * sandbox smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
+* sandbox smoke test rejects duplicate root shell DOM IDs before browser behavior can become ambiguous
 * sandbox smoke test proves readable malformed manifest JSON is transported with source details for browser-side shape validation
 
 Important recent repo event:
@@ -205,35 +206,32 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Tidy resync manifest indentation.
+Check duplicate shell IDs in smoke test.
 ```
 
 Task goal:
 
 ```
-Improve direct readability of the generated bound WAV resync artifact manifest
-without changing the manifest contract or introducing serialization machinery.
+Make the sandbox smoke test reject duplicate DOM IDs in the root shell so
+browser UI behavior cannot become ambiguous silently.
 ```
 
 Added:
 
-* indent-aware demo-local JSON helper calls
-* consistently indented phase objects in the manifest
-* consistently indented artifact link objects in the manifest
-* status docs noting the artifact readability change
+* duplicate-ID tracking in the stdlib shell contract parser
+* duplicate-ID assertion before required-ID checks
+* README note that the smoke test checks duplicate IDs
 
 Verification:
 
-* `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`
-* `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`
-* regenerated `C:\Users\argit\Desktop\soemdsp\runtime_dsp_object_bound_wav_resync_demo.manifest.json` inspected with clean nested indentation
-* `git -C C:\Users\argit\Desktop\soemdsp diff --check`
+* `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
+* `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`
 * `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
 
 Commit:
 
 ```
-629735c Tidy resync manifest indentation
+49a7434 Check duplicate shell IDs in smoke test
 ```
 
 Boundary preserved:
