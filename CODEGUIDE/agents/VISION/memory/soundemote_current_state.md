@@ -294,6 +294,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell exposes a Follow Audio / Free View toggle for choosing audio-following transport view or independent waveform inspection
 * first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
 * first `soemdsp-sandbox` shell displays parameter resync deltas and ratios from the generated text summary
+* first `soemdsp-sandbox` shell warns if parameter summary values are missing, non-positive, or fail to prove upward frequency/amplitude resync
 * first `soemdsp-sandbox` shell displays producer proof flags from the manifest: demo identity, artifact kind, non-runtime API status, non-scheduler status, non-audio-engine status, and expected frequency/amplitude setter support
 * first `soemdsp-sandbox` shell displays source file metadata from the manifest response: manifest bytes and manifest modified time
 * first `soemdsp-sandbox` shell displays phase coverage status proving manifest phase sample totals match WAV frame count
@@ -331,12 +332,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-54352f8 Compare WAV metadata in sandbox UI
+6dfe0e6 Warn on invalid parameter resync summary
 ```
 
-The first local `soemdsp-sandbox` shell now compares decoded WAV metadata against manifest expectations in the Waveform metadata panel, so sample rate, channels, bit depth, frames, data bytes, or file bytes drift becomes visible as a warning row.
+The first local `soemdsp-sandbox` shell now warns if Parameter Resync values are missing, non-positive, or fail to prove upward frequency/amplitude resync.
 
-Verification passed with `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, and the live browser at `http://127.0.0.1:8765/`: all Waveform metadata rows were warning-free with no console errors.
+Verification passed with `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, and the live browser at `http://127.0.0.1:8765/`: all Parameter Resync cards were warning-free with no console errors.
 
 Generated preview screenshot:
 

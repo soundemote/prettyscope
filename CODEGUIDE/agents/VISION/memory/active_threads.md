@@ -169,6 +169,7 @@ Recent completed work:
 * waveform header has a Follow Audio / Free View toggle so Architect can choose audio-following transport view or independent waveform inspection
 * sandbox shell displays first/second frequency and amplitude from the generated summary artifact
 * sandbox shell displays frequency/amplitude resync deltas and ratios from the generated summary artifact
+* sandbox shell warns if the parameter summary values are missing, non-positive, or fail to prove upward frequency/amplitude resync
 * sandbox shell displays producer proof flags from the manifest: demo identity, artifact kind, non-runtime API status, non-scheduler status, non-audio-engine status, and expected frequency/amplitude setter support
 * sandbox shell displays source file metadata from the manifest response: manifest bytes and manifest modified time
 * sandbox shell displays phase coverage status proving manifest phase sample totals match WAV frame count
@@ -214,32 +215,32 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Compare WAV metadata in sandbox UI.
+Warn on invalid parameter resync summary.
 ```
 
 Task goal:
 
 ```
-Make the read-only Waveform metadata panel compare decoded WAV metadata against
-manifest expectations so mismatches become visible warnings.
+Make the read-only Parameter Resync cards warn if summary values are missing,
+non-positive, or no longer prove upward frequency/amplitude resync.
 ```
 
 Added:
 
-* decoded WAV `dataBytes` and `fileBytes` fields in browser parsing
-* manifest expectation formatting helpers for numbers and bytes
-* warning-capable comparisons for sample rate, channels, bit depth, frames, data bytes, and file bytes
+* positive-number checks for first/second frequency and amplitude values
+* upward-change checks for frequency and amplitude comparison cards
+* warning styling when parameter summary values fail those checks
 
 Verification:
 
 * `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`
 * `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
-* live browser at `http://127.0.0.1:8765/` showed all Waveform metadata rows warning-free with no console errors
+* live browser at `http://127.0.0.1:8765/` showed all Parameter Resync cards warning-free with no console errors
 
 Commit:
 
 ```
-54352f8 Compare WAV metadata in sandbox UI
+6dfe0e6 Warn on invalid parameter resync summary
 ```
 
 Boundary preserved:
