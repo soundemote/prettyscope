@@ -315,16 +315,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
 * first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 * first `soemdsp-sandbox` smoke test uses automatic temporary ports by default and rejects occupied explicit ports so a live browser server cannot accidentally satisfy readiness checks
+* first `soemdsp-sandbox` smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
 
 Recent completion:
 
 ```
-0be73d3 Avoid smoke test port collisions
+f6dd584 Check sandbox shell contract in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now uses automatic temporary ports by default, rejects occupied explicit ports, and checks that the temporary server child is still alive during readiness polling.
+The first local `soemdsp-sandbox` repo smoke test now proves that the root HTML shell still exposes the DOM IDs and static asset references required by `app.js`.
 
-Verification passed with `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`; intentional `--port 8765` testing against the live browser server failed cleanly with `port 8765 is not available`.
+Verification passed with `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
 
 Generated preview screenshot:
 

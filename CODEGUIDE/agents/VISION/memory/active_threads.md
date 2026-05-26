@@ -190,6 +190,7 @@ Recent completed work:
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
 * sandbox repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 * sandbox smoke test uses automatic temporary ports by default and rejects occupied explicit ports so the live `8765` browser server cannot accidentally satisfy readiness checks
+* sandbox smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
 
 Important recent repo event:
 
@@ -202,34 +203,34 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Avoid sandbox smoke test port collisions.
+Check sandbox shell contract in smoke test.
 ```
 
 Task goal:
 
 ```
-Make the automated smoke test use isolated temporary ports by default and fail
-cleanly if an explicit port is already occupied.
+Make the automated smoke test prove that `index.html` still exposes the DOM IDs
+and static asset references required by `app.js`.
 ```
 
 Added:
 
-* automatic free-port selection for default smoke runs
-* explicit occupied-port rejection before starting a test server
-* child-process liveness checks during server readiness polling
-* README note that smoke test servers run on automatic temporary ports
+* stdlib `HTMLParser` shell contract parser
+* required browser UI element ID checks
+* required `/public/app.js` script reference check
+* required `/public/styles.css` stylesheet reference check
+* README note that the smoke test checks the root shell DOM contract
 
 Verification:
 
 * `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
 * `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`
 * `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
-* intentional occupied-port check against live `8765` failed cleanly with `port 8765 is not available`
 
 Commit:
 
 ```
-0be73d3 Avoid smoke test port collisions
+f6dd584 Check sandbox shell contract in smoke test
 ```
 
 Boundary preserved:
