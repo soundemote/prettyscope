@@ -171,6 +171,7 @@ Recent completed work:
 * sandbox shell displays artifact coverage status proving the manifest names the expected display artifact kinds before reachability checks
 * sandbox shell displays read-only inline text reports for the combined summary, WAV metadata report, and phase reports
 * sandbox shell displays the artifact manifest as pretty-printed read-only JSON in the same document viewer
+* sandbox shell clears stale dependent UI surfaces when manifest loading fails
 
 Important recent repo event:
 
@@ -183,36 +184,30 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show manifest in document viewer.
+Clear stale UI on manifest errors.
 ```
 
 Task goal:
 
 ```
-Show both the manifest declaration and manifest-declared text reports in one
-read-only document viewer without turning the sandbox into an editor or runtime owner.
+Make manifest load failures visibly empty/check-state after a previous successful
+load, so stale green data cannot masquerade as current sandbox state.
 ```
 
 Added:
 
-* Documents panel label
-* Artifact manifest as a selectable document
-* pretty-printed JSON display for manifest documents
-* document fetch/load status for manifest, text summary, WAV report, and phase reports
-* README note for inline artifact manifest and text reports
+* manifest error path clears internal response, waveform, playhead, and document state
+* manifest error path clears producer, parameter, report, waveform, boundary, phase, checklist, artifact coverage, and artifact list surfaces
+* manifest error path clears the audio source and title
+* manifest error path marks dependent status pills as Check
 
 Verification note:
 
 * browser runtime parsed `public/app.js`
-* live browser DOM reported `Documents: 5 Loaded`
-* document selector listed Artifact manifest, Combined text summary, WAV metadata report, First phase report, and Second phase report
-* document viewer displayed pretty-printed manifest JSON by default
-* clicking `Combined text summary` made it active and displayed `[BOUND WAV RESYNC RENDER REPORT]`
-* live browser still reported artifact packet status `7/7 OK 92.88 KB`
-* live browser still reported `Artifact Coverage: Complete`
-* live browser still reported `Phase Coverage: Complete`
-* live browser still reported `Manifest: OK`
-* live browser still reported `Checklist: Accepted`
+* normal live browser load still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
+* temporary missing-manifest server reported `Manifest: Check`, `contract: manifest not found`, and `Documents: Check`
+* missing-manifest path cleared document buttons, document viewer text, artifact links, checklist rows, phase rows, parameter cards, producer rows, waveform metadata rows, and artifact coverage rows
+* missing-manifest path set primary audio title to `Unavailable`
 * browser console error log was empty
 
 Boundary preserved:
@@ -231,7 +226,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-9d119a4 Show manifest in document viewer
+7cf9155 Clear stale UI on manifest errors
 ```
 
 Reported repo status:
