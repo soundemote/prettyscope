@@ -154,6 +154,7 @@ Current first shell:
 * overlays manifest-derived phase regions on the waveform
 * derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * displays the current waveform phase and highlights the active phase button
+* displays the current waveform cursor frame and decoded sample value
 * keeps waveform view controls separate from native audio seeking to avoid slider/audio reset loops
 * exposes a Follow Audio / Free View toggle for choosing audio-following transport view or independent waveform inspection
 * plays the generated WAV with browser-native audio controls

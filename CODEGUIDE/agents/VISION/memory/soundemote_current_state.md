@@ -279,6 +279,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase view controls
 * first `soemdsp-sandbox` shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * first `soemdsp-sandbox` shell displays the current waveform phase and highlights the active phase button
+* first `soemdsp-sandbox` shell displays the current waveform cursor frame and decoded sample value
 * first `soemdsp-sandbox` shell decouples waveform view controls from native audio seeking to avoid slider/audio reset loops
 * first `soemdsp-sandbox` shell exposes a Follow Audio / Free View toggle for choosing audio-following transport view or independent waveform inspection
 * first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
@@ -287,12 +288,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-f740d50 Add waveform follow audio toggle
+7dba5e4 Show waveform sample cursor
 ```
 
-The first local `soemdsp-sandbox` shell now has an explicit Follow Audio / Free View toggle. It defaults to following native audio playback, waveform interaction detaches into Free View for independent inspection, and re-enabling Follow Audio immediately resyncs the waveform cursor to native audio time.
+The first local `soemdsp-sandbox` shell now displays the current waveform cursor frame and decoded sample value next to the time and phase pills.
 
-Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported initial toggle `Follow Audio` with `aria-pressed=true`, switched to `Free View` with `aria-pressed=false`, switched back to `Follow Audio`, kept `Waveform: Drawn` and `Checklist: Accepted`, and found no horizontal overflow or console errors.
+Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported toggle `Follow Audio`, waveform position `0.000s`, sample cursor `frame 0 / sample 0`, current phase `first`, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, no horizontal overflow, and no console errors.
 
 Generated preview screenshot:
 

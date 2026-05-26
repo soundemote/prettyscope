@@ -143,6 +143,7 @@ Recent completed work:
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase view controls
 * sandbox shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * sandbox shell displays the current waveform phase in the waveform header and highlights the active phase button
+* sandbox shell displays the current waveform cursor frame and decoded sample value
 * waveform controls are decoupled from native audio seeking to avoid slider/audio reset loops; native audio playback can still drive waveform position
 * waveform header has a Follow Audio / Free View toggle so Architect can choose audio-following transport view or independent waveform inspection
 * sandbox shell displays first/second frequency and amplitude from the generated summary artifact
@@ -159,31 +160,32 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add waveform follow audio toggle.
+Show waveform sample cursor.
 ```
 
 Task goal:
 
 ```
-Make the waveform/audio relationship explicit and controllable: default to
-following audio playback, but let waveform interaction detach into Free View for
-independent visual inspection.
+Make waveform inspection report the exact decoded frame and sample value under
+the current cursor, while staying read-only and avoiding audio engine ownership.
 ```
 
 Added:
 
-* Follow Audio / Free View toggle in the waveform header
-* waveform click/drag/phase-button interactions detach the waveform into Free View
-* re-enabling Follow Audio immediately resyncs the waveform cursor to native audio time
-* header controls wrap to avoid narrow viewport overflow
+* waveform sample cursor pill
+* current frame display
+* decoded sample value display
+* README note for sample-cursor feedback
 
 Verification note:
 
-* live browser reload started with toggle `Follow Audio`, `aria-pressed=true`
-* toggle switched to `Free View`, `aria-pressed=false`
-* toggle switched back to `Follow Audio`, `aria-pressed=true`
+* live browser reload started with toggle `Follow Audio`
+* live browser reported waveform position `0.000s`
+* live browser reported sample cursor `frame 0 / sample 0`
+* live browser reported current phase `first`
 * live browser reported `Waveform: Drawn`
 * live browser still reported `Checklist: Accepted`
+* zero warning rows rendered
 * browser check found no console errors and no horizontal overflow
 
 Boundary preserved:
@@ -202,7 +204,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-f740d50 Add waveform follow audio toggle
+7dba5e4 Show waveform sample cursor
 ```
 
 Reported repo status:
