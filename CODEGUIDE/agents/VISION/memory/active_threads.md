@@ -129,6 +129,7 @@ Recent completed work:
 * bound DSP object WAV resync demo writes a demo-local HTML audio report with browser-native audio controls and status sections
 * bound DSP object WAV resync demo writes a demo-local JSON artifact manifest for inspection
 * bound DSP object WAV resync HTML report links the generated WAV, manifest, text summary, WAV metadata report, and phase reports as one local inspection packet
+* root-level runtime demo reports and inspection artifacts are gitignored so hands-on demo runs do not dirty source status
 
 Important recent repo event:
 
@@ -141,31 +142,28 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Link bound WAV resync artifact packet.
+Ignore runtime demo inspection artifacts.
 ```
 
 Task goal:
 
 ```
-Make the generated HTML report act as the human-readable entry point for the
-local inspection packet while keeping the artifact set demo-local.
+Make generated runtime demo reports safe for hands-on local runs by keeping
+root-level inspection artifacts out of normal git status.
 ```
 
 Added:
 
-* HTML artifact links section
-* link to generated WAV
-* link to JSON manifest
-* link to combined text summary
-* link to WAV metadata report
-* links to first/second phase reports
-* manifest now includes a self-reference path
+* `.gitignore` entries for root-level `runtime_*_demo*.txt`
+* `.gitignore` entries for root-level `runtime_*_demo*.html`
+* `.gitignore` entries for root-level `runtime_*_demo*.json`
+* docs note that hands-on demo runs should not dirty source status
 
 Verification note:
 
-* Codex in-app browser blocks direct `file://` navigation
-* Generated HTML was verified by direct content inspection
-* Generated manifest was verified with PowerShell JSON parsing
+* generated bound WAV resync artifacts were created
+* normal git status ignored generated text/HTML/JSON artifacts
+* generated artifacts were cleaned after verification
 
 Boundary preserved:
 
@@ -180,13 +178,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-97817e0 Link bound WAV resync artifact packet
+5fb572f Ignore runtime demo inspection artifacts
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 2 commits
+* ahead of origin by 3 commits
 * behind origin by 0 commits
 * conflicts: none
 

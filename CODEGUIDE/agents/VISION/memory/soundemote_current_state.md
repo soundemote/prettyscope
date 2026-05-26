@@ -265,16 +265,17 @@ Recent proven demos include:
 * bound DSP object WAV resync demo writes a demo-local HTML audio report with browser-native audio controls and status sections
 * bound DSP object WAV resync demo writes a demo-local JSON artifact manifest for inspection
 * bound DSP object WAV resync HTML report links the generated WAV, manifest, text summary, WAV metadata report, and phase reports as one local inspection packet
+* root-level runtime demo reports and inspection artifacts are gitignored so hands-on demo runs do not dirty source status
 
 Recent completion:
 
 ```
-97817e0 Link bound WAV resync artifact packet
+5fb572f Ignore runtime demo inspection artifacts
 ```
 
-`runtime_dsp_object_bound_wav_resync_demo` now links the generated WAV, manifest, text summary, WAV metadata report, and phase reports from the generated HTML report, so the demo output behaves like one local inspection packet.
+Root-level `runtime_*_demo` text, HTML, and JSON inspection artifacts are now ignored by git. WAV/audio artifacts were already ignored. This keeps hands-on demo runs from dirtying the repo.
 
-The artifact packet remains demo-only and is a sandbox-status proof, not a patch/project serialization format, scheduler, executor, audio engine, production file API, plugin/UI layer, or new DSP ownership model.
+The ignore rules are root-scoped so source files under `examples/` remain tracked normally.
 
 Codex in-app browser blocks direct `file://` navigation, so verify generated HTML by content inspection unless Architect asks to open it manually or through another approved local serving path.
 
