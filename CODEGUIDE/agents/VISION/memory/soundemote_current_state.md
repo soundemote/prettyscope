@@ -308,16 +308,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays server-reported manifest error paths in the Source panel
 * first `soemdsp-sandbox` shell displays server-reported artifact roots on manifest load errors
 * first `soemdsp-sandbox` shell preserves source path/root details on malformed manifest shape errors
+* first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 
 Recent completion:
 
 ```
-f39086b Preserve source details on shape errors
+0de2643 Show source error details
 ```
 
-The first local `soemdsp-sandbox` shell now preserves manifest path and artifact root details when valid JSON is rejected for the wrong sandbox manifest shape.
+The first local `soemdsp-sandbox` shell now makes manifest/source failures explicit with a Source Error row, while still preserving manifest path and artifact root details.
 
-Verification passed with `python -m py_compile server.py`, the live browser at `http://127.0.0.1:8765`, and a temporary malformed-shape server: normal load stayed green with manifest path and artifact root; malformed valid JSON reported `Manifest: Check`, `sandbox handoff missing`, displayed the malformed manifest path and artifact root, cleared artifact/checklist/phase rows, and produced no browser console errors; returning to 8765 restored `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, `Artifact Coverage: Complete`, and artifact packet `7/7 OK 92.88 KB`.
+Verification passed with `git diff --check`, the live browser at `http://127.0.0.1:8765`, and a temporary missing-manifest server: normal load stayed green with `Source Error: none`, manifest path, artifact root, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`; missing manifest reported `Manifest: Check`, `Source: Check`, `Source Error: manifest not found`, displayed the missing manifest path and artifact root, cleared artifact rows, and produced no browser console errors; returning to 8765 restored `Manifest: OK` and `Source Error: none`.
 
 Generated preview screenshot:
 

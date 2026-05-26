@@ -183,6 +183,7 @@ Recent completed work:
 * sandbox shell displays server-reported manifest error paths in the Source panel
 * sandbox shell displays server-reported artifact roots on manifest load errors
 * sandbox shell preserves source path/root details on malformed manifest shape errors
+* sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 
 Important recent repo event:
 
@@ -195,29 +196,29 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Preserve source details on shape errors.
+Show source error details.
 ```
 
 Task goal:
 
 ```
-Keep server-provided manifest path and artifact root visible when the browser
-rejects valid JSON for having the wrong sandbox manifest shape.
+Make manifest/source failures explicit in the Source panel without relying on
+status chips or inferred missing metadata.
 ```
 
 Added:
 
-* malformed shape error path passes the manifest response payload into the error renderer
-* malformed shape errors now retain Source manifest path and artifact root
-* README note for malformed manifest shape checks with source details
+* `Source Error` row in the Source panel
+* successful manifest loads show `none`
+* manifest load failures show the server/browser error message beside manifest path and artifact root
+* README note for source error details
 
 Verification note:
 
-* `python -m py_compile server.py` passed
-* browser runtime parsed `public/app.js`
-* normal live browser load still reported `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, manifest path, and artifact root
-* temporary malformed-shape server reported `Manifest: Check`, `sandbox handoff missing`, the malformed manifest path, and its artifact root
-* malformed shape path cleared artifact, checklist, and phase rows
+* `git diff --check` passed
+* normal live browser load reported `Manifest: OK`, `Source: Loaded`, `Source Error: none`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, manifest path, and artifact root
+* temporary missing-manifest server reported `Manifest: Check`, `Source: Check`, `Source Error: manifest not found`, the missing manifest path, and artifact root
+* missing-manifest path cleared artifact rows
 * browser returned to 8765 with the normal green state restored
 * browser console error log was empty
 
@@ -237,7 +238,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-f39086b Preserve source details on shape errors
+0de2643 Show source error details
 ```
 
 Reported repo status:
