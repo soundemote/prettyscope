@@ -11,12 +11,14 @@ Codex owns `soemdsp` and `soemdsp-sandbox`.
 When Codex needs to get Architect's attention, put this exact line at the very top and very bottom of the next report or reply:
 
 ```text
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, leave one blank line before any additional text.
 
 At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 Use this for blockers, ambiguous repo state, unsafe changes, missing files, boundary conflicts, or any issue requiring Architect's explicit attention.
 
@@ -327,7 +329,7 @@ Rules:
 * `received` repeats the stamp from the message being answered
 * `sent` is the new stamp for the current report/message
 * `sent` must be the final stamp line
-* if the Attention Convention is used, the final `Attention: Architecth` line goes after the stamps
+* if the Attention Convention is used, the final `Attention: Architect` line goes after the stamps
 * use 4–6 lowercase letters/numbers
 * do not reuse nearby stamps
 * stamp has no architecture meaning

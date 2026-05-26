@@ -88,6 +88,12 @@ Architect hands-on testing threshold:
 * Vision handles command-line build/run/proof verification
 * ask Architect for hands-on testing when there is mouse interaction, audible output, or visual inspection value
 
+Vision thought-processing stance:
+
+* Extra High / maximum processing is currently useful and approved
+* use it especially for proof sequencing and abstraction-boundary decisions
+* mechanical edits do not inherently require maximum processing
+
 Recent completed work:
 
 * DSP binding apply batch aggregate demo

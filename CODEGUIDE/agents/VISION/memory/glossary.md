@@ -667,12 +667,14 @@ Report/reply wrapper used when an agent needs Architect to notice something expl
 Exact first and final line:
 
 ```
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, one blank line follows before additional text.
 
 At the bottom, one blank line comes before the final repeated attention line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 Use for blockers, ambiguity, stale state, missing files, unsafe repo state, boundary conflicts, or other items requiring Architect's explicit attention.
 

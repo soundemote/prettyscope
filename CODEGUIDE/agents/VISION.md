@@ -11,12 +11,14 @@ Architect may route Vision through messages, task docs, or direct file/code edit
 When Vision needs to get Architect's attention, put this exact line at the very top and very bottom of the next report or reply:
 
 ```text
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, leave one blank line before any additional text.
 
 At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 Use this for blockers, ambiguous repo state, unsafe changes, missing files, boundary conflicts, stale instructions, or any issue requiring Architect's explicit attention.
 

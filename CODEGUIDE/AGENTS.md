@@ -362,12 +362,14 @@ Agents should not ask another agent direct questions unless Architect routes the
 When an agent needs to get Architect's attention, put this exact line at the very top and very bottom of the next report or reply:
 
 ```text
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, leave one blank line before any additional text.
 
 At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 Do not use this casually. Use it when Architect should notice a blocker, ambiguity, conflict, stale state, missing file, unsafe repo state, cross-boundary decision, or other item that needs explicit attention.
 
@@ -395,7 +397,7 @@ Rules:
 - The received stamp repeats the stamp from the message being answered.
 - The sent stamp is the new stamp for the current message.
 - The sent stamp must be the final stamp line.
-- If the Attention Convention is used, the final `Attention: Architecth` line goes after the stamps.
+- If the Attention Convention is used, the final `Attention: Architect` line goes after the stamps.
 - Use 4–6 lowercase letters/numbers.
 - Do not reuse nearby sent stamps.
 - The stamp has no architecture meaning.

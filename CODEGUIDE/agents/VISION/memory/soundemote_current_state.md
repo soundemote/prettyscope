@@ -14,6 +14,8 @@ Current push context:
 * Console, Tracer, DIRECTOR, and Void are active but should not overload Vision routing
 * Architect should not be asked for hands-on testing of CLI demos; save hands-on testing requests for mouse interaction, audible output, or visual inspection
 
+* Vision is currently allowed to use maximum/Extra High thought processing; it is worthwhile for architecture-sensitive boundary decisions, but mechanical edits do not inherently require it
+
 ## Soundemote Short Description
 
 Soundemote is an audio-visual DSP technology company creating multiplatform audio plugins and video FX generators with analog aesthetics for modern multiplatform frameworks.
@@ -479,12 +481,14 @@ Mention push only when Architect asks or when a task explicitly requires remote 
 When any agent needs to get Architect's attention, the next report or reply should begin and end with:
 
 ```
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, leave one blank line before additional text.
 
 At the bottom, leave one blank line after the final normal line, then repeat the attention line as the final line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 This convention is now recorded in the main agent document, the individual agent documents, Vision reboot, and the completion report template.
 

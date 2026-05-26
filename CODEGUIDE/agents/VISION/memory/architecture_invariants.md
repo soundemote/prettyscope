@@ -517,7 +517,7 @@ The `sent` line points forward.
 
 The sent stamp must be the last stamp line.
 
-If the Attention Convention is used, the final `Attention: Architecth` line goes after the stamps.
+If the Attention Convention is used, the final `Attention: Architect` line goes after the stamps.
 
 Casual conversation does not require stamps.
 
@@ -528,12 +528,14 @@ Stamps are a distributed working-memory checksum.
 When an agent needs to get Architect's attention, the next report or reply starts and ends with:
 
 ```
-Attention: Architecth
+Attention: Architect
 ```
 
 At the top, one blank line appears before any additional text.
 
 At the bottom, one blank line appears after the final normal line, then the attention line repeats as the final line.
+
+If Architect does not respond after the first attention-marked reply, keep using the same top-and-bottom attention convention on later reports/replies until Architect sees it or the issue is cleared.
 
 Use this only for blockers, ambiguity, conflict, stale state, missing files, unsafe repo state, cross-boundary decisions, or other items requiring explicit Architect attention.
 
