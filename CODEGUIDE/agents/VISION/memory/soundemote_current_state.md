@@ -256,16 +256,18 @@ Recent proven demos include:
 * bound DSP object WAV resync demo
 * changed Circuit frequency/amplitude parameters can resync into external DSP memory between two halves of an audible WAV artifact
 * bound DSP object WAV resync demo now reports each render half through DspBlockPhaseReport
+* examples-only mono WAV writer helper
+* audible demos share `examples/WriteMono16Wav.hpp` without making it a runtime API
 
 Recent completion:
 
 ```
-e974b23 Report bound DSP WAV resync phases
+76d7750 Share demo-only WAV writer helper
 ```
 
-`runtime_dsp_object_bound_wav_resync_demo` renders the first half of a WAV from initially synced Circuit frequency/amplitude parameters, changes those parameters through Circuit setters, reapplies the binding, and renders the second half from updated external DSP memory. Each half now reports preflight/apply/process counts through `DspBlockPhaseReport`.
+`examples/WriteMono16Wav.hpp` now holds the shared mono WAV writer used by the audible demos. It is intentionally scoped to examples and is not a production runtime API.
 
-The WAV writer, sample loop, and DSP object are demo-local. This does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
+The WAV writing path remains demo-only. This does not introduce an audio engine, scheduler, production file API, plugin/UI layer, or new DSP ownership model.
 
 This is a bridge toward the future `soemdsp-sandbox` hands-on threshold, where Architect should test by hearing, seeing, or manipulating something rather than reading CLI proof output.
 

@@ -116,6 +116,8 @@ Recent completed work:
 * bound DSP object WAV resync demo
 * changed Circuit frequency/amplitude parameters can resync into external DSP memory between two halves of an audible WAV artifact
 * bound DSP object WAV resync demo now reports each render half through DspBlockPhaseReport
+* examples-only mono WAV writer helper
+* audible demos share `examples/WriteMono16Wav.hpp` without making it a runtime API
 
 Important recent repo event:
 
@@ -128,25 +130,24 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Report bound DSP WAV resync phases.
+Share demo-only WAV writer helper.
 ```
 
 Task goal:
 
 ```
-Expose each half of the audible resync render through the existing compact
-DspBlockPhaseReport shape, keeping future sandbox status surfaces explicit
-without introducing execution ownership.
+Remove repeated WAV writing code from audible demos while keeping file output
+scoped to examples and outside the runtime API.
 ```
 
 Added:
 
-* first render half phase report
-* second render half phase report
-* each phase reports preflight/apply/process counts
-* each phase writes a demo-local report text file
-* `docs/STATUS.md` records phase reporting on the audible resync proof
-* `docs/DSP_BINDING_MILESTONE_PLAN.md` records the future sandbox status-surface implication
+* `examples/WriteMono16Wav.hpp`
+* runtime audio sine WAV demo now uses the helper
+* bound DSP object WAV demo now uses the helper
+* bound DSP object WAV resync demo now uses the helper
+* `docs/STATUS.md` records the examples-only helper
+* `docs/DSP_BINDING_MILESTONE_PLAN.md` records that this is not a runtime API
 
 Boundary preserved:
 
@@ -161,13 +162,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-e974b23 Report bound DSP WAV resync phases
+76d7750 Share demo-only WAV writer helper
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 25 commits
+* ahead of origin by 26 commits
 * behind origin by 0 commits
 * conflicts: none
 
