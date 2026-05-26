@@ -280,18 +280,19 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * first `soemdsp-sandbox` shell displays the current waveform phase and highlights the active phase button
 * first `soemdsp-sandbox` shell decouples waveform view controls from native audio seeking to avoid slider/audio reset loops
+* first `soemdsp-sandbox` shell exposes a Follow Audio / Free View toggle for choosing audio-following transport view or independent waveform inspection
 * first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
 * first `soemdsp-sandbox` shell displays parameter resync deltas and ratios from the generated text summary
 
 Recent completion:
 
 ```
-bebb928 Decouple waveform view from audio seek
+f740d50 Add waveform follow audio toggle
 ```
 
-The first local `soemdsp-sandbox` shell now treats the waveform slider and phase buttons as read-only inspection controls instead of audio seek writers. Native audio playback/timeupdate can still drive the waveform while audio plays, but waveform dragging no longer writes into the native audio element on every move.
+The first local `soemdsp-sandbox` shell now has an explicit Follow Audio / Free View toggle. It defaults to following native audio playback, waveform interaction detaches into Free View for independent inspection, and re-enabling Follow Audio immediately resyncs the waveform cursor to native audio time.
 
-Verification passed in the live browser at `http://127.0.0.1:8765` for reload render: browser verification reported current phase `first`, waveform position `0.000s`, `Waveform: Drawn`, `Checklist: Accepted`, no horizontal overflow, and no console errors. Architect's mouse report triggered this fix: audio playback matched the waveform, but the waveform slider snapped back to 0 and reset the native audio player through the old coupling.
+Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported initial toggle `Follow Audio` with `aria-pressed=true`, switched to `Free View` with `aria-pressed=false`, switched back to `Follow Audio`, kept `Waveform: Drawn` and `Checklist: Accepted`, and found no horizontal overflow or console errors.
 
 Generated preview screenshot:
 

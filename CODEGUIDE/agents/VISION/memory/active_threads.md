@@ -144,6 +144,7 @@ Recent completed work:
 * sandbox shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * sandbox shell displays the current waveform phase in the waveform header and highlights the active phase button
 * waveform controls are decoupled from native audio seeking to avoid slider/audio reset loops; native audio playback can still drive waveform position
+* waveform header has a Follow Audio / Free View toggle so Architect can choose audio-following transport view or independent waveform inspection
 * sandbox shell displays first/second frequency and amplitude from the generated summary artifact
 * sandbox shell displays frequency/amplitude resync deltas and ratios from the generated summary artifact
 
@@ -158,32 +159,32 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Decouple waveform view from audio seek.
+Add waveform follow audio toggle.
 ```
 
 Task goal:
 
 ```
-Stop the waveform slider and phase buttons from writing into the native audio
-element on every move, so the browser audio control cannot snap the waveform
-inspection cursor back to 0 through a seek/timeupdate feedback loop.
+Make the waveform/audio relationship explicit and controllable: default to
+following audio playback, but let waveform interaction detach into Free View for
+independent visual inspection.
 ```
 
 Added:
 
-* waveform slider now controls only the read-only waveform inspection cursor
-* waveform phase buttons now control only the read-only waveform inspection cursor
-* native audio playback/timeupdate still drives the waveform position while audio plays
-* README language changed from phase seek controls to phase view controls
+* Follow Audio / Free View toggle in the waveform header
+* waveform click/drag/phase-button interactions detach the waveform into Free View
+* re-enabling Follow Audio immediately resyncs the waveform cursor to native audio time
+* header controls wrap to avoid narrow viewport overflow
 
 Verification note:
 
-* live browser reload reported current phase `first`
-* live browser reload reported waveform position `0.000s`
+* live browser reload started with toggle `Follow Audio`, `aria-pressed=true`
+* toggle switched to `Free View`, `aria-pressed=false`
+* toggle switched back to `Follow Audio`, `aria-pressed=true`
 * live browser reported `Waveform: Drawn`
 * live browser still reported `Checklist: Accepted`
 * browser check found no console errors and no horizontal overflow
-* Architect reported the original bug by mouse: audio playback matched waveform, but waveform slider movement reset to 0 and also reset the primary audio player
 
 Boundary preserved:
 
@@ -201,7 +202,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-bebb928 Decouple waveform view from audio seek
+f740d50 Add waveform follow audio toggle
 ```
 
 Reported repo status:
