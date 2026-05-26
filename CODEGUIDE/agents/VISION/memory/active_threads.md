@@ -188,7 +188,7 @@ Recent completed work:
 * sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
-* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, primary audio reachability, expected error/forbidden responses, and no-store headers
+* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Important recent repo event:
 
@@ -201,23 +201,23 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Expand sandbox smoke test for phase coverage.
+Expand sandbox smoke test for artifact reachability.
 ```
 
 Task goal:
 
 ```
-Make manifest phase coverage and per-phase success fields repeatably checkable
-without manual browser inspection.
+Make the complete manifest artifact packet repeatably checkable with the same
+metadata-only reachability model the browser Artifacts panel uses.
 ```
 
 Added:
 
-* smoke test checks WAV frame count is present
-* smoke test checks phase list is present
-* smoke test checks each phase has a name, successful preflight/apply/process flags, and positive samples
-* smoke test checks summed phase samples equal WAV frames
-* README smoke-test text now names phase coverage
+* smoke test checks every manifest artifact link with HTTP `HEAD`
+* smoke test checks every artifact response returns `200`
+* smoke test checks every artifact response has no-store headers
+* smoke test checks every artifact response has nonzero content length
+* README smoke-test text now names every manifest artifact link reachability
 
 Verification note:
 
@@ -225,7 +225,7 @@ Verification note:
 * `git diff --check` passed
 * `python scripts/smoke_test.py` passed
 * smoke test did not leave a test server running; only the live 8765 sandbox server remained
-* browser remained healthy at 8765 with `Manifest: OK`, `Phase Coverage: Complete`, `Phase Status: 2 OK`, `phase frames: 44100`, `wav frames: 44100`, `coverage: 100%`, `delta: 0`, `Waveform: Drawn`, and artifact packet `7/7 OK 92.88 KB`
+* browser remained healthy at 8765 with `Manifest: OK`, `Artifact Coverage: Complete`, seven artifact rows, artifact packet `7/7 OK 92.88 KB`, `Reports: 5 Loaded`, and `Waveform: Drawn`
 * browser console error log was empty
 
 Boundary preserved:
@@ -244,7 +244,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-d995d78 Check phase coverage in smoke test
+a802115 Check artifact reachability in smoke test
 ```
 
 Reported repo status:

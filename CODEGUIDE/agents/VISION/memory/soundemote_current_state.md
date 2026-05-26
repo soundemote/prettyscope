@@ -313,17 +313,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
-* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, primary audio reachability, expected error/forbidden responses, and no-store headers
+* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Recent completion:
 
 ```
-d995d78 Check phase coverage in smoke test
+a802115 Check artifact reachability in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now covers manifest phase coverage and per-phase success fields as part of the repeatable witness proof.
+The first local `soemdsp-sandbox` repo smoke test now covers every manifest artifact link using the same metadata-only reachability model as the browser Artifacts panel.
 
-Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks WAV frame count, phase list, phase names, per-phase preflight/apply/process success, positive processed sample counts, and summed phase samples equal WAV frames; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Phase Coverage: Complete`, `Phase Status: 2 OK`, `phase frames: 44100`, `wav frames: 44100`, `coverage: 100%`, `delta: 0`, `Waveform: Drawn`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
+Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks every manifest artifact link with HTTP `HEAD`, requires `200`, no-store headers, and nonzero content length; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Artifact Coverage: Complete`, seven artifact rows, artifact packet `7/7 OK 92.88 KB`, `Reports: 5 Loaded`, `Waveform: Drawn`, and no console errors.
 
 Generated preview screenshot:
 
