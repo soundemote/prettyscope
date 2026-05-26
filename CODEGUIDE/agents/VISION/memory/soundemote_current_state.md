@@ -297,16 +297,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays read-only inline text reports for the combined summary, WAV metadata report, and phase reports
 * first `soemdsp-sandbox` shell displays the artifact manifest as pretty-printed read-only JSON in the same document viewer
 * first `soemdsp-sandbox` shell clears stale dependent UI surfaces when manifest loading fails
+* first `soemdsp-sandbox` shell displays served artifact modified times from HTTP Last-Modified metadata
 
 Recent completion:
 
 ```
-7cf9155 Clear stale UI on manifest errors
+d44a87a Show artifact modified times
 ```
 
-The first local `soemdsp-sandbox` shell now clears dependent UI surfaces on manifest load failure, so a failed or missing manifest cannot leave stale document, artifact, waveform, phase, checklist, or parameter data visible as if it were current.
+The first local `soemdsp-sandbox` shell now exposes served artifact modified times beside artifact reachability checks, giving the user another read-only way to spot stale artifact packets.
 
-Verification passed in the live browser at `http://127.0.0.1:8765` and a temporary missing-manifest server at `http://127.0.0.1:8766`: normal load still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`; missing-manifest load reported `Manifest: Check`, `contract: manifest not found`, `Documents: Check`, zero document buttons, zero artifact links, zero checklist rows, zero phase rows, zero parameter cards, zero producer rows, zero waveform metadata rows, zero artifact coverage rows, primary audio title `Unavailable`, and no browser console errors.
+Verification passed with `python -m py_compile server.py` and the live browser at `http://127.0.0.1:8765`: browser DOM reported seven artifact modified timestamps, artifact statuses for all seven files, `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, `Phase Coverage: Complete`, no warning rows, and no browser console errors.
 
 Generated preview screenshot:
 

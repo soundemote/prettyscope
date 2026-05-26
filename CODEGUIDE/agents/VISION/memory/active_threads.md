@@ -172,6 +172,7 @@ Recent completed work:
 * sandbox shell displays read-only inline text reports for the combined summary, WAV metadata report, and phase reports
 * sandbox shell displays the artifact manifest as pretty-printed read-only JSON in the same document viewer
 * sandbox shell clears stale dependent UI surfaces when manifest loading fails
+* sandbox shell displays served artifact modified times from HTTP Last-Modified metadata
 
 Important recent repo event:
 
@@ -184,30 +185,30 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Clear stale UI on manifest errors.
+Show artifact modified times.
 ```
 
 Task goal:
 
 ```
-Make manifest load failures visibly empty/check-state after a previous successful
-load, so stale green data cannot masquerade as current sandbox state.
+Show served artifact modified times beside reachability checks so stale artifact
+packets are easier to inspect without adding producer logic or runtime ownership.
 ```
 
 Added:
 
-* manifest error path clears internal response, waveform, playhead, and document state
-* manifest error path clears producer, parameter, report, waveform, boundary, phase, checklist, artifact coverage, and artifact list surfaces
-* manifest error path clears the audio source and title
-* manifest error path marks dependent status pills as Check
+* server sends `Last-Modified` for served files
+* artifact rows display formatted modified timestamps
+* artifact rows mark missing or invalid modified timestamps as warnings
+* README note for served artifact modified times
 
 Verification note:
 
+* `python -m py_compile server.py` passed
 * browser runtime parsed `public/app.js`
-* normal live browser load still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
-* temporary missing-manifest server reported `Manifest: Check`, `contract: manifest not found`, and `Documents: Check`
-* missing-manifest path cleared document buttons, document viewer text, artifact links, checklist rows, phase rows, parameter cards, producer rows, waveform metadata rows, and artifact coverage rows
-* missing-manifest path set primary audio title to `Unavailable`
+* sandbox server restarted on port 8765 with the updated header behavior
+* live browser reported seven artifact modified timestamps
+* live browser still reported `Manifest: OK`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, `Artifact Coverage: Complete`, and `Phase Coverage: Complete`
 * browser console error log was empty
 
 Boundary preserved:
@@ -226,7 +227,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-7cf9155 Clear stale UI on manifest errors
+d44a87a Show artifact modified times
 ```
 
 Reported repo status:
