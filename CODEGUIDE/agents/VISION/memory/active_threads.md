@@ -161,6 +161,7 @@ Recent completed work:
 * sandbox shell draws a read-only waveform from the generated WAV
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase view controls
 * sandbox shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
+* sandbox shell displays manifest WAV data byte and file byte metadata in the Waveform metadata panel
 * sandbox shell displays the current waveform phase in the waveform header and highlights the active phase button
 * sandbox shell displays the current waveform cursor frame and decoded sample value
 * waveform controls are decoupled from native audio seeking to avoid slider/audio reset loops; native audio playback can still drive waveform position
@@ -212,38 +213,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add detailed WAV metadata to resync manifest.
+Show WAV byte metadata in sandbox.
 ```
 
 Task goal:
 
 ```
-Carry channel count, bit depth, and data byte count from the demo-local WAV
-write report into the artifact manifest, then verify that metadata against the
-actual WAV header in the sandbox smoke test.
+Surface the manifest-provided primary WAV data byte and file byte values in the
+read-only Waveform metadata panel.
 ```
 
 Added:
 
-* `channels`, `bitDepth`, and `dataBytes` fields in the resync demo manifest WAV metadata
-* `soemdsp` docs noting the richer primary WAV metadata
-* sandbox smoke checks comparing channel count, bit depth, and data bytes to the parsed WAV file
+* Waveform metadata rows for data bytes and file bytes
+* README note that the Waveform panel includes byte-metadata feedback
 
 Verification:
 
-* `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`
-* `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`
-* inspected regenerated `C:\Users\argit\Desktop\soemdsp\runtime_dsp_object_bound_wav_resync_demo.manifest.json`
-* `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
-* `git -C C:\Users\argit\Desktop\soemdsp diff --check`
 * `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`
 * `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
+* live browser at `http://127.0.0.1:8765/` showed sample rate, channels, bit depth, frames, data bytes, and file bytes with no console errors
 
 Commit:
 
 ```
-d334f05 Add WAV detail metadata to resync manifest
-8e37e13 Check detailed WAV metadata in smoke test
+bbd203b Show WAV byte metadata in sandbox
 ```
 
 Boundary preserved:

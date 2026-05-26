@@ -286,6 +286,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase view controls
 * first `soemdsp-sandbox` shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
+* first `soemdsp-sandbox` shell displays manifest WAV data byte and file byte metadata in the Waveform metadata panel
 * first `soemdsp-sandbox` shell displays the current waveform phase and highlights the active phase button
 * first `soemdsp-sandbox` shell displays the current waveform cursor frame and decoded sample value
 * first `soemdsp-sandbox` shell decouples waveform view controls from native audio seeking to avoid slider/audio reset loops
@@ -329,13 +330,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-d334f05 Add WAV detail metadata to resync manifest
-8e37e13 Check detailed WAV metadata in smoke test
+bbd203b Show WAV byte metadata in sandbox
 ```
 
-The bound WAV resync manifest now carries channel count, bit depth, and data byte count for the primary WAV artifact, and the sandbox smoke test verifies those values against the parsed WAV header.
+The first local `soemdsp-sandbox` shell now displays manifest-provided primary WAV data byte and file byte values in the Waveform metadata panel.
 
-Verification passed with `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`, `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`, regenerated manifest inspection, `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp diff --check`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
+Verification passed with `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, and the live browser at `http://127.0.0.1:8765/`: Waveform metadata showed sample rate, channels, bit depth, frames, data bytes, and file bytes with no console errors.
 
 Generated preview screenshot:
 
