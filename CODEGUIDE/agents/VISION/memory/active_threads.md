@@ -128,6 +128,7 @@ Recent completed work:
 * bound DSP object WAV resync demo writes a combined render summary with setter status, both phase reports, and WAV artifact metadata
 * bound DSP object WAV resync demo writes a demo-local HTML audio report with browser-native audio controls and status sections
 * bound DSP object WAV resync demo writes a demo-local JSON artifact manifest for inspection
+* bound DSP object WAV resync HTML report links the generated WAV, manifest, text summary, WAV metadata report, and phase reports as one local inspection packet
 
 Important recent repo event:
 
@@ -140,25 +141,25 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Write bound WAV resync artifact manifest.
+Link bound WAV resync artifact packet.
 ```
 
 Task goal:
 
 ```
-Tie the generated WAV, HTML report, phase reports, and text reports together
-with an inspection-only manifest while avoiding project serialization or any
-runtime ownership claim.
+Make the generated HTML report act as the human-readable entry point for the
+local inspection packet while keeping the artifact set demo-local.
 ```
 
 Added:
 
-* `runtime_dsp_object_bound_wav_resync_demo.manifest.json` generated at demo runtime
-* manifest validates as JSON
-* manifest includes `allOk`
-* manifest links WAV, WAV report, phase reports, text summary, and HTML report
-* manifest explicitly marks runtime API, scheduler, and audio engine as false
-* `docs/DSP_EXECUTION_QUESTIONS.md` records demo-local artifact manifests as a current proof
+* HTML artifact links section
+* link to generated WAV
+* link to JSON manifest
+* link to combined text summary
+* link to WAV metadata report
+* links to first/second phase reports
+* manifest now includes a self-reference path
 
 Verification note:
 
@@ -179,13 +180,13 @@ Boundary preserved:
 Completion commit:
 
 ```
-13ee194 Write bound WAV resync artifact manifest
+97817e0 Link bound WAV resync artifact packet
 ```
 
 Reported repo status:
 
 * working tree clean
-* ahead of origin by 1 commit
+* ahead of origin by 2 commits
 * behind origin by 0 commits
 * conflicts: none
 

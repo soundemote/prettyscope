@@ -264,16 +264,17 @@ Recent proven demos include:
 * bound DSP object WAV resync demo writes a combined render summary with setter status, both phase reports, and WAV artifact metadata
 * bound DSP object WAV resync demo writes a demo-local HTML audio report with browser-native audio controls and status sections
 * bound DSP object WAV resync demo writes a demo-local JSON artifact manifest for inspection
+* bound DSP object WAV resync HTML report links the generated WAV, manifest, text summary, WAV metadata report, and phase reports as one local inspection packet
 
 Recent completion:
 
 ```
-13ee194 Write bound WAV resync artifact manifest
+97817e0 Link bound WAV resync artifact packet
 ```
 
-`runtime_dsp_object_bound_wav_resync_demo` now writes a demo-local JSON manifest tying together the generated WAV, WAV metadata report, phase reports, text summary, and HTML report. The manifest includes explicit `runtimeApi: false`, `scheduler: false`, and `audioEngine: false` flags.
+`runtime_dsp_object_bound_wav_resync_demo` now links the generated WAV, manifest, text summary, WAV metadata report, and phase reports from the generated HTML report, so the demo output behaves like one local inspection packet.
 
-The artifact manifest remains demo-only and is a sandbox-status proof, not a patch/project serialization format, scheduler, executor, audio engine, production file API, plugin/UI layer, or new DSP ownership model.
+The artifact packet remains demo-only and is a sandbox-status proof, not a patch/project serialization format, scheduler, executor, audio engine, production file API, plugin/UI layer, or new DSP ownership model.
 
 Codex in-app browser blocks direct `file://` navigation, so verify generated HTML by content inspection unless Architect asks to open it manually or through another approved local serving path.
 
