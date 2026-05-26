@@ -302,7 +302,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell checks artifact reachability with metadata-only HTTP HEAD requests
 * first `soemdsp-sandbox` shell labels artifact table columns: Label, Kind, Path, Modified, Status
 * first `soemdsp-sandbox` shell renders missing artifact paths as non-clickable artifact rows
-* first `soemdsp-sandbox` server sends no-store headers for local JSON and file responses
+* first `soemdsp-sandbox` server sends no-store headers for local success and error responses
 * first `soemdsp-sandbox` shell displays browser-side manifest response load time
 * first `soemdsp-sandbox` shell displays manifest response cache headers in the Source panel
 * first `soemdsp-sandbox` shell displays the artifact reachability method as `HEAD`
@@ -317,12 +317,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-ae39035 Guard missing artifact paths
+5fc5e3b Send no-store on error responses
 ```
 
-The first local `soemdsp-sandbox` shell now treats missing artifact paths as artifact coverage failures and renders those rows as non-clickable diagnostics.
+The first local `soemdsp-sandbox` server now applies no-store cache headers to local error responses as well as successful local responses.
 
-Verification passed with `git diff --check`, the live browser at `http://127.0.0.1:8765`, and a temporary missing-artifact-path manifest in the `soemdsp` artifact root: the fixture reported `Artifact Coverage: Check`, `missing paths: 1`, artifact packet `7/8 OK`, and a missing artifact path row rendered as `DIV` with no `href`, path `missing`, and status `Check`; waveform still drew and there were no browser console errors; returning to 8765 restored `Artifact Coverage: Complete`, `missing paths: 0`, and artifact packet `7/7 OK 92.88 KB`.
+Verification passed with `python -m py_compile server.py`, `git diff --check`, direct `curl -I` header probes, and the live browser at `http://127.0.0.1:8765`: static success returned no-store headers; `/artifact` returned `400 Missing artifact path` with no-store headers; `/artifact?path=missing.wav` returned `404 Not found` with no-store headers; `/api/manifest` HEAD returned `405 Method not allowed` with no-store headers; after restarting the live sandbox server, the browser reported `Manifest: OK`, `Source: Loaded`, `Waveform: Drawn`, `Artifact Coverage: Complete`, `missing paths: 0`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
 
 Generated preview screenshot:
 

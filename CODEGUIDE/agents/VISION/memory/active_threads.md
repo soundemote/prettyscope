@@ -177,7 +177,7 @@ Recent completed work:
 * sandbox shell checks artifact reachability with metadata-only HTTP HEAD requests
 * sandbox shell labels artifact table columns: Label, Kind, Path, Modified, Status
 * sandbox shell renders missing artifact paths as non-clickable artifact rows
-* sandbox server sends no-store headers for local JSON and file responses
+* sandbox server sends no-store headers for local success and error responses
 * sandbox shell displays browser-side manifest response load time
 * sandbox shell displays manifest response cache headers in the Source panel
 * sandbox shell displays the artifact reachability method as `HEAD`
@@ -200,31 +200,31 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Guard missing artifact paths.
+Send no-store on sandbox error responses.
 ```
 
 Task goal:
 
 ```
-Prevent malformed artifact links from becoming misleading clickable rows and
-make missing artifact paths fail artifact coverage visibly.
+Keep local diagnostic failures fresh by applying the same no-store cache headers
+to static/artifact/API error responses as successful local responses.
 ```
 
 Added:
 
-* artifact rows without paths render as `div` rows instead of anchors
-* missing artifact labels, kinds, and paths fall back to `missing`
-* Artifact Coverage includes `missing paths`
-* Artifact Coverage requires missing path count to be zero
-* README note for missing-path artifact coverage and non-clickable missing paths
+* sandbox server injects no-store headers while building `send_error` responses
+* README wording now names no-store local success and error responses
 
 Verification note:
 
+* `python -m py_compile server.py` passed
 * `git diff --check` passed
-* temporary missing-artifact-path manifest reported `Artifact Coverage: Check`, `missing paths: 1`, and artifact packet `7/8 OK`
-* missing artifact path row rendered as `DIV`, had no `href`, displayed path `missing`, and status `Check`
-* temporary missing-artifact-path run kept waveform drawn and produced no browser console errors
-* browser returned to 8765 with `Artifact Coverage: Complete`, `missing paths: 0`, and artifact packet `7/7 OK 92.88 KB`
+* live sandbox server restarted with the server change
+* `curl -I /public/index.html` reported `200 OK` with `Cache-Control: no-store, max-age=0`, `Pragma: no-cache`, and `Expires: 0`
+* `curl -I /artifact` reported `400 Missing artifact path` with no-store headers
+* `curl -I /artifact?path=missing.wav` reported `404 Not found` with no-store headers
+* `curl -I /api/manifest` reported `405 Method not allowed` with no-store headers
+* browser returned to 8765 with `Manifest: OK`, `Source: Loaded`, `Waveform: Drawn`, `Artifact Coverage: Complete`, `missing paths: 0`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -243,7 +243,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-ae39035 Guard missing artifact paths
+5fc5e3b Send no-store on error responses
 ```
 
 Reported repo status:
