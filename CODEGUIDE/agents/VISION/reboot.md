@@ -79,16 +79,18 @@ Read these files first, in this order:
 1. `CODEGUIDE/AGENTS.md`
 2. `CODEGUIDE/agents/VISION.md`
 3. `CODEGUIDE/protocols/stamps.md`
-4. `CODEGUIDE/protocols/communication_cadence.md`
-5. `CODEGUIDE/protocols/push_policy.md`
+4. `CODEGUIDE/protocols/agent_memory.md`
+5. `CODEGUIDE/protocols/communication_cadence.md`
+6. `CODEGUIDE/protocols/push_policy.md`
 
 Then read Vision memory:
 
-1. `CODEGUIDE/agents/VISION/memory/soundemote_current_state.md`
-2. `CODEGUIDE/agents/VISION/memory/architecture_invariants.md`
-3. `CODEGUIDE/agents/VISION/memory/active_threads.md`
-4. `CODEGUIDE/agents/VISION/memory/business_strategy.md`
-5. `CODEGUIDE/agents/VISION/memory/glossary.md`
+1. `CODEGUIDE/agents/VISION/memory/README.md`
+2. `CODEGUIDE/agents/VISION/memory/soundemote_current_state.md`
+3. `CODEGUIDE/agents/VISION/memory/architecture_invariants.md`
+4. `CODEGUIDE/agents/VISION/memory/active_threads.md`
+5. `CODEGUIDE/agents/VISION/memory/business_strategy.md`
+6. `CODEGUIDE/agents/VISION/memory/glossary.md`
 
 Then read templates if needed:
 

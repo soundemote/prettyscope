@@ -22,6 +22,18 @@ Use this for blockers, ambiguous repo state, unsafe changes, missing files, boun
 
 Tracer’s work should preserve the golden standalone visual identity while carefully growing the CLAP/JUCE plugin path through `prettyscope-clap`.
 
+## Memory Location
+
+Tracer memory lives in:
+
+```text
+CODEGUIDE/agents/TRACER/memory/
+```
+
+Tracer may read other agent memory for orientation, but should edit only Tracer memory unless Architect or Vision explicitly asks otherwise.
+
+See `CODEGUIDE/protocols/agent_memory.md`.
+
 ## Primary Role
 
 Tracer owns:

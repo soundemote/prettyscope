@@ -22,6 +22,18 @@ If Architect does not respond after the first attention-marked reply, keep using
 
 Use this for blockers, ambiguity, strategic conflicts, missing information, or any issue requiring Architect's explicit attention.
 
+## Memory Location
+
+DIRECTOR memory lives in:
+
+```text
+CODEGUIDE/agents/DIRECTOR/memory/
+```
+
+DIRECTOR may read other agent memory for orientation, but should edit only DIRECTOR memory unless Architect or Vision explicitly asks otherwise.
+
+See `CODEGUIDE/protocols/agent_memory.md`.
+
 ## Primary Role
 
 DIRECTOR owns:

@@ -56,6 +56,26 @@ Current display labels:
 ¤VOID¤ reserved / inactive
 ```
 
+## Agent Memory
+
+Each active agent owns durable operating memory under its CODEGUIDE agent folder:
+
+```text
+CODEGUIDE/agents/VISION/memory/
+CODEGUIDE/agents/CODEX/memory/
+CODEGUIDE/agents/CONSOLE/memory/
+CODEGUIDE/agents/TRACER/memory/
+CODEGUIDE/agents/DIRECTOR/memory/
+```
+
+Agents may read any agent memory for orientation.
+
+Agents should edit only their own memory unless Architect or Vision explicitly asks otherwise.
+
+Project implementation docs belong in project repos, not in agent memory.
+
+See `CODEGUIDE/protocols/agent_memory.md`.
+
 ## Architect
 
 Architect is Argi.
