@@ -276,21 +276,22 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell reads the generated `soemdsp` manifest and serves the WAV/artifact packet read-only
 * first `soemdsp-sandbox` shell visibly applies the read-only consumer checklist and surfaces unsafe/unsupported manifest states as warnings
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
-* first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase seek controls
+* first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase view controls
 * first `soemdsp-sandbox` shell derives phase time ranges, durations, and WAV share from manifest phase sample counts and WAV metadata
 * first `soemdsp-sandbox` shell displays the current waveform phase and highlights the active phase button
+* first `soemdsp-sandbox` shell decouples waveform view controls from native audio seeking to avoid slider/audio reset loops
 * first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
 * first `soemdsp-sandbox` shell displays parameter resync deltas and ratios from the generated text summary
 
 Recent completion:
 
 ```
-1fbe66c Show current waveform phase
+bebb928 Decouple waveform view from audio seek
 ```
 
-The first local `soemdsp-sandbox` shell now displays the active waveform phase in the waveform header and highlights the active phase button from manifest-derived phase regions.
+The first local `soemdsp-sandbox` shell now treats the waveform slider and phase buttons as read-only inspection controls instead of audio seek writers. Native audio playback/timeupdate can still drive the waveform while audio plays, but waveform dragging no longer writes into the native audio element on every move.
 
-Verification passed in the live browser at `http://127.0.0.1:8765` for initial render: browser verification reported `Manifest: OK`, `Parameter Resync: Loaded`, `Waveform: Drawn`, `Checklist: Accepted`, current phase `first`, active phase button `first`, zero warning rows, no horizontal overflow, and no console errors. Browser automation did not successfully prove phase-button/range seeking even when targeting visible controls, so manual mouse verification remains useful for the seek path.
+Verification passed in the live browser at `http://127.0.0.1:8765` for reload render: browser verification reported current phase `first`, waveform position `0.000s`, `Waveform: Drawn`, `Checklist: Accepted`, no horizontal overflow, and no console errors. Architect's mouse report triggered this fix: audio playback matched the waveform, but the waveform slider snapped back to 0 and reset the native audio player through the old coupling.
 
 Generated preview screenshot:
 
