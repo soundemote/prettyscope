@@ -188,7 +188,7 @@ Recent completed work:
 * sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
-* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
+* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 
 Important recent repo event:
 
@@ -201,22 +201,23 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Expand sandbox smoke test for handoff artifact references.
+Expand sandbox smoke test for parameter summary.
 ```
 
 Task goal:
 
 ```
-Make handoff artifact references repeatably checkable so the entry point,
-primary audio, artifact links, and WAV metadata path cannot drift silently.
+Make the Parameter Resync panel inputs repeatably checkable without manual
+browser inspection.
 ```
 
 Added:
 
-* smoke test checks entry-point artifact link path equals handoff `entryPoint`
-* smoke test checks audio artifact link path equals handoff `primaryAudioArtifact`
-* smoke test checks manifest `wav.path` equals handoff `primaryAudioArtifact`
-* README smoke-test text now names handoff artifact references
+* smoke test parses the text summary artifact as colon-separated key/value pairs
+* smoke test checks first/second frequency and amplitude keys exist
+* smoke test checks parameter values are positive
+* smoke test checks frequency and amplitude resync upward
+* README smoke-test text now names parameter resync summary values
 
 Verification note:
 
@@ -224,7 +225,7 @@ Verification note:
 * `git diff --check` passed
 * `python scripts/smoke_test.py` passed
 * smoke test did not leave a test server running; only the live 8765 sandbox server remained
-* browser remained healthy at 8765 with `Manifest: OK`, audio title `runtime_dsp_object_bound_wav_resync_demo.wav`, audio artifact row path `runtime_dsp_object_bound_wav_resync_demo.wav`, entry-point row path `runtime_dsp_object_bound_wav_resync_demo.html`, `Waveform: Drawn`, and artifact packet `7/7 OK 92.88 KB`
+* browser remained healthy at 8765 with `Parameter Resync: Loaded`, first frequency `220`, first amplitude `0.2`, second frequency `440`, second amplitude `0.35`, frequency change `+220 / x2`, amplitude change `+0.15 / x1.75`, `Waveform: Drawn`, and artifact packet `7/7 OK 92.88 KB`
 * browser console error log was empty
 
 Boundary preserved:
@@ -243,7 +244,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-da49fc7 Check handoff artifact references in smoke test
+1bea0c8 Check parameter summary in smoke test
 ```
 
 Reported repo status:

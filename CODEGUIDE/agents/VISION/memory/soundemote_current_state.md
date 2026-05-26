@@ -313,17 +313,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
-* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
+* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
 
 Recent completion:
 
 ```
-da49fc7 Check handoff artifact references in smoke test
+1bea0c8 Check parameter summary in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now checks handoff artifact references against artifact links and WAV metadata path.
+The first local `soemdsp-sandbox` repo smoke test now checks the parameter resync values used by the browser Parameter Resync panel.
 
-Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks entry-point artifact link path equals handoff `entryPoint`, audio artifact link path equals handoff `primaryAudioArtifact`, and manifest `wav.path` equals handoff `primaryAudioArtifact`; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, audio title `runtime_dsp_object_bound_wav_resync_demo.wav`, audio artifact row path `runtime_dsp_object_bound_wav_resync_demo.wav`, entry-point row path `runtime_dsp_object_bound_wav_resync_demo.html`, `Waveform: Drawn`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
+Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now parses the text summary artifact, checks first/second frequency and amplitude keys exist, checks all values are positive, and checks frequency/amplitude resync upward; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Parameter Resync: Loaded`, first frequency `220`, first amplitude `0.2`, second frequency `440`, second amplitude `0.35`, frequency change `+220 / x2`, amplitude change `+0.15 / x1.75`, `Waveform: Drawn`, artifact packet `7/7 OK 92.88 KB`, and no console errors.
 
 Generated preview screenshot:
 
