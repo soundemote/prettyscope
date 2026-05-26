@@ -306,16 +306,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays the artifact reachability method as `HEAD`
 * first `soemdsp-sandbox` shell guards malformed-but-readable manifest JSON before rendering
 * first `soemdsp-sandbox` shell displays server-reported manifest error paths in the Source panel
+* first `soemdsp-sandbox` shell displays server-reported artifact roots on manifest load errors
 
 Recent completion:
 
 ```
-7d5a731 Show manifest error path
+d933229 Report artifact root on manifest errors
 ```
 
-The first local `soemdsp-sandbox` shell now shows the server-reported manifest path on manifest load errors, so missing manifest configuration is visible from the Source panel.
+The first local `soemdsp-sandbox` shell now shows the server-reported artifact root on manifest load errors, so missing manifest configuration displays both the failed manifest path and the artifact root.
 
-Verification passed with `python -m py_compile server.py`, the live browser at `http://127.0.0.1:8765`, and a temporary missing-manifest server: normal load stayed green with `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, and the normal manifest path; missing manifest reported `Manifest: Check`, `manifest not found`, displayed `C:\Users\argit\Desktop\soemdsp\missing_sandbox_manifest.json`, cleared artifact rows, and produced no browser console errors; returning to 8765 restored the normal green state.
+Verification passed with `python -m py_compile server.py`, the live browser at `http://127.0.0.1:8765`, and a temporary missing-manifest server: missing manifest reported `Manifest: Check`, `manifest not found`, displayed `C:\Users\argit\Desktop\soemdsp\missing_sandbox_manifest.json`, displayed artifact root `C:\Users\argit\Desktop\soemdsp`, cleared artifact rows, and produced no browser console errors; returning to 8765 restored `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, and artifact packet `7/7 OK 92.88 KB`.
 
 Generated preview screenshot:
 

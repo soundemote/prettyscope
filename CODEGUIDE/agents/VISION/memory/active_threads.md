@@ -181,6 +181,7 @@ Recent completed work:
 * sandbox shell displays the artifact reachability method as `HEAD`
 * sandbox shell guards malformed-but-readable manifest JSON before rendering
 * sandbox shell displays server-reported manifest error paths in the Source panel
+* sandbox shell displays server-reported artifact roots on manifest load errors
 
 Important recent repo event:
 
@@ -193,30 +194,28 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show manifest error path.
+Report artifact root on manifest errors.
 ```
 
 Task goal:
 
 ```
-Show the server-reported manifest path on manifest load errors so missing or
-bad manifest configuration is inspectable without leaving the sandbox UI.
+Show both sides of a failed manifest lookup: the configured manifest path and
+the artifact root the sandbox server would have used.
 ```
 
 Added:
 
-* error renderer accepts optional response details
-* manifest path uses server `path` / `manifestPath` details when available
-* artifact root uses server details when available
-* manifest error payload is passed through to the error renderer
-* README note for manifest error paths
+* missing-manifest response includes `artifactRoot`
+* manifest JSON parse failure response includes `artifactRoot`
+* existing error renderer displays the server-reported artifact root
+* README note for manifest error paths and roots
 
 Verification note:
 
 * `python -m py_compile server.py` passed
-* browser runtime parsed `public/app.js`
-* normal live browser load still reported `Manifest: OK`, `Source: Loaded`, `Documents: 5 Loaded`, artifact packet `7/7 OK 92.88 KB`, and the normal manifest path
-* temporary missing-manifest server reported `Manifest: Check`, `manifest not found`, and displayed the missing manifest path
+* sandbox server restarted on port 8765
+* temporary missing-manifest server reported `Manifest: Check`, `manifest not found`, the missing manifest path, and artifact root `C:\Users\argit\Desktop\soemdsp`
 * missing-manifest path cleared artifact rows
 * browser returned to 8765 with the normal green state restored
 * browser console error log was empty
@@ -237,7 +236,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-7d5a731 Show manifest error path
+d933229 Report artifact root on manifest errors
 ```
 
 Reported repo status:
