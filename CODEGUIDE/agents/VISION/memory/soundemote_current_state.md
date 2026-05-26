@@ -283,6 +283,7 @@ Recent proven demos include:
 * first local `soemdsp-sandbox` repo exists at `C:\Users\argit\Desktop\soemdsp-sandbox`
 * first `soemdsp-sandbox` shell is a Python-stdlib server plus static browser UI
 * first `soemdsp-sandbox` shell reads the generated `soemdsp` manifest and serves the WAV/artifact packet read-only
+* first `soemdsp-sandbox` shell checks artifact reachability and displays served byte counts for every manifest artifact link
 * first `soemdsp-sandbox` shell visibly applies the read-only consumer checklist and surfaces unsafe/unsupported manifest states as warnings
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase view controls
@@ -297,12 +298,12 @@ Recent proven demos include:
 Recent completion:
 
 ```
-7dba5e4 Show waveform sample cursor
+3749269 Show artifact reachability status
 ```
 
-The first local `soemdsp-sandbox` shell now displays the current waveform cursor frame and decoded sample value next to the time and phase pills.
+The first local `soemdsp-sandbox` shell now checks every manifest artifact link through the sandbox server and displays `OK` plus served byte counts for reachable artifacts.
 
-Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported toggle `Follow Audio`, waveform position `0.000s`, sample cursor `frame 0 / sample 0`, current phase `first`, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, no horizontal overflow, and no console errors.
+Verification passed in the live browser at `http://127.0.0.1:8765`: browser verification reported 7 artifact rows, all 7 resolved to `OK` with byte counts, zero artifact rows remained in `Checking`, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, no horizontal overflow, and no console errors.
 
 Generated preview screenshot:
 

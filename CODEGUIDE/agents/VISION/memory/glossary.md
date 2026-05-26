@@ -147,6 +147,7 @@ Current first shell:
 * static browser UI
 * consumes generated `soemdsp` bound WAV resync manifest
 * displays status, boundary flags, phases, artifact links, and source paths
+* checks artifact reachability and displays served byte counts for manifest artifact links
 * visibly applies the read-only consumer checklist
 * displays first/second frequency and amplitude from the generated summary artifact
 * displays frequency/amplitude resync deltas and ratios from the generated summary artifact

@@ -154,7 +154,7 @@ Recent completed work:
 * bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 * docs/SANDBOX_HANDOFF_CONSUMER_CHECKLIST.md records accept/display/reject rules for a future read-only sandbox manifest consumer
 * first local `soemdsp-sandbox` repo exists as a read-only manifest shell
-* sandbox shell displays status, contract, boundary flags, phases, artifact links, and a browser-native WAV player
+* sandbox shell displays status, contract, boundary flags, phases, artifact links, artifact reachability, and a browser-native WAV player
 * sandbox shell visibly applies the consumer checklist and shows warning states for unsafe/unsupported manifest values
 * sandbox shell draws a read-only waveform from the generated WAV
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase view controls
@@ -177,29 +177,28 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Show waveform sample cursor.
+Show artifact reachability status.
 ```
 
 Task goal:
 
 ```
-Make waveform inspection report the exact decoded frame and sample value under
-the current cursor, while staying read-only and avoiding audio engine ownership.
+Make the read-only sandbox prove that every manifest artifact link is actually
+reachable through the sandbox server, not merely named in the JSON manifest.
 ```
 
 Added:
 
-* waveform sample cursor pill
-* current frame display
-* decoded sample value display
-* README note for sample-cursor feedback
+* per-artifact reachability status
+* artifact byte-size display from served Content-Length
+* warning status for missing/unreachable artifacts
+* README note for reachable artifact links
 
 Verification note:
 
-* live browser reload started with toggle `Follow Audio`
-* live browser reported waveform position `0.000s`
-* live browser reported sample cursor `frame 0 / sample 0`
-* live browser reported current phase `first`
+* live browser reported 7 artifact rows
+* all 7 artifact rows resolved to `OK` with byte counts
+* zero artifact rows remained in `Checking`
 * live browser reported `Waveform: Drawn`
 * live browser still reported `Checklist: Accepted`
 * zero warning rows rendered
@@ -221,7 +220,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-7dba5e4 Show waveform sample cursor
+3749269 Show artifact reachability status
 ```
 
 Reported repo status:
