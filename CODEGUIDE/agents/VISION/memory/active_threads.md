@@ -153,6 +153,7 @@ Recent completed work:
 * docs/SANDBOX_HANDOFF_CONTRACT.md documents the versioned read-only sandbox handoff contract and its non-meanings
 * bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 * bound DSP object WAV resync manifest writer now keeps nested phase and artifact link objects consistently indented for direct inspection
+* bound DSP object WAV resync manifest includes channel count, bit depth, and data byte metadata for the primary WAV artifact
 * docs/SANDBOX_HANDOFF_CONSUMER_CHECKLIST.md records accept/display/reject rules for a future read-only sandbox manifest consumer
 * first local `soemdsp-sandbox` repo exists as a read-only manifest shell
 * sandbox shell displays status, contract, boundary flags, phases, artifact links, artifact reachability, artifact-packet status, and a browser-native WAV player
@@ -191,6 +192,7 @@ Recent completed work:
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
 * sandbox repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
+* sandbox smoke test verifies manifest WAV channel count, bit depth, and data byte metadata against the actual WAV header
 * sandbox smoke test uses automatic temporary ports by default and rejects occupied explicit ports so the live `8765` browser server cannot accidentally satisfy readiness checks
 * sandbox smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
 * sandbox smoke test rejects duplicate root shell DOM IDs before browser behavior can become ambiguous
@@ -210,36 +212,38 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Split sandbox smoke checkpoints.
+Add detailed WAV metadata to resync manifest.
 ```
 
 Task goal:
 
 ```
-Make the sandbox smoke output identify which major surface failed instead of
-reporting every valid-manifest failure under one broad group.
+Carry channel count, bit depth, and data byte count from the demo-local WAV
+write report into the artifact manifest, then verify that metadata against the
+actual WAV header in the sandbox smoke test.
 ```
 
 Added:
 
-* root shell contract checkpoint
-* static assets checkpoint
-* manifest transport checkpoint
-* manifest contracts checkpoint
-* artifact reports and audio checkpoint
-* server error responses checkpoint
-* README note describing the sub-checkpoints
+* `channels`, `bitDepth`, and `dataBytes` fields in the resync demo manifest WAV metadata
+* `soemdsp` docs noting the richer primary WAV metadata
+* sandbox smoke checks comparing channel count, bit depth, and data bytes to the parsed WAV file
 
 Verification:
 
+* `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`
+* `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`
+* inspected regenerated `C:\Users\argit\Desktop\soemdsp\runtime_dsp_object_bound_wav_resync_demo.manifest.json`
 * `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
+* `git -C C:\Users\argit\Desktop\soemdsp diff --check`
 * `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`
 * `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`
 
 Commit:
 
 ```
-ce46c60 Split sandbox smoke checkpoints
+d334f05 Add WAV detail metadata to resync manifest
+8e37e13 Check detailed WAV metadata in smoke test
 ```
 
 Boundary preserved:

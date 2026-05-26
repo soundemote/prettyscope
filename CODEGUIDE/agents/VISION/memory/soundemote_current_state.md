@@ -275,6 +275,7 @@ Recent proven demos include:
 * docs/SANDBOX_HANDOFF_CONTRACT.md documents the versioned read-only sandbox handoff contract and its non-meanings
 * bound DSP object WAV resync manifest includes display-ready artifact links for read-only sandbox shells
 * bound DSP object WAV resync manifest writer keeps nested phase and artifact link objects consistently indented for direct inspection
+* bound DSP object WAV resync manifest includes channel count, bit depth, and data byte metadata for the primary WAV artifact
 * docs/SANDBOX_HANDOFF_CONSUMER_CHECKLIST.md records accept/display/reject rules for a future read-only sandbox manifest consumer
 * first local `soemdsp-sandbox` repo exists at `C:\Users\argit\Desktop\soemdsp-sandbox`
 * first `soemdsp-sandbox` shell is a Python-stdlib server plus static browser UI
@@ -316,6 +317,7 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
 * first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, producer proof flags, handoff contract flags/references, artifact/phase coverage, full artifact reachability, report documents, parameter resync summary values, primary audio WAV metadata, expected error/forbidden responses, and no-store headers
+* first `soemdsp-sandbox` smoke test verifies manifest WAV channel count, bit depth, and data byte metadata against the actual WAV header
 * first `soemdsp-sandbox` smoke test uses automatic temporary ports by default and rejects occupied explicit ports so a live browser server cannot accidentally satisfy readiness checks
 * first `soemdsp-sandbox` smoke test parses the root HTML shell and verifies the DOM IDs, app script, and stylesheet required by the browser UI
 * first `soemdsp-sandbox` smoke test rejects duplicate root shell DOM IDs before browser behavior can become ambiguous
@@ -327,12 +329,13 @@ Recent proven demos include:
 Recent completion:
 
 ```
-ce46c60 Split sandbox smoke checkpoints
+d334f05 Add WAV detail metadata to resync manifest
+8e37e13 Check detailed WAV metadata in smoke test
 ```
 
-The first local `soemdsp-sandbox` smoke test now prints sub-checkpoints for the major valid-manifest surfaces, so failures point at root shell, static assets, manifest transport/contracts, artifact reports/audio, or server error behavior.
+The bound WAV resync manifest now carries channel count, bit depth, and data byte count for the primary WAV artifact, and the sandbox smoke test verifies those values against the parsed WAV header.
 
-Verification passed with `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
+Verification passed with `cmake --build C:\Users\argit\Desktop\soemdsp\build --config Debug --target runtime_dsp_object_bound_wav_resync_demo`, `C:\Users\argit\Desktop\soemdsp\build\examples\Debug\runtime_dsp_object_bound_wav_resync_demo.exe`, regenerated manifest inspection, `python -m py_compile C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`, `git -C C:\Users\argit\Desktop\soemdsp diff --check`, `git -C C:\Users\argit\Desktop\soemdsp-sandbox diff --check`, and `python C:\Users\argit\Desktop\soemdsp-sandbox\scripts\smoke_test.py`.
 
 Generated preview screenshot:
 
