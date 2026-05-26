@@ -313,17 +313,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell displays a dedicated Source Error row beside manifest path and artifact root details
 * first `soemdsp-sandbox` shell displays manifest HTTP status beside source error/path/root details
 * first `soemdsp-sandbox` shell displays Source Detail for manifest parse failure messages
-* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, primary audio reachability, expected error/forbidden responses, and no-store headers
+* first `soemdsp-sandbox` repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, report documents, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Recent completion:
 
 ```
-a802115 Check artifact reachability in smoke test
+9e0cfd6 Check report documents in smoke test
 ```
 
-The first local `soemdsp-sandbox` repo smoke test now covers every manifest artifact link using the same metadata-only reachability model as the browser Artifacts panel.
+The first local `soemdsp-sandbox` repo smoke test now covers the report document artifacts used by the browser Documents panel.
 
-Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks every manifest artifact link with HTTP `HEAD`, requires `200`, no-store headers, and nonzero content length; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Artifact Coverage: Complete`, seven artifact rows, artifact packet `7/7 OK 92.88 KB`, `Reports: 5 Loaded`, `Waveform: Drawn`, and no console errors.
+Verification passed with `python -m py_compile scripts/smoke_test.py`, `git diff --check`, `python scripts/smoke_test.py`, and the live browser at `http://127.0.0.1:8765`: the smoke test now checks report document links with HTTP `GET`, requires no-store headers, nonempty text summary/WAV report/phase reports, and parseable artifact manifest JSON; no test server was left running beyond the live 8765 sandbox server; the browser remained healthy with `Manifest: OK`, `Reports: 5 Loaded`, five report buttons, nonempty report viewer, artifact packet `7/7 OK 92.88 KB`, `Waveform: Drawn`, and no console errors.
 
 Generated preview screenshot:
 

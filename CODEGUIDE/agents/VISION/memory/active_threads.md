@@ -188,7 +188,7 @@ Recent completed work:
 * sandbox shell displays a dedicated Source Error row so manifest load failures and shape failures are visible beside path/root details
 * sandbox shell displays manifest HTTP status so source failures show transport status beside source error/path/root details
 * sandbox shell displays Source Detail so manifest parse failures expose the server parse message beside source error and HTTP status
-* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, primary audio reachability, expected error/forbidden responses, and no-store headers
+* sandbox repo includes a stdlib smoke test for manifest loading, handoff contract flags, artifact/phase coverage, full artifact reachability, report documents, primary audio reachability, expected error/forbidden responses, and no-store headers
 
 Important recent repo event:
 
@@ -201,23 +201,23 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Expand sandbox smoke test for artifact reachability.
+Expand sandbox smoke test for report documents.
 ```
 
 Task goal:
 
 ```
-Make the complete manifest artifact packet repeatably checkable with the same
-metadata-only reachability model the browser Artifacts panel uses.
+Make the browser Documents panel inputs repeatably checkable without manual
+browser inspection.
 ```
 
 Added:
 
-* smoke test checks every manifest artifact link with HTTP `HEAD`
-* smoke test checks every artifact response returns `200`
-* smoke test checks every artifact response has no-store headers
-* smoke test checks every artifact response has nonzero content length
-* README smoke-test text now names every manifest artifact link reachability
+* smoke test checks report document links with HTTP `GET`
+* smoke test checks artifact manifest report parses as JSON
+* smoke test checks text summary, WAV report, and phase reports are nonempty
+* smoke test checks report document responses have no-store headers
+* README smoke-test text now names report documents
 
 Verification note:
 
@@ -225,7 +225,7 @@ Verification note:
 * `git diff --check` passed
 * `python scripts/smoke_test.py` passed
 * smoke test did not leave a test server running; only the live 8765 sandbox server remained
-* browser remained healthy at 8765 with `Manifest: OK`, `Artifact Coverage: Complete`, seven artifact rows, artifact packet `7/7 OK 92.88 KB`, `Reports: 5 Loaded`, and `Waveform: Drawn`
+* browser remained healthy at 8765 with `Manifest: OK`, `Reports: 5 Loaded`, five report buttons, nonempty report viewer, artifact packet `7/7 OK 92.88 KB`, and `Waveform: Drawn`
 * browser console error log was empty
 
 Boundary preserved:
@@ -244,7 +244,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-a802115 Check artifact reachability in smoke test
+9e0cfd6 Check report documents in smoke test
 ```
 
 Reported repo status:
