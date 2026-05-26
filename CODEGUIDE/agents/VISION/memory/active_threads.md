@@ -141,6 +141,7 @@ Recent completed work:
 * sandbox shell visibly applies the consumer checklist and shows warning states for unsafe/unsupported manifest values
 * sandbox shell draws a read-only waveform from the generated WAV
 * sandbox shell overlays manifest-derived phase regions on the waveform and exposes phase seek controls
+* sandbox shell displays first/second frequency and amplitude from the generated summary artifact
 
 Important recent repo event:
 
@@ -153,39 +154,35 @@ Important recent repo event:
 Last completed Vision task:
 
 ```
-Add phase-aware waveform controls.
+Show parameter resync summary.
 ```
 
 Task goal:
 
 ```
-Make the waveform reflect manifest phase structure and expose read-only
-playback-position controls without adding DSP execution, scheduling,
+Show the actual parameter values behind the audible/visual resync by reading
+the generated summary artifact, without adding DSP execution, scheduling,
 audio-engine ownership, or project state.
 ```
 
 Added:
 
-* phase shading on the waveform
-* `first` and `second` labels drawn from manifest phase data
-* playback position pill
-* native waveform scrubber
-* phase buttons derived from manifest regions
-* playhead redraw synced to browser audio time
-* README note for phase seek controls
+* Parameter Resync panel
+* fetch/parse of the generated combined text summary
+* first/second frequency cards
+* first/second amplitude cards
+* README note for parameter resync values
 
 Verification note:
 
+* live browser reported `Parameter Resync: Loaded`
+* summary cards rendered first frequency 220, first amplitude 0.2, second frequency 440, second amplitude 0.35
 * live browser reported `Waveform: Drawn`
-* phase buttons rendered as `first` and `second`
-* 4 waveform metadata rows rendered
-* visual screenshot confirmed a nonblank, phase-shaded, labeled waveform
 * live browser still reported `Checklist: Accepted`
 * zero warning rows rendered
 * 7 artifact links rendered
 * 2 phase panels rendered
 * browser check found no console errors and no horizontal overflow
-* browser automation did not prove the seek interaction
 
 Boundary preserved:
 
@@ -203,7 +200,7 @@ Boundary preserved:
 Completion commit:
 
 ```
-6e3684b Add phase-aware waveform controls
+b298e0e Show parameter resync summary
 ```
 
 Reported repo status:

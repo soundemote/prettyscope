@@ -277,16 +277,17 @@ Recent proven demos include:
 * first `soemdsp-sandbox` shell visibly applies the read-only consumer checklist and surfaces unsafe/unsupported manifest states as warnings
 * first `soemdsp-sandbox` shell draws a read-only waveform from the generated WAV
 * first `soemdsp-sandbox` shell overlays phase regions on the waveform and exposes phase seek controls
+* first `soemdsp-sandbox` shell displays parameter resync values from the generated text summary
 
 Recent completion:
 
 ```
-6e3684b Add phase-aware waveform controls
+b298e0e Show parameter resync summary
 ```
 
-The first local `soemdsp-sandbox` shell now overlays manifest-derived phase regions on the waveform, labels the first and second render halves, shows a playback position pill, exposes a native scrubber, and renders phase buttons derived from the manifest.
+The first local `soemdsp-sandbox` shell now fetches the generated combined text summary and displays the parameter values that caused the audible/visual resync: first frequency 220, first amplitude 0.2, second frequency 440, and second amplitude 0.35.
 
-Verification passed in the live browser at `http://127.0.0.1:8765` for visual/status behavior. Browser verification reported `Waveform: Drawn`, visible `first` and `second` phase controls, 4 waveform metadata rows, `Checklist: Accepted`, zero warning rows, 7 artifact links, 2 phase panels, no horizontal overflow, and no console errors. Visual screenshot confirmed the waveform is nonblank, phase-shaded, and labeled. Browser automation did not prove the seek interaction even though the controls are implemented.
+Verification passed in the live browser at `http://127.0.0.1:8765`. Browser verification reported `Parameter Resync: Loaded`, the four expected parameter cards, `Waveform: Drawn`, `Checklist: Accepted`, zero warning rows, 7 artifact links, 2 phase panels, no horizontal overflow, and no console errors.
 
 Generated preview screenshot:
 
